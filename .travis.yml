@@ -1,0 +1,21 @@
+language: scala
+jdk:
+  - oraclejdk8
+
+scala:
+  - 2.12.8
+
+branches:
+  only:
+    - master
+
+script: sbt ++$TRAVIS_SCALA_VERSION clean test
+
+cache:
+  directories:
+    - $HOME/.sbt
+    - $HOME/.ivy2/cache
+
+
+before_install:
+  - export TZ=Asia/Shanghai
