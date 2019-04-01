@@ -13,10 +13,6 @@ externalResolvers in Global := Resolver.combineDefaultResolvers(resolvers.value.
 excludeDependencies in Global ++= excludes
 dependencyOverrides in Global ++= overrides
 
-scmInfo in Global := Some(
-  ScmInfo(url("https://github.com/zhaihao/orison"), "git@github.com:zhaihao/orison.git"))
-git.remoteRepo in Global := scmInfo.value.get.connection
-
 cancelable in Global := true
 //
 
@@ -52,6 +48,7 @@ lazy val docs = (project in file("docs"))
     previewFixedPort     := Some(9000),
     previewFixedIp       := Some("0.0.0.0"),
     ghpagesNoJekyll      := true,
+    git.remoteRepo       := "git@github.com:zhaihao/orison.git",
     excludeFilter in ghpagesCleanSite := new FileFilter {
 
       def accept(f: File) =
@@ -81,5 +78,5 @@ lazy val docs = (project in file("docs"))
     },
     autoAPIMappings := true,
     SiteScaladocPlugin
-      .scaladocSettings(ROOT, mappings in (Compile, packageDoc) in root, "api/"),
+      .scaladocSettings(ROOT, mappings in (Compile, packageDoc) in root, "api/")
   )
