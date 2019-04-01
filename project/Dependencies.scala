@@ -18,8 +18,9 @@ object Dependencies extends AutoPlugin {
   override def trigger  = allRequirements
 
   object autoImport {
-    lazy val scalatest       = "org.scalatest" %% "scalatest" % "3.0.7" % Provided
-    lazy val typesafe_config = "com.typesafe"  % "config"     % "1.3.3" % Provided
+    lazy val scalatest       = "org.scalatest"     %% "scalatest" % "3.0.7" % Provided
+    lazy val typesafe_config = "com.typesafe"      % "config"     % "1.3.3" % Provided
+    lazy val play_json       = "com.typesafe.play" %% "play-json" % "2.6.9" % Provided
 
     lazy val log = Seq(
       "com.typesafe.scala-logging" %% "scala-logging"  % "3.9.2" % Provided,
