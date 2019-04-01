@@ -13,7 +13,7 @@ import scala.concurrent.Future
   * BaseAsyncSpecTest
   *
   * @author zhaihao
-  * @version 1.0 21/03/2018 14:28
+  * @version 1.0 2018-03-21 14:28
   */
 class BaseAsyncSpecTest extends BaseAsyncSpec {
 

@@ -11,7 +11,7 @@ package syntax
   * Ops
   *
   * @author zhaihao
-  * @version 1.0 18/01/2018 16:10
+  * @version 1.0 2018-01-18 16:10
   */
 trait Ops[A] {
   def self: A

@@ -13,6 +13,6 @@ import org.scalatest.FreeSpec
   * BaseSpec
   *
   * @author zhaihao
-  * @version 1.0 2017/12/8 11:35
+  * @version 1.0 2017-12-8 11:35
   */
 trait BaseSpec extends FreeSpec with ArrowAssertLike

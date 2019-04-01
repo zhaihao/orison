@@ -13,6 +13,6 @@ import org.scalatest.AsyncFreeSpecLike
   * BaseAsyncSpecLike
   *
   * @author zhaihao
-  * @version 1.0 21/03/2018 14:27
+  * @version 1.0 2018-03-21 14:27
   */
 trait BaseAsyncSpecLike extends AsyncFreeSpecLike with ArrowAssertLike

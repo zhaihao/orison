@@ -12,7 +12,7 @@ import syntax.string._
   * Imei
   *
   * @author zhaihao
-  * @version 1.0 27/12/2017 19:08
+  * @version 1.0 2017-12-27 19:08
   */
 object Imei {
 

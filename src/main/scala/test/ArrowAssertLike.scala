@@ -13,7 +13,7 @@ import org.scalatest.Assertions._
   * ArrowAssertLike
   *
   * @author zhaihao
-  * @version 1.0 2017/12/8 11:22
+  * @version 1.0 2017-12-8 11:22
   */
 trait ArrowAssertLike {
 

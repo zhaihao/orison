@@ -19,7 +19,7 @@ import console.Colors
   * }}}
   *
   * @author zhaihao
-  * @version 1.0 21/03/2018 16:32
+  * @version 1.0 2018-03-21 16:32
   */
 class ColoredLevel extends ClassicConverter {
 

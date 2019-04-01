@@ -12,7 +12,7 @@ import java.net.{URL, UnknownHostException}
   * platform
   *
   * @author zhaihao
-  * @version 1.0 2018/10/30 11:05
+  * @version 1.0 2018-10-30 11:05
   */
 private[cli] object platform {
   val _NL = System.getProperty("line.separator")

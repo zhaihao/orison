@@ -13,7 +13,7 @@ import test.BaseSpec
   * MacSpec
   *
   * @author zhaihao
-  * @version 1.0 25/12/2017 10:55
+  * @version 1.0 2017-12-25 10:55
   */
 class MacSpec extends BaseSpec {
 

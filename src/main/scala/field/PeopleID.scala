@@ -13,7 +13,7 @@ import java.time.LocalDate
   * PeopleID
   *
   * @author zhaihao
-  * @version 1.0 2018/3/31 17:06
+  * @version 1.0 2018-3-31 17:06
   */
 object PeopleID {
 

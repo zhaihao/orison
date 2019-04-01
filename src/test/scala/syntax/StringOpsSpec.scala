@@ -12,7 +12,7 @@ import test.BaseSpec
   * StringOpsSpec
   *
   * @author zhaihao
-  * @version 1.0 21/12/2017 20:14
+  * @version 1.0 2017-12-21 20:14
   */
 class StringOpsSpec extends BaseSpec {
   import syntax.string._

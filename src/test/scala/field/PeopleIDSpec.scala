@@ -15,7 +15,7 @@ import test.BaseSpec
   * PeopleIDSpec
   *
   * @author zhaihao
-  * @version 1.0 2018/3/31 17:55
+  * @version 1.0 2018-3-31 17:55
   */
 class PeopleIDSpec extends BaseSpec {
 

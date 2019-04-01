@@ -14,7 +14,7 @@ import test.BaseSpec
   * IpSpec
   *
   * @author zhaihao
-  * @version 1.0 27/12/2017 19:22
+  * @version 1.0 2017-12-27 19:22
   */
 class IpSpec extends BaseSpec {
 

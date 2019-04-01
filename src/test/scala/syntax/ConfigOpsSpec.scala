@@ -13,7 +13,7 @@ import test.BaseSpec
   * ConfigOpsSpec
   *
   * @author zhaihao
-  * @version 1.0 19/01/2018 11:44
+  * @version 1.0 2018-01-19 11:44
   */
 class ConfigOpsSpec extends BaseSpec {
 

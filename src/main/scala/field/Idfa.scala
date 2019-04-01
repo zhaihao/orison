@@ -11,7 +11,7 @@ package field
   * Idfa
   *
   * @author zhaihao
-  * @version 1.0 27/12/2017 19:04
+  * @version 1.0 2017-12-27 19:04
   */
 object Idfa {
 

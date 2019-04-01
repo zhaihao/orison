@@ -11,7 +11,7 @@ package test
   * ProcessLikeSpec
   *
   * @author zhaihao
-  * @version 1.0 2018/8/23 19:25
+  * @version 1.0 2018-8-23 19:25
   */
 class ProcessLikeSpec extends BaseSpec with ProcessLike {
   "test" ignore  {

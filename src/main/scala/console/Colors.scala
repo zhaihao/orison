@@ -11,7 +11,7 @@ package console
   * Colors
   *
   * @author zhaihao
-  * @version 1.0 21/03/2018 16:35
+  * @version 1.0 2018-03-21 16:35
   */
 object Colors {
 

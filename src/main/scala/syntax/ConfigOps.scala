@@ -18,7 +18,7 @@ import scala.language.implicitConversions
   * ConfigOps
   *
   * @author zhaihao
-  * @version 1.0 18/01/2018 20:20
+  * @version 1.0 2018-01-18 20:20
   */
 final class ConfigOps private[syntax] (private val config: Config) extends AnyVal {
 

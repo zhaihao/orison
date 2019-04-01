@@ -11,7 +11,7 @@ package field
   * Mac
   *
   * @author zhaihao
-  * @version 1.0 23/12/2017 16:09
+  * @version 1.0 2017-12-23 16:09
   */
 object Mac {
   // language=RegExp

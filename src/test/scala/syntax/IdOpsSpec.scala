@@ -12,7 +12,7 @@ import test.BaseSpec
   * IdOpsSpec
   *
   * @author zhaihao
-  * @version 1.0 18/01/2018 16:16
+  * @version 1.0 2018-01-18 16:16
   */
 class IdOpsSpec extends BaseSpec {
 

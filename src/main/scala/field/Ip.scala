@@ -13,7 +13,7 @@ import scala.annotation.tailrec
   * Ip
   *
   * @author zhaihao
-  * @version 1.0 27/12/2017 19:19
+  * @version 1.0 2017-12-27 19:19
   */
 object Ip {
 

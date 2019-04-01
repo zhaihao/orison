@@ -16,7 +16,7 @@ import scala.collection.mutable.ListBuffer
   * options
   *
   * @author zhaihao
-  * @version 1.0 2018/10/30 11:07
+  * @version 1.0 2018-10-30 11:07
   */
 trait Read[A] {
   self =>

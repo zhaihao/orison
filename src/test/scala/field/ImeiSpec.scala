@@ -13,7 +13,7 @@ import test.BaseSpec
   * ImeiSpec
   *
   * @author zhaihao
-  * @version 1.0 27/12/2017 19:09
+  * @version 1.0 2017-12-27 19:09
   */
 class ImeiSpec extends BaseSpec {
 
