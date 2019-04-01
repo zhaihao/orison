@@ -6,6 +6,7 @@
  */
 
 package field
+import syntax.string._
 
 /**
   * Imei
