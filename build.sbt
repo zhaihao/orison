@@ -10,8 +10,6 @@ resolvers in Global += Resolver.url("ooon ivy repo", url("https://repo.ooon.me/r
 externalResolvers in Global := Resolver.combineDefaultResolvers(resolvers.value.toVector,
                                                                 mavenCentral = true)
 
-libraryDependencies in Global ++= Seq(scalatest)
-libraryDependencies in Global ++= log
 excludeDependencies in Global ++= excludes
 dependencyOverrides in Global ++= overrides
 
@@ -26,8 +24,8 @@ lazy val root = (project in file("."))
   .settings(
     moduleName := "orison",
     name       := "orison",
-    libraryDependencies ++= Seq().flatten,
-    libraryDependencies ++= Seq(),
+    libraryDependencies ++= Seq(log).flatten,
+    libraryDependencies ++= Seq(typesafe_config, scalatest),
     scalacOptions in (Compile, doc) ++= Seq(
       "-diagrams",
       "-implicits",

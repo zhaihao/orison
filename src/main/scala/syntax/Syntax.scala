@@ -15,5 +15,21 @@ package syntax
   * @since 2019-04-01 11:40
   */
 trait Syntax {
+
+  // 单个 import
+  object id extends ToIdOps
+
+  // 自定义
+  object file extends ToFileOps
+
   object string extends ToStringOps
+
+  object config extends ToConfigOps
+
 }
+
+// 批量 import
+trait ToDataOps extends ToIdOps
+
+// 批量 import
+trait ToTypeClassOps
