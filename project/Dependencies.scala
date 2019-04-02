@@ -21,6 +21,7 @@ object Dependencies extends AutoPlugin {
     lazy val scalatest       = "org.scalatest"     %% "scalatest" % "3.0.7" % Provided
     lazy val typesafe_config = "com.typesafe"      % "config"     % "1.3.3" % Provided
     lazy val play_json       = "com.typesafe.play" %% "play-json" % "2.6.9" % Provided
+    lazy val os_lib          = "com.lihaoyi"       %% "os-lib"    % "0.2.8" % Provided
 
     lazy val log = Seq(
       "com.typesafe.scala-logging" %% "scala-logging"  % "3.9.2" % Provided,

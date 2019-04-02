@@ -24,6 +24,7 @@ class ProcessLikeSpec extends BaseSpec with ProcessLike {
 }
 
 object ProcessLikeSpecHold {
+
   def main(args: Array[String]): Unit = {
     println("test process")
   }
