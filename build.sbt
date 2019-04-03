@@ -18,8 +18,9 @@ cancelable in Global := true
 
 lazy val root = (project in file("."))
   .settings(
-    moduleName := "orison",
-    name       := "orison",
+    moduleName          := "orison",
+    name                := "orison",
+    logBuffered in Test := false,
     libraryDependencies ++= Seq(log).flatten,
     libraryDependencies ++= Seq(typesafe_config, scalatest, play_json, os_lib),
     scalacOptions in (Compile, doc) ++= Seq(
