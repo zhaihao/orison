@@ -31,5 +31,5 @@ libraryDependencies += "me.ooon" %% "orison" % version
 [codacyImg]: https://api.codacy.com/project/badge/Grade/cc8bd14b425b4dafa2f69b3f894db063
 [codacyLink]: https://app.codacy.com/project/zhaihao/orison/dashboard
 
-[versionImg]: https://img.shields.io/badge/ooon-v0.0.2-519dd9.svg
+[versionImg]: https://img.shields.io/badge/ooon-v0.0.3-519dd9.svg
 [versionLink]: https://repo.ooon.me/release/
