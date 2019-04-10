@@ -1,24 +1,25 @@
-import java.time.LocalDate
-
-import config.{Env, StandardTypesafeConfig}
-import syntax.string._
-
-import scala.collection.mutable.ListBuffer
-import scala.compat.Platform.currentTime
 /*
- * Copyright (c) 2018.
+ * Copyright (c) 2019.
  * OOON.ME ALL RIGHTS RESERVED.
  * Licensed under the Mozilla Public License, version 2.0
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
+import java.time.LocalDate
+
+import com.typesafe.scalalogging.StrictLogging
+import config.{Env, StandardTypesafeConfig}
+import syntax.string._
+
+import scala.collection.mutable.ListBuffer
+import scala.compat.Platform.currentTime
 /**
   * App
   *
   * @author zhaihao
   * @version 1.0 26/01/2018 15:54
   */
-trait App extends StandardTypesafeConfig {
+trait App extends StandardTypesafeConfig with StrictLogging {
   self: Env =>
 
   final val startTime: Long = currentTime
@@ -29,18 +30,17 @@ trait App extends StandardTypesafeConfig {
   private val year     = LocalDate.now().getYear
 
   val logo =
-    """
-       |/*                                                                         *\
+    s"""
+       |/*                                                                         *\\
        |**                  .__                                                    **
        |**    ____  _______ |__|  ______  ____    ____                             **
-       |**   /  _ \ \_  __ \|  | /  ___/ /  _ \  /    \    ORISON.                 **
-       |**  (  <_> ) |  | \/|  | \___ \ (  <_> )|   |  \   (c) 2017-2019           **
-       |**   \____/  |__|   |__|/____  > \____/ |___|  /   https://orison.ooon.me  **
-       |**                           \/              \/                            **""".stripMargin
-  println(logo)
-  println(
-    s"**${"".padEnd(55, ' ')}env: [${Console.YELLOW}${env.getOrElse("").padStart(4, ' ')}${Console.RESET}]       **")
-  println(s"\\*${"".padEnd(73, ' ')}*/\n")
+       |**   /  _ \\ \\_  __ \\|  | /  ___/ /  _ \\  /    \\    ORISON.                 **
+       |**  (  <_> ) |  | \\/|  | \\___ \\ (  <_> )|   |  \\   (c) 2017-$year           **
+       |**   \\____/  |__|   |__|/____  > \\____/ |___|  /   https://orison.ooon.me  **
+       |**                          \\/              \\/                             **
+       |**${"".padEnd(55, ' ')}env: [${Console.YELLOW}${env.getOrElse("").padStart(4, ' ')}${Console.RESET}]       **
+       |\\*${"".padEnd(73, ' ')}*/""".stripMargin
+  logo.split("\n").foreach(line => logger.info(line))
 
   final def delayedInit(body: => Unit) {
     initCode += (() => body)
@@ -50,6 +50,6 @@ trait App extends StandardTypesafeConfig {
     this._args = args
     for (proc <- initCode) proc()
     val total = currentTime - startTime
-    println("\n[total " + total + "ms]")
+    logger.info("[total " + total + "ms]")
   }
 }
