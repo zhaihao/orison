@@ -6,9 +6,8 @@
  */
 
 package plot.gallery
-import test.BaseSpec
 import plot._
-import plot.spec.Data
+import test.BaseSpec
 
 /**
   * PlainJsonSpec
@@ -83,7 +82,7 @@ class PlainJsonSpec extends BaseSpec {
   }
 }"""
 
-    plot.vega.json(json, Data(url = DemoData.Population)).html.browse
+    plot.vega.data(url = DemoData.Population).json(json).html.browse
   }
 
 }
