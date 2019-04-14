@@ -82,7 +82,7 @@ class PlainJsonSpec extends BaseSpec {
   }
 }"""
 
-    plot.vega.data(url = DemoData.Population).json(json).html.browse
+    plot.vega.data(url = DemoData.Population).json(json).html.browse()
   }
 
 }

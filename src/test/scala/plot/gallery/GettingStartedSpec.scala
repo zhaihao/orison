@@ -41,7 +41,7 @@ class GettingStartedSpec extends BaseSpec {
         .data(values = values)
         .mark(Mark.Point)
         .html
-        .browse
+        .browse()
     }
 
     "plot.gallery 2" ignore {
@@ -51,7 +51,7 @@ class GettingStartedSpec extends BaseSpec {
         .mark(Mark.Point)
         .encodeX("a", FieldType.Nominal)
         .html
-        .browse
+        .browse()
     }
 
     "plot.gallery 3" ignore {
@@ -62,7 +62,7 @@ class GettingStartedSpec extends BaseSpec {
         .encodeX("a", FieldType.Nominal)
         .encodeY("b", FieldType.Quantitative)
         .html
-        .browse
+        .browse()
     }
   }
   "Data Transformation: Aggregation" - {
@@ -74,7 +74,7 @@ class GettingStartedSpec extends BaseSpec {
         .encodeX("a", FieldType.Nominal)
         .encodeY("b", FieldType.Quantitative, AggOp.Average)
         .html
-        .browse
+        .browse()
     }
 
     "plot.gallery 2" ignore {
@@ -85,7 +85,7 @@ class GettingStartedSpec extends BaseSpec {
         .encodeY("a", FieldType.Nominal)
         .encodeX("b", FieldType.Quantitative, AggOp.Average)
         .html
-        .browse
+        .browse()
     }
   }
 
@@ -96,7 +96,7 @@ class GettingStartedSpec extends BaseSpec {
       .encodeY("a", FieldType.Nominal)
       .encodeX("b", FieldType.Quantitative, AggOp.Average, Axis(title = "Mean of b"))
       .html
-      .browse
+      .browse()
   }
 
 }

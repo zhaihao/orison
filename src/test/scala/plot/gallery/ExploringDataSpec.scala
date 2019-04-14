@@ -26,7 +26,7 @@ class ExploringDataSpec extends BaseSpec {
       .mark(Mark.Tick)
       .encodeX("precipitation", FieldType.Quantitative)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 2" ignore {
@@ -36,7 +36,7 @@ class ExploringDataSpec extends BaseSpec {
       .encodeX("precipitation", FieldType.Quantitative, bin = Bin())
       .encodeY(`type` = FieldType.Quantitative, aggregate = AggOp.Count)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 3" ignore {
@@ -46,7 +46,7 @@ class ExploringDataSpec extends BaseSpec {
       .encodeX(field = "date", `type` = FieldType.Temporal, timeUnit = TimeUnit.Month)
       .encodeY(field = "precipitation", `type` = FieldType.Quantitative, aggregate = AggOp.Mean)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 4" ignore {
@@ -57,7 +57,7 @@ class ExploringDataSpec extends BaseSpec {
       .encodeX(field = "date", `type` = FieldType.Temporal, timeUnit = TimeUnit.YearMonth)
       .encodeY(field = "temp_max", `type` = FieldType.Quantitative, aggregate = AggOp.Max)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 5" ignore {
@@ -67,7 +67,7 @@ class ExploringDataSpec extends BaseSpec {
       .encodeX(field = "date", `type` = FieldType.Temporal, timeUnit = TimeUnit.Year)
       .encodeY(field = "temp_max", `type` = FieldType.Quantitative, aggregate = AggOp.Max)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 6" ignore {
@@ -78,7 +78,7 @@ class ExploringDataSpec extends BaseSpec {
       .encodeX(field = "date", `type` = FieldType.Temporal, timeUnit = TimeUnit.Month)
       .encodeY(field = "temp_range", `type` = FieldType.Quantitative, aggregate = AggOp.Mean)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 7" ignore {
@@ -89,7 +89,7 @@ class ExploringDataSpec extends BaseSpec {
       .encodeY(`type` = FieldType.Quantitative, aggregate = AggOp.Count)
       .encodeColor(field = "weather", `type` = FieldType.Nominal)
       .html
-      .browse
+      .browse()
   }
 
   "plot.gallery 8" ignore {
@@ -109,7 +109,7 @@ class ExploringDataSpec extends BaseSpec {
         legend = Legend("Weather type")
       )
       .html
-      .browse
+      .browse()
   }
 
 }

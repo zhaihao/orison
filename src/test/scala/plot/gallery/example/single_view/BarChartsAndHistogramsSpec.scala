@@ -41,7 +41,7 @@ class BarChartsAndHistogramsSpec extends BaseSpec {
       .encodeX(field = "a", `type` = FieldType.Ordinal)
       .encodeY(field = "b", FieldType.Quantitative)
       .html
-      .browse
+      .browse()
   }
 
   "Histogram" ignore {
@@ -52,7 +52,7 @@ class BarChartsAndHistogramsSpec extends BaseSpec {
       .encodeX(bin = Bin(), field = "IMDB_Rating", `type` = FieldType.Quantitative)
       .encodeY(`type` = FieldType.Quantitative, aggregate = AggOp.Count)
       .html
-      .browse
+      .browse()
   }
 
   "Histogram (from Binned Data)" ignore {
@@ -77,7 +77,7 @@ class BarChartsAndHistogramsSpec extends BaseSpec {
       .encodeX2(field = "bin_end")
       .encodeY(field = "count", `type` = FieldType.Quantitative)
       .html
-      .browse
+      .browse()
   }
 
   "Aggregate Bar Chart" ignore {
@@ -93,7 +93,7 @@ class BarChartsAndHistogramsSpec extends BaseSpec {
                aggregate = AggOp.Sum,
                axis = Axis(title = "population"))
       .html
-      .browse
+      .browse()
   }
 
 }

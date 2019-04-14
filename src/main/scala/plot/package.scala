@@ -53,10 +53,10 @@ package object plot {
 
   implicit class BrowseAble(render: HtmlRenderer) extends PreviewLike {
 
-    def browse = {
+    def browse(foreground: Boolean = true) = {
       val tmp = os.temp(suffix = ".html", deleteOnExit = false)
       os.write.over(tmp, render.page)
-      preview(tmp.toIO)
+      preview(tmp.toIO, foreground)
     }
   }
   // implicit end
