@@ -5,14 +5,17 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
+package orison
+
 import java.time.LocalDate
 
 import com.typesafe.scalalogging.StrictLogging
 import config.{Env, StandardTypesafeConfig}
-import syntax.string._
 
 import scala.collection.mutable.ListBuffer
 import scala.compat.Platform.currentTime
+import syntax.string._
+
 /**
   * App
   *
@@ -38,7 +41,9 @@ trait App extends StandardTypesafeConfig with StrictLogging {
        |**  (  <_> ) |  | \\/|  | \\___ \\ (  <_> )|   |  \\   (c) 2017-$year           **
        |**   \\____/  |__|   |__|/____  > \\____/ |___|  /   https://orison.ooon.me  **
        |**                          \\/              \\/                             **
-       |**${"".padEnd(55, ' ')}env: [${Console.YELLOW}${env.getOrElse("").padStart(4, ' ')}${Console.RESET}]       **
+       |**${"".padEnd(55, ' ')}env: [${Console.YELLOW}${env
+         .getOrElse("")
+         .padStart(4, ' ')}${Console.RESET}]       **
        |\\*${"".padEnd(73, ' ')}*/""".stripMargin
   logo.split("\n").foreach(line => logger.info(line))
 
