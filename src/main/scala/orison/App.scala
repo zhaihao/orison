@@ -41,9 +41,9 @@ trait App extends StandardTypesafeConfig with StrictLogging {
        |**  (  <_> ) |  | \\/|  | \\___ \\ (  <_> )|   |  \\   (c) 2017-$year           **
        |**   \\____/  |__|   |__|/____  > \\____/ |___|  /   https://orison.ooon.me  **
        |**                          \\/              \\/                             **
-       |**${"".padEnd(55, ' ')}env: [${Console.YELLOW}${env
+       |**${"".padEnd(55, ' ')}env: [${env
          .getOrElse("")
-         .padStart(4, ' ')}${Console.RESET}]       **
+         .padStart(4, ' ')}]       **
        |\\*${"".padEnd(73, ' ')}*/""".stripMargin
   logo.split("\n").foreach(line => logger.info(line))
 
