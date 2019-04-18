@@ -10,11 +10,11 @@ package orison
 import java.time.LocalDate
 
 import com.typesafe.scalalogging.StrictLogging
-import config.{Env, StandardTypesafeConfig}
+import config.HConfig
+import syntax.string._
 
 import scala.collection.mutable.ListBuffer
 import scala.compat.Platform.currentTime
-import syntax.string._
 
 /**
   * App
@@ -22,9 +22,7 @@ import syntax.string._
   * @author zhaihao
   * @version 1.0 26/01/2018 15:54
   */
-trait App extends StandardTypesafeConfig with StrictLogging {
-  self: Env =>
-
+trait App extends HConfig with StrictLogging {
   final val startTime: Long = currentTime
 
   private var _args: Array[String] = _
@@ -41,9 +39,7 @@ trait App extends StandardTypesafeConfig with StrictLogging {
        |**  (  <_> ) |  | \\/|  | \\___ \\ (  <_> )|   |  \\   (c) 2017-$year           **
        |**   \\____/  |__|   |__|/____  > \\____/ |___|  /   https://orison.ooon.me  **
        |**                          \\/              \\/                             **
-       |**${"".padEnd(55, ' ')}env: [${env
-         .getOrElse("")
-         .padStart(4, ' ')}]       **
+       |**${"".padEnd(55, ' ')}env: [${env.padStart(4, ' ')}]       **
        |\\*${"".padEnd(73, ' ')}*/""".stripMargin
   logo.split("\n").foreach(line => logger.info(line))
 

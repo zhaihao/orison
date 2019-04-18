@@ -10,6 +10,7 @@ package config
 import com.typesafe.config.{Config, ConfigFactory}
 
 import scala.util.Properties
+import syntax.config._
 
 /**
   * TypesafeConfig
@@ -17,15 +18,12 @@ import scala.util.Properties
   * @author zhaihao
   * @version 1.0 06/02/2018 17:00
   */
-trait TypesafeConfig {
-  val config: Config
-}
-
-trait StandardTypesafeConfig extends TypesafeConfig with Env {
+trait HConfig {
   lazy val config: Config = {
     val file = Properties.propOrElse("config.resource", "application.conf")
-    env.foreach(e => Properties.setProp("config.resource", s"$e/$file"))
 
-    ConfigFactory.defaultApplication()
+    ConfigFactory.load(file)
   }
+
+  lazy val env = config.getOrElse("env", "dev")
 }
