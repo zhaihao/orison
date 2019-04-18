@@ -40,8 +40,10 @@ trait App extends HConfig with StrictLogging {
        |**   \\____/  |__|   |__|/____  > \\____/ |___|  /   https://orison.ooon.me  **
        |**                          \\/              \\/                             **
        |**${"".padEnd(55, ' ')}env: [${env.padStart(4, ' ')}]       **
-       |\\*${"".padEnd(73, ' ')}*/""".stripMargin
+       |\\*${"".padEnd(73, ' ')}*/
+       |""".stripMargin
   logo.split("\n").foreach(line => logger.info(line))
+  logger.info("")
 
   final def delayedInit(body: => Unit) {
     initCode += (() => body)
