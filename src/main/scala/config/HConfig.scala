@@ -19,11 +19,16 @@ import syntax.config._
   * @version 1.0 06/02/2018 17:00
   */
 trait HConfig {
-  lazy val config: Config = {
+  def config = HConfig.config
+  def env    = HConfig.env
+}
+
+private[this] object HConfig {
+  final val config: Config = {
     val file = Properties.propOrElse("config.resource", "application.conf")
 
     ConfigFactory.load(file)
   }
 
-  lazy val env = config.getOrElse("env", "dev")
+  final val env = config.getOrElse("env", "dev")
 }
