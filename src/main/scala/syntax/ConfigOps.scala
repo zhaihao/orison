@@ -65,6 +65,15 @@ trait ToConfigOps {
   implicit val objectGetter:     Getter[ConfigObject]     = _ getObject _
   implicit val memorySizeGetter: Getter[ConfigMemorySize] = _ getMemorySize _
   implicit val listConfigGetter: Getter[List[Config]]     = (c, s) => c.getConfigList(s).asScala.toList
+  implicit val listStringGetter: Getter[List[String]]     = (c, s) => c.getStringList(s).asScala.toList
+  implicit val listIntGetter: Getter[List[Int]] = (c, s) =>
+    c.getIntList(s).asScala.toList.map(_.intValue())
+  implicit val listDoubleGetter: Getter[List[Double]] = (c, s) =>
+    c.getDoubleList(s).asScala.toList.map(_.doubleValue())
+  implicit val listBooleanGetter: Getter[List[Boolean]] = (c, s) =>
+    c.getBooleanList(s).asScala.toList.map(_.booleanValue())
+  implicit val listLongGetter: Getter[List[Long]] = (c, s) =>
+    c.getLongList(s).asScala.toList.map(_.longValue())
 
   @inline implicit def toConfigOps(config: Config) = new ConfigOps(config)
 }
