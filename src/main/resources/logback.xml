@@ -8,7 +8,7 @@
 <configuration>
     <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
-    <conversionRule conversionWord="coloredLevel" converterClass="me.ooon.base.log.logback.ColoredLevel"/>
+    <conversionRule conversionWord="coloredLevel" converterClass="log.logback.ColoredLevel"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>false</append>
@@ -41,7 +41,6 @@
         <appender-ref ref="STDOUT"/>
     </appender>
 
-    <logger name="me.ooon" level="INFO"/>
     <logger name="org.apache.spark.sql.syntax" level="INFO"/>
     <logger name="org.apache.spark.ml" level="INFO"/>
     <logger name="org.apache.spark.mllib" level="INFO"/>
