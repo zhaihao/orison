@@ -91,9 +91,24 @@ class UnsafeSpec extends BaseSpec {
                        + unsafe.arrayIndexScale(classOf[Array[Byte]]) * i) ==> arrayByte(i)
     }
   }
+
+  "eval" - {
+    "math expr" in {
+      eval[Int]("1 + 1") ==> 2
+    }
+
+    "other type expr" in {
+      eval[Apple]("""
+                    |import unsafe.Apple
+                    |Apple(1,"apple")
+        """.stripMargin) ==> Apple(1, "apple")
+    }
+  }
 }
 
 class User {
   val name = "Tom"
   var age = 10
 }
+
+case class Apple(a: Int, b: String)

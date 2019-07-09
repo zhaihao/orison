@@ -20,7 +20,11 @@ lazy val root = (project in file("."))
     name                := "orison",
     logBuffered in Test := false,
     libraryDependencies ++= Seq(log).flatten,
-    libraryDependencies ++= Seq(typesafe_config, scalatest, play_json, os_lib),
+    libraryDependencies ++= Seq(typesafe_config,
+                                scalatest,
+                                play_json,
+                                os_lib,
+                                "org.scala-lang" % "scala-compiler" % scalaVersion.value),
     scalacOptions in (Compile, doc) ++= Seq(
       "-implicits",
       "-groups",
