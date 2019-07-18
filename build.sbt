@@ -24,6 +24,7 @@ lazy val root = (project in file("."))
                                 scalatest,
                                 play_json,
                                 os_lib,
+                                java_mail,
                                 "org.scala-lang" % "scala-compiler" % scalaVersion.value),
     scalacOptions in (Compile, doc) ++= Seq(
       "-implicits",
