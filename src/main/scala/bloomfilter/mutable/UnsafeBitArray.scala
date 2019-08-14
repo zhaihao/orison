@@ -31,6 +31,15 @@ class UnsafeBitArray(val numberOfBits: Long) extends Serializable {
     }
   }
 
+  def fset(index:Long):Unit = {
+    val offset = ptr + (index >>> 6) * 8L
+    val long   = unsafe.getLong(offset)
+    val v = 1L << index
+    if ((long & (1L << index)) > 0) {
+      unsafe.putLong(offset, long & (~v))
+    }
+  }
+
   def combine(that: UnsafeBitArray, combiner: (Long, Long) => Long): UnsafeBitArray = {
     val result = new UnsafeBitArray(this.numberOfBits)
     var index = 0L
