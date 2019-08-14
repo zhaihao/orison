@@ -52,11 +52,8 @@ lazy val docs = (project in file("docs"))
     previewFixedIp       := Some("0.0.0.0"),
     ghpagesNoJekyll      := true,
     git.remoteRepo       := "git@github.com:zhaihao/orison.git",
-    excludeFilter in ghpagesCleanSite := new FileFilter {
-
-      def accept(f: File) =
-        (ghpagesRepository.value / "CNAME").getCanonicalPath == f.getCanonicalPath
-    },
+    excludeFilter in ghpagesCleanSite := ((f: File) =>
+      (ghpagesRepository.value / "CNAME").getCanonicalPath == f.getCanonicalPath),
     sourceDirectory in Paradox := sourceDirectory.value / "main" / "paradox",
     paradoxProperties in Paradox ++= Map(
       "scaladoc.base_url"   -> "http://orison.ooon.me/api/",
