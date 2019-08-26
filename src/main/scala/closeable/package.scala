@@ -5,22 +5,20 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-package plot.dsl
-import plot.spec.Mark
-
 /**
-  * MarkDSL
+  * package
   *
   * @author zhaihao
   * @version 1.0
-  * @since 2019-03-22 14:51
+  * @since 2019/8/26 4:07 下午
   */
-trait MarkDSL {
-  protected var mark: Option[Mark] = None
+package object closeable {
 
-  def mark(mark: Mark): this.type = {
-    this.mark = mark
-    this
+  def using[T <: AutoCloseable, B](c: T)(f: T => B): B = {
+    try {
+      f(c)
+    } finally {
+      if (c != null) c.close()
+    }
   }
-
 }

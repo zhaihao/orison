@@ -21,35 +21,14 @@ package object plot {
   /**
     * @see [[https://vega.github.io/vega-lite/usage/embed.html#cdn]]
     */
-  val VEGA_VERSION      = "5.3.1"
-  val VEGA_LITE_VERSION = "3.0.0"
-  val VEGA_EMBED        = "4.0.0-rc1"
-  val SCHEMA_VERSION    = "v3"
-  val schema            = s"https://vega.github.io/schema/vega-lite/$SCHEMA_VERSION.json"
+  val VEGA_VERSION      = "5.4.0"
+  val VEGA_LITE_VERSION = "4.0.0-beta.0"
+  val VEGA_EMBED        = "4.2.1"
+  val schema            = s"https://vega.github.io/schema/vega-lite/v4.json"
   // 入口
-  def vega(width: Option[Int] = None, height: Option[Int] = None) = Vega(width, height)
   def vega = Vega()
 
-  //type alias
-  type Theme       = String
-  type FieldType   = String
-  type AggOp       = String
-  type TimeUnit    = String
-  type TitleAnchor = String
-  type BaseLine    = String
-  type Orient      = String
-
-  // make all implicit in plot._
-  implicit def antToOption[T](t: T) = option.anyToOption(t)
-
-  object PJson {
-
-    def json[T](o: T)(implicit tjs: Writes[T]) = {
-      Json.prettyPrint(Json.toJson(o))
-    }
-  }
-
-  implicit def json2PJson(json: Json.type) = PJson
+  type Theme = String
 
   implicit class BrowseAble(render: HtmlRenderer) extends PreviewLike {
 
@@ -59,5 +38,4 @@ package object plot {
       preview(tmp.toIO, foreground)
     }
   }
-  // implicit end
 }

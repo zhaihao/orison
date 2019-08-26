@@ -6,20 +6,25 @@
  */
 
 package plot.dsl
+
+import os.ReadablePath
 import plot._
 
 /**
-  * DescriptionDSL
+  * JsonDSL
   *
   * @author zhaihao
   * @version 1.0
-  * @since 2019-03-26 16:52
+  * @since 2019-03-27 17:58
   */
-trait DescriptionDSL {
-  protected var description: Option[String] = None
+trait VizDSL { vega: Vega =>
+  var viz: String = ""
 
-  def desc(desc: String): this.type = {
-    this.description = desc
+  def viz(json: String): this.type = { viz = json; this }
+
+  def viz(path: ReadablePath): this.type = {
+    viz = os.read(path)
+
     this
   }
 }

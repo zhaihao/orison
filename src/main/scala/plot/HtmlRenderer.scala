@@ -8,7 +8,6 @@
 package plot
 
 import com.typesafe.scalalogging.StrictLogging
-import play.api.libs.json.Json
 
 /**
   * HtmlRenderer
@@ -25,20 +24,13 @@ import play.api.libs.json.Json
   */
 class HtmlRenderer(vega: Vega) extends StrictLogging {
 
-  val spec = vega.json.getOrElse(Json.json(vega))
+  val spec = vega.json
 
   logger.debug("\n" + spec)
 
-  private val style = """|<style>
-                         |    #vg-tooltip-element table {
-                         |      font-size: 10;
-                         |    }
-                         |</style>
-                         |""".stripMargin
-
   private val head = s"""|<head>
                          |    <meta charset="utf-8">
-                         |    <title>${vega.config.title}</title>
+                         |    <title>scala plot</title>
                          |    <script src="https://cdn.jsdelivr.net/npm/vega@$VEGA_VERSION"></script>
                          |    <script src="https://cdn.jsdelivr.net/npm/vega-lite@$VEGA_LITE_VERSION"></script>
                          |    <script src="https://cdn.jsdelivr.net/npm/vega-embed@$VEGA_EMBED"></script>
@@ -55,7 +47,7 @@ class HtmlRenderer(vega: Vega) extends StrictLogging {
                          |          '#viz$longId', 
                          |          specJson,
                          |        {
-                         |            theme: '${vega.config.theme}', 
+                         |            theme: '${vega.embedConfig.theme}', 
                          |            defaultStyle: true,
                          |            scaleFactor : 2
                          |          }
@@ -66,7 +58,6 @@ class HtmlRenderer(vega: Vega) extends StrictLogging {
 
   val page = s"""|<!DOCTYPE html>
                  |$head
-                 |$style
                  |$body
                  |</html>
                  |""".stripMargin

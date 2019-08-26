@@ -8,7 +8,7 @@
 package plot.dsl
 
 import plot.Theme
-import plot.spec.{Themes, VegaConfig}
+import plot.spec.{Themes, EmbedConfig}
 
 /**
   * VegaConfigDSL
@@ -17,12 +17,12 @@ import plot.spec.{Themes, VegaConfig}
   * @version 1.0
   * @since 2019-03-22 10:45
   */
-trait VegaConfigDSL {
+trait EmbedConfigDSL {
 
-  var config = VegaConfig("scala plot - scaviz", Themes.Default)
+  var embedConfig = EmbedConfig(Themes.Default)
 
-  def config(title: String = "scala plot - scaviz", theme: Theme = Themes.Default): this.type = {
-    config = config.copy(title = title, theme = theme)
+  def theme(theme: Theme = Themes.Default): this.type = {
+    embedConfig = embedConfig.copy(theme = theme)
     this
   }
 }

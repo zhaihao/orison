@@ -6,7 +6,8 @@
  */
 
 package plot.dsl
-import plot.spec.Data
+import json.Formatter._
+import play.api.libs.json._
 
 /**
   * DataDSL
@@ -16,10 +17,21 @@ import plot.spec.Data
   * @since 2019-03-22 10:44
   */
 trait DataDSL {
-  protected var data: Option[Data] = None
+  protected var data: JsValue = JsNull
 
-  def data(url: Option[String] = None, values: Option[Seq[Map[String, Any]]] = None): this.type = {
-    data = Option(Data(url, values))
+  def withUrl(url: String): this.type = {
+    data = JsObject(Map("url" -> JsString(url)))
+
+    this
+  }
+
+  def withValues(values: Seq[Map[String, Any]]): this.type = {
+    data = JsObject(Map("values" -> Json.toJson(values)))
+    this
+  }
+
+  def withClasses[T <: Product](values: Seq[T])(implicit ev: Writes[T]): this.type = {
+    data = JsObject(Map("values" -> Json.toJson(values)))
     this
   }
 }

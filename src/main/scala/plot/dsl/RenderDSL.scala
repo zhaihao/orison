@@ -6,6 +6,7 @@
  */
 
 package plot.dsl
+
 import plot.{HtmlRenderer, Vega}
 
 /**
@@ -13,8 +14,9 @@ import plot.{HtmlRenderer, Vega}
   *
   * @author zhaihao
   * @version 1.0
-  * @since 2019-03-22 16:22
+  * @since 2019/8/26 5:55 下午
   */
 trait RenderDSL { this: Vega =>
   def html = new HtmlRenderer(this)
 }
+

@@ -9,13 +9,13 @@ package plot.spec
 import plot.Theme
 
 /**
-  * VegaConfig
+  * EmbedConfig
   *
   * @author zhaihao
   * @version 1.0
   * @since 2019-03-22 10:45
   */
-case class VegaConfig(title: String, theme: Theme)
+case class EmbedConfig(theme: Theme)
 
 object Themes {
   val Excel:           Theme = "excel"
