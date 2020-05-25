@@ -22,8 +22,12 @@ object Dependencies extends AutoPlugin {
     lazy val typesafe_config = "com.typesafe"      % "config"          % "1.3.3" % Provided
     lazy val play_json       = "com.typesafe.play" %% "play-json"      % "2.6.9" % Provided
     lazy val os_lib          = "com.lihaoyi"       %% "os-lib"         % "0.2.8" % Provided
-    lazy val java_mail       = "javax.mail"        % "javax.mail-api"  % "1.6.2" % Provided
     lazy val json4s          = "org.json4s"        %% "json4s-jackson" % "3.6.7" % Provided
+
+    lazy val java_mail = Seq(
+      "javax.mail"   % "javax.mail-api" % "1.6.2" % Provided,
+      "com.sun.mail" % "javax.mail"     % "1.6.2" % Provided
+    )
 
     lazy val log = Seq(
       "com.typesafe.scala-logging" %% "scala-logging"  % "3.9.2" % Provided,

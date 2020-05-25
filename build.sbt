@@ -1,6 +1,6 @@
 import sbt.Keys.scalacOptions
 // global
-scalaVersion in Global := "2.12.9"
+scalaVersion in Global := "2.12.11"
 organization in Global := "me.ooon"
 
 scalacOptions in Global ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
@@ -19,13 +19,12 @@ lazy val root = (project in file("."))
     moduleName          := "orison",
     name                := "orison",
     logBuffered in Test := false,
-    libraryDependencies ++= Seq(log).flatten,
+    libraryDependencies ++= Seq(log,java_mail).flatten,
     libraryDependencies ++= Seq(typesafe_config,
                                 scalatest,
                                 play_json,
                                 os_lib,
                                 json4s,
-                                java_mail,
                                 "org.scala-lang" % "scala-compiler" % scalaVersion.value),
     scalacOptions in (Compile, doc) ++= Seq(
       "-implicits",
@@ -50,7 +49,7 @@ lazy val docs = (project in file("docs"))
     ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox),
     previewLaunchBrowser := false,
     previewFixedPort     := Some(9000),
-    previewFixedIp       := Some("0.0.0.0"),
+//    previewFixedIp       := Some("0.0.0.0"),
     ghpagesNoJekyll      := true,
     git.remoteRepo       := "git@github.com:zhaihao/orison.git",
     excludeFilter in ghpagesCleanSite := ((f: File) =>

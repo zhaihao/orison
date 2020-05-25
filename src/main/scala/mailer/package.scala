@@ -37,7 +37,8 @@ package object mailer {
       failTo:   String,
       auth:     Option[Boolean],
       username: Option[String],
-      password: Option[String]
+      password: Option[String],
+      tls:      Boolean = false
   )
 
   object Session {
@@ -79,6 +80,7 @@ package object mailer {
       properties.put(s"mail.$protocol.port", setting.port)
       properties.put(s"mail.$protocol.from", setting.failTo)
       properties.put(s"mail.$protocol.auth", auth.toString)
+      if (setting.tls) properties.put(s"mail.$protocol.starttls.enable", "true")
 
       val authenticator =
         if (auth) {
