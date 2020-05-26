@@ -7,6 +7,8 @@
 
 package orison
 
+import config.HConfig
+
 /*
  * Copyright (c) 2019.
  * OOON.ME ALL RIGHTS RESERVED.
@@ -21,6 +23,6 @@ package orison
  * @version 1.0 
  * @since 2019-04-01 17:55
  */
- object AppSpec extends App {
+ object AppSpec extends HConfig with App{
   println("Hello Scala!")
 }

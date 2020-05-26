@@ -22,7 +22,7 @@ import scala.compat.Platform.currentTime
   * @author zhaihao
   * @version 1.0 26/01/2018 15:54
   */
-trait App extends HConfig with StrictLogging {
+trait App extends StrictLogging { config: HConfig =>
   final val startTime: Long = currentTime
 
   private var _args: Array[String] = _
