@@ -18,9 +18,9 @@ import syntax.config._
   * @author zhaihao
   * @version 1.0 06/02/2018 17:00
   */
-abstract class HConfig(namespace: String = ".") {
-  def config = if (namespace != ".") HConfig.config.getConfig(namespace) else HConfig.config
-  def env    = config.getOrElse("env", "dev")
+trait HConfig {
+  def config = HConfig.config
+  def env    = HConfig.env
 }
 
 private[this] object HConfig {
@@ -29,4 +29,6 @@ private[this] object HConfig {
 
     ConfigFactory.load(file)
   }
+
+  final val env = config.getOrElse("env", "dev")
 }

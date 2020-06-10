@@ -17,12 +17,12 @@ import config.HConfig
  */
 
 /**
- * AppSpec 
- *
- * @author zhaihao
- * @version 1.0 
- * @since 2019-04-01 17:55
- */
- object AppSpec extends HConfig with App{
+  * AppSpec
+  *
+  * @author zhaihao
+  * @version 1.0
+  * @since 2019-04-01 17:55
+  */
+object AppSpec extends App with HConfig {
   println("Hello Scala!")
 }
