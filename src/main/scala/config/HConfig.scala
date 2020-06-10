@@ -18,8 +18,8 @@ import syntax.config._
   * @author zhaihao
   * @version 1.0 06/02/2018 17:00
   */
-abstract class HConfig(namespace: Option[String] = None) {
-  def config = if (namespace.nonEmpty) HConfig.config.getConfig(namespace.get) else HConfig.config
+abstract class HConfig(namespace: String = ".") {
+  def config = if (namespace != ".") HConfig.config.getConfig(namespace) else HConfig.config
   def env    = config.getOrElse("env", "dev")
 }
 

@@ -12,8 +12,8 @@ import test.BaseSpec
 class HConfigSpec extends BaseSpec {
 
   object Root extends HConfig
-  object A    extends HConfig(Some("a"))
-  object B    extends HConfig(Some("b"))
+  object A    extends HConfig("a")
+  object B    extends HConfig("b")
 
   "namespace" in {
     Root.config.hasPath("a") ==> true
