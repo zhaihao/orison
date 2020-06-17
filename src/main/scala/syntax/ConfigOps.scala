@@ -45,6 +45,7 @@ object ConfigOps {
     .setOriginComments(false)
     .setComments(false)
     .setJson(false)
+    .setFormatted(true)
 
 }
 
