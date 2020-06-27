@@ -14,8 +14,8 @@ publishTo              := sonatypePublishTo.value
 
 releaseCrossBuild           := true
 releaseIgnoreUntrackedFiles := true
-releaseTagComment           := s"chore: releasing ${(version in ThisBuild).value}"
-releaseCommitMessage        := s"chore: prepare version ${(version in ThisBuild).value}"
+releaseTagComment           := s"BUILD: releasing ${(version in ThisBuild).value}"
+releaseCommitMessage        := s"BUILD: prepare version ${(version in ThisBuild).value}"
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,

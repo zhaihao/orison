@@ -19,11 +19,12 @@ lazy val root = (project in file("."))
     moduleName          := "orison",
     name                := "orison",
     logBuffered in Test := false,
-    libraryDependencies ++= Seq(log,java_mail).flatten,
+    libraryDependencies ++= Seq(log, java_mail).flatten,
     libraryDependencies ++= Seq(typesafe_config,
                                 scalatest,
                                 play_json,
                                 os_lib,
+                                argon2,
                                 json4s,
                                 "org.scala-lang" % "scala-compiler" % scalaVersion.value),
     scalacOptions in (Compile, doc) ++= Seq(
