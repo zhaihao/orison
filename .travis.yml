@@ -1,9 +1,10 @@
 language: scala
+dist: trusty
 jdk:
   - oraclejdk8
 
 scala:
-  - 2.12.8
+  - 2.12.11
 
 branches:
   only:
@@ -15,7 +16,6 @@ cache:
   directories:
     - $HOME/.sbt
     - $HOME/.ivy2/cache
-
 
 before_install:
   - export TZ=Asia/Shanghai

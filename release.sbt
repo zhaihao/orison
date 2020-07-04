@@ -22,10 +22,31 @@ releaseProcess := Seq[ReleaseStep](
   inquireVersions,
   runClean,
   runTest,
+  tagRelease,
   setReleaseVersion,
   releaseStepCommandAndRemaining("+publishSigned"),
+  upgradeVersionBadge,
   setNextVersion,
   commitNextVersion,
   releaseStepCommand("sonatypeReleaseAll"),
   pushChanges
 )
+
+
+lazy val upgradeVersionBadge: ReleaseStep = ReleaseStep(
+  action = { st: State =>
+    val extracted = Project.extract(st)
+    extracted.runTask(upgradeVersionBadgeTask, st)._1
+  },
+  enableCrossBuild = false
+)
+val upgradeVersionBadgeTask = taskKey[Unit]("upgrade the version badge")
+upgradeVersionBadgeTask := {
+  val log           = streams.value.log
+  val versionString = (version in ThisBuild).value
+  val file          = baseDirectory.value / "README.md"
+  val originContent = IO.read(file)
+  val newContent    = originContent.replaceAll("""maven-v.*-519dd9\.svg""", s"maven-v$versionString-519dd9.svg")
+  IO.write(file, newContent)
+  log.success(s"upgrade the version badge to $versionString")
+}
