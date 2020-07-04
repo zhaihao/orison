@@ -10,7 +10,7 @@ branches:
   only:
     - master
 
-script: sbt ++$TRAVIS_SCALA_VERSION clean test
+script: sbt ++$TRAVIS_SCALA_VERSION -Dsbt.log.noformat=false clean test
 
 cache:
   directories:
