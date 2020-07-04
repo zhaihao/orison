@@ -48,4 +48,6 @@ object Colors {
   def RB_INDIGO(str: String): String = if (isANSISupported) "\u001b[38;5;093m" + str + RESET else str
   def RB_VIOLET(str: String): String = if (isANSISupported) "\u001b[38;5;163m" + str + RESET else str
 
+  def render(colorExpr: String, str: String) = if (isANSISupported) colorExpr + str + RESET else str
+
 }
