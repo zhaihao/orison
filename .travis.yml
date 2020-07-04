@@ -16,6 +16,7 @@ cache:
   directories:
     - $HOME/.sbt
     - $HOME/.ivy2/cache
+    - $HOME/.cache/coursier
 
 before_install:
   - export TZ=Asia/Shanghai
