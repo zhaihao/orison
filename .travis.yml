@@ -17,6 +17,7 @@ cache:
     - $HOME/.sbt
     - $HOME/.ivy2/cache
     - $HOME/.cache/coursier
+    - $HOME/.m2
 
 before_install:
   - export TZ=Asia/Shanghai
