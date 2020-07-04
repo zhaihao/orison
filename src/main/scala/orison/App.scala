@@ -12,7 +12,7 @@ import java.time.LocalDate
 import com.typesafe.scalalogging.StrictLogging
 import config.HConfig
 import syntax.string._
-
+import console.Colors._
 import scala.collection.mutable.ListBuffer
 import scala.compat.Platform.currentTime
 
@@ -30,18 +30,20 @@ trait App extends StrictLogging { config: HConfig =>
   private val initCode = new ListBuffer[() => Unit]
   private val year     = LocalDate.now().getYear
 
+  // format: off
   val logo =
     s"""
-       |/*                                                                         *\\
-       |**                  .__                                                    **
-       |**    ____  _______ |__|  ______  ____    ____                             **
-       |**   /  _ \\ \\_  __ \\|  | /  ___/ /  _ \\  /    \\    ORISON.                 **
-       |**  (  <_> ) |  | \\/|  | \\___ \\ (  <_> )|   |  \\   (c) 2017-$year           **
-       |**   \\____/  |__|   |__|/____  > \\____/ |___|  /   https://orison.ooon.me  **
-       |**                          \\/              \\/                             **
-       |**${"".padEnd(55, ' ')}env: [${env.padStart(4, ' ')}]       **
-       |\\*${"".padEnd(73, ' ')}*/
-       |""".stripMargin
+  |${white("/*")}                                                                         ${white("")}${white("*\\")}
+  |${white("**")}                  ${RB_YELLOW(".__")}                                                    ${white("**")}
+  |${white("**")}    ${RB_RED("____")}  ${RB_ORANGE("_______ ")}${RB_YELLOW("|__|")}  ${RB_GREEN("______")}  ${RB_INDIGO("____")}    ${RB_VIOLET("____")}                             ${white("**")}
+  |${white("**")}   ${RB_RED("/  _ \\")} ${RB_ORANGE("\\_  __ \\")}${RB_YELLOW("|  |")} ${RB_GREEN("/  ___/")} ${RB_INDIGO("/  _ \\")}  ${RB_VIOLET("/    \\")}    ORISON.                 ${white("**")}
+  |${white("**")}  ${RB_RED("(  <_> )")} ${RB_ORANGE("|  | \\/")}${RB_YELLOW("|  |")} ${RB_GREEN("\\___ \\")} ${RB_INDIGO("(  <_> )")}${RB_VIOLET("|   |  \\")}   (c) 2017-$year           ${white("**")}
+  |${white("**")}   ${RB_RED("\\____/")}  ${RB_ORANGE("|__|")}   ${RB_YELLOW("|__|")}${RB_GREEN("/____  >")} ${RB_INDIGO("\\____/")} ${RB_VIOLET("|___|  /")}   https://orison.ooon.me  ${white("**")}
+  |${white("**")}                          ${RB_GREEN("\\/")}              ${RB_VIOLET("\\/")}                             ${white("**")}
+  |${white("**")}${"".padEnd(55, ' ')}env: [${env.padStart(4, ' ')}]       ${white("**")}
+  |${white("\\*")}${"".padEnd(73, ' ')}${white("*/")}
+  |""".stripMargin
+  // format: off
   logo.split("\n").foreach(line => logger.info(line))
   logger.info("")
 
