@@ -49,4 +49,16 @@ class StringOpsSpec extends BaseSpec {
     "Hello".subStringR(30) ==> "Hello"
   }
 
+  "hasText" in {
+    "123".hasText   ==> true
+    "123\n".hasText ==> true
+    "12\t3".hasText ==> true
+
+    val s: String = null
+    s.hasText        ==> false
+    "".hasText       ==> false
+    "  ".hasText     ==> false
+    "\n\t\r".hasText ==> false
+  }
+
 }

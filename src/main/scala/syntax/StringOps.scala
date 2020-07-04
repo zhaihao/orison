@@ -17,6 +17,11 @@ import scala.language.implicitConversions
   */
 final class StringOps private[syntax] (private val str: String) extends AnyVal {
 
+  def hasText =
+    if (str == null || str.isEmpty) false
+    else if (str.exists(c => !Character.isWhitespace(c))) true
+    else false
+
   def toInt(radix: Int) = Integer.parseInt(str, radix)
 
   /**
@@ -74,8 +79,8 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
     */
   def repeat(count: Int) = {
     require(str != null, "string is null")
-    if (count < 0) throw new IllegalArgumentException("repeat times must > 0")
-    else if (count == 0) ""
+    require(count >= 0, "repeat times must >= 0")
+    if (count == 0) ""
     else if (count == 1) str
     else {
       val len      = str.length
