@@ -1,4 +1,5 @@
 import sbt.Keys.scalacOptions
+import sbt.librarymanagement.UpdateConfiguration
 // global
 scalaVersion in Global := "2.12.11"
 organization in Global := "me.ooon"
@@ -9,6 +10,7 @@ externalResolvers in Global := Resolver.combineDefaultResolvers(resolvers.value.
 
 excludeDependencies in Global ++= excludes
 dependencyOverrides in Global ++= overrides
+updateConfiguration in Global := updateConfiguration.value.withMissingOk(true)
 
 cancelable in Global := true
 //
