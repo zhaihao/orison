@@ -32,7 +32,6 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges
 )
 
-
 lazy val upgradeVersionBadge: ReleaseStep = ReleaseStep(
   action = { st: State =>
     val extracted = Project.extract(st)
@@ -46,7 +45,9 @@ upgradeVersionBadgeTask := {
   val versionString = (version in ThisBuild).value
   val file          = baseDirectory.value / "README.md"
   val originContent = IO.read(file)
-  val newContent    = originContent.replaceAll("""maven-v.*-519dd9\.svg""", s"maven-v$versionString-519dd9.svg")
+  val newContent = originContent
+    .replaceAll("""maven-v.*-519dd9\.svg""", s"maven-v$versionString-519dd9.svg")
+    .replaceAll("""me\.ooon/orison_2\.12/.*""", s"me.ooon/orison_2.12/$versionString")
   IO.write(file, newContent)
   log.success(s"upgrade the version badge to $versionString")
 }

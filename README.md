@@ -12,4 +12,4 @@ scala common lib
 [codacyLink]: https://app.codacy.com/project/zhaihao/orison/dashboard
 
 [versionImg]: https://img.shields.io/badge/maven-v0.0.31-519dd9.svg
-[versionLink]: https://repo.ooon.me/release/
+[versionLink]: https://mvnrepository.com/artifact/me.ooon/orison_2.12/0.0.31
