@@ -17,6 +17,21 @@ import scala.language.implicitConversions
   */
 final class StringOps private[syntax] (private val str: String) extends AnyVal {
 
+  /*
+   *  同样长度的密码使用常量级的计算时间，用来防止计时攻击
+   */
+  def safeEqual(that: String) = {
+    if (str.length != that.length) {
+      false
+    } else {
+      var equal = 0
+      for (i <- Array.range(0, that.length)) {
+        equal |= str(i) ^ that(i)
+      }
+      equal == 0
+    }
+  }
+
   def hasText =
     if (str == null || str.isEmpty) false
     else if (str.exists(c => !Character.isWhitespace(c))) true
