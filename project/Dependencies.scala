@@ -18,12 +18,12 @@ object Dependencies extends AutoPlugin {
   override def trigger  = allRequirements
 
   object autoImport {
-    lazy val scalatest       = "org.scalatest"     %% "scalatest"      % "3.0.7" % Provided
-    lazy val play_json       = "com.typesafe.play" %% "play-json"      % "2.6.9" % Provided
-    lazy val os_lib          = "com.lihaoyi"       %% "os-lib"         % "0.7.0" % Provided
-    lazy val json4s          = "org.json4s"        %% "json4s-jackson" % "3.6.7" % Provided
-    lazy val typesafe_config = "com.typesafe"      % "config"          % "1.3.3" % Provided
-    lazy val argon2          = "de.mkammerer"      % "argon2-jvm"      % "2.7"   % Provided
+    lazy val scalatest       = "org.scalatest"     %% "scalatest-freespec" % "3.2.0" % Provided
+    lazy val play_json       = "com.typesafe.play" %% "play-json"          % "2.6.9" % Provided
+    lazy val os_lib          = "com.lihaoyi"       %% "os-lib"             % "0.7.0" % Provided
+    lazy val json4s          = "org.json4s"        %% "json4s-jackson"     % "3.6.7" % Provided
+    lazy val typesafe_config = "com.typesafe"      % "config"              % "1.3.3" % Provided
+    lazy val argon2          = "de.mkammerer"      % "argon2-jvm"          % "2.7"   % Provided
 
     lazy val java_mail = Seq(
       "javax.mail"   % "javax.mail-api" % "1.6.2" % Provided,

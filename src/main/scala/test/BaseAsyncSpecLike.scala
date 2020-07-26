@@ -7,7 +7,7 @@
 
 package test
 
-import org.scalatest.AsyncFreeSpecLike
+import org.scalatest.freespec.AsyncFreeSpecLike
 
 /**
   * BaseAsyncSpecLike

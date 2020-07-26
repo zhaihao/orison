@@ -7,7 +7,7 @@
 
 package test
 
-import org.scalatest.FreeSpec
+import org.scalatest.freespec.AnyFreeSpec
 
 /**
   * BaseSpec
@@ -15,4 +15,4 @@ import org.scalatest.FreeSpec
   * @author zhaihao
   * @version 1.0 2017-12-8 11:35
   */
-trait BaseSpec extends FreeSpec with ArrowAssertLike
+trait BaseSpec extends AnyFreeSpec with ArrowAssertLike
