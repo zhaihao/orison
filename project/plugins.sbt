@@ -7,5 +7,5 @@ addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings"           
 addSbtPlugin("com.timushev.sbt"                  % "sbt-updates"                % "0.4.0")
 addSbtPlugin("org.tpolecat"                      % "tut-plugin"                 % "0.6.10")
 addSbtPlugin("net.virtual-void"                  % "sbt-dependency-graph"       % "0.9.2")
-addSbtPlugin("com.jsuereth"                      % "sbt-pgp"                    % "2.0.0-M2")
+addSbtPlugin("com.jsuereth"                      % "sbt-pgp"                    % "2.0.1")
 addSbtPlugin("org.xerial.sbt"                    % "sbt-sonatype"               % "2.5")
