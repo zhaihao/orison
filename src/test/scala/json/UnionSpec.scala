@@ -42,9 +42,9 @@ class UnionSpec extends BaseSpec with StrictLogging {
 
   "to json" in {
     //language=JSON
-    Json.toJson(INT(10)).toString() ==> """{"value":10,"valueType":"int"}"""
+    Json.toJson(INT(10)).toString() ==> """{"valueType":"int","value":10}"""
     //language=JSON
-    Json.toJson(STRING("10")).toString() ==> """{"value":"10","valueType":"string"}"""
+    Json.toJson(STRING("10")).toString() ==> """{"valueType":"string","value":"10"}"""
   }
 
   "parse object" in {
