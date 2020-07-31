@@ -22,14 +22,13 @@ releaseProcess := Seq[ReleaseStep](
   inquireVersions,
   runClean,
   runTest,
-  tagRelease,
   setReleaseVersion,
+  tagRelease,
   releaseStepCommandAndRemaining("+publishSigned"),
   upgradeVersionBadge,
   setNextVersion,
   commitNextVersion,
-  releaseStepCommand("sonatypeReleaseAll"),
-  pushChanges
+  releaseStepCommand("sonatypeReleaseAll")
 )
 
 lazy val upgradeVersionBadge: ReleaseStep = ReleaseStep(
