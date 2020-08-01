@@ -1,7 +1,7 @@
 import sbt.Keys.scalacOptions
 import sbt.librarymanagement.UpdateConfiguration
 // global
-scalaVersion in Global := "2.12.11"
+scalaVersion in Global := "2.12.12"
 organization in Global := "me.ooon"
 
 scalacOptions in Global ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
