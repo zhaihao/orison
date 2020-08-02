@@ -22,6 +22,6 @@ class ColoredAkkaSource extends ClassicConverter {
   override def convert(event: ILoggingEvent) = {
     val str = event.getMDCPropertyMap.get("akkaSource")
     if (str == null) ""
-    else WHITE + str + RESET
+    else " " + WHITE + "[" + str + "]" + RESET
   }
 }
