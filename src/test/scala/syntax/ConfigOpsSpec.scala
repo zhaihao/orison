@@ -56,4 +56,13 @@ class ConfigOpsSpec extends BaseSpec {
     c.opt[List[Config]]("students").get ==> List.empty[Config]
   }
 
+  "json render" in {
+    println(config.json)
+      """{
+        |    "a" : 1,
+        |    "b" : 2
+        |}
+        |""".stripMargin
+  }
+
 }

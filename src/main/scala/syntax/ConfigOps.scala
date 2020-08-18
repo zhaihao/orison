@@ -33,6 +33,8 @@ final class ConfigOps private[syntax] (private val config: Config) extends AnyVa
 
   def pretty: String = config.root().render(ConfigOps.renderOpts)
 
+  def json: String = config.root().render(ConfigOps.renderJson)
+
 }
 
 object ConfigOps {
@@ -47,34 +49,36 @@ object ConfigOps {
     .setJson(false)
     .setFormatted(true)
 
+  private val renderJson = ConfigRenderOptions
+    .defaults()
+    .setOriginComments(false)
+    .setComments(false)
+    .setJson(true)
+    .setFormatted(true)
+
 }
 
 trait ToConfigOps {
 
-  implicit val stringGetter:  Getter[String]  = _ getString _
-  implicit val booleanGetter: Getter[Boolean] = _ getBoolean _
-  implicit val intGetter:     Getter[Int]     = _ getInt _
-  implicit val doubleGetter:  Getter[Double]  = _ getDouble _
-  implicit val longGetter:    Getter[Long]    = _ getLong _
-  implicit val bytesGetter:   Getter[Bytes]   = (c, p) => Bytes(c getBytes p)
-  implicit val durationGetter: Getter[Duration] = (c, p) =>
-    Duration.fromNanos((c getDuration p).toNanos)
-  implicit val finiteDurationGetter: Getter[FiniteDuration] = (c, p) =>
-    Duration.fromNanos((c getDuration p).toNanos)
-  implicit val configListGetter: Getter[ConfigList]       = _ getList _
-  implicit val configGetter:     Getter[Config]           = _ getConfig _
-  implicit val objectGetter:     Getter[ConfigObject]     = _ getObject _
-  implicit val memorySizeGetter: Getter[ConfigMemorySize] = _ getMemorySize _
-  implicit val listConfigGetter: Getter[List[Config]]     = (c, s) => c.getConfigList(s).asScala.toList
-  implicit val listStringGetter: Getter[List[String]]     = (c, s) => c.getStringList(s).asScala.toList
-  implicit val listIntGetter: Getter[List[Int]] = (c, s) =>
-    c.getIntList(s).asScala.toList.map(_.intValue())
-  implicit val listDoubleGetter: Getter[List[Double]] = (c, s) =>
-    c.getDoubleList(s).asScala.toList.map(_.doubleValue())
+  implicit val stringGetter:         Getter[String]           = _ getString _
+  implicit val booleanGetter:        Getter[Boolean]          = _ getBoolean _
+  implicit val intGetter:            Getter[Int]              = _ getInt _
+  implicit val doubleGetter:         Getter[Double]           = _ getDouble _
+  implicit val longGetter:           Getter[Long]             = _ getLong _
+  implicit val bytesGetter:          Getter[Bytes]            = (c, p) => Bytes(c getBytes p)
+  implicit val durationGetter:       Getter[Duration]         = (c, p) => Duration.fromNanos((c getDuration p).toNanos)
+  implicit val finiteDurationGetter: Getter[FiniteDuration]   = (c, p) => Duration.fromNanos((c getDuration p).toNanos)
+  implicit val configListGetter:     Getter[ConfigList]       = _ getList _
+  implicit val configGetter:         Getter[Config]           = _ getConfig _
+  implicit val objectGetter:         Getter[ConfigObject]     = _ getObject _
+  implicit val memorySizeGetter:     Getter[ConfigMemorySize] = _ getMemorySize _
+  implicit val listConfigGetter:     Getter[List[Config]]     = (c, s) => c.getConfigList(s).asScala.toList
+  implicit val listStringGetter:     Getter[List[String]]     = (c, s) => c.getStringList(s).asScala.toList
+  implicit val listIntGetter:        Getter[List[Int]]        = (c, s) => c.getIntList(s).asScala.toList.map(_.intValue())
+  implicit val listDoubleGetter:     Getter[List[Double]]     = (c, s) => c.getDoubleList(s).asScala.toList.map(_.doubleValue())
   implicit val listBooleanGetter: Getter[List[Boolean]] = (c, s) =>
     c.getBooleanList(s).asScala.toList.map(_.booleanValue())
-  implicit val listLongGetter: Getter[List[Long]] = (c, s) =>
-    c.getLongList(s).asScala.toList.map(_.longValue())
+  implicit val listLongGetter: Getter[List[Long]] = (c, s) => c.getLongList(s).asScala.toList.map(_.longValue())
 
   @inline implicit def toConfigOps(config: Config) = new ConfigOps(config)
 }
