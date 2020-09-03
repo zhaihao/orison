@@ -8,6 +8,7 @@
 package test
 
 import org.scalatest.Assertions._
+import org.scalatest.Succeeded
 
 /**
   * ArrowAssertLike
@@ -24,7 +25,7 @@ trait ArrowAssertLike {
     def !=>[V](rhs: V) = assert(lhs != rhs)
 
     // for async future.map(_ >>> ())
-    def >>>[V](rhs: V) = assertResult(1)(1)
+    def >>> = Succeeded
   }
 
 }

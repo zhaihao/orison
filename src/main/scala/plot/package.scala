@@ -18,6 +18,9 @@ import scala.language.implicitConversions
   */
 package object plot {
 
+  val VEGA_VERSION      = "5.4.0"
+  val VEGA_LITE_VERSION = "4.0.0-beta.0"
+  val VEGA_EMBED        = "4.2.1"
   val schema            = s"https://vega.github.io/schema/vega-lite/v4.json"
   // 入口
   def vega = Vega()

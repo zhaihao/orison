@@ -31,9 +31,9 @@ class HtmlRenderer(vega: Vega) extends StrictLogging {
   private val head = s"""|<head>
                          |    <meta charset="utf-8">
                          |    <title>scala plot</title>
-                         |    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-                         |    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-                         |    <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>
+                         | <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+                         |<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+                         |<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
                          |</head>
                          |""".stripMargin
 

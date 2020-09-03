@@ -8,6 +8,7 @@
 package test
 
 import scala.concurrent.Future
+import scala.language.postfixOps
 
 /**
   * BaseAsyncSpecTest
@@ -22,6 +23,11 @@ class BaseAsyncSpecTest extends BaseAsyncSpec {
   "async test" in {
     val f = addSoon(1, 2, 3, 4, 5)
     f.map(_ ==> 15)
+  }
+
+  "async unit test" in {
+    val f = addSoon(1,2,3,4)
+    f.map(_ >>>)
   }
 
   "sync test" in {
