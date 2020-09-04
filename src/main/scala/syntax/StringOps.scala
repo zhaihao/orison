@@ -17,6 +17,16 @@ import scala.language.implicitConversions
   */
 final class StringOps private[syntax] (private val str: String) extends AnyVal {
 
+  def underscores =
+    "[A-Z\\d]".r.replaceAllIn(str, { m =>
+      "_" + m.group(0).toLowerCase()
+    })
+
+  def camel =
+    "_([a-z\\d])".r.replaceAllIn(str, { m =>
+      m.group(1).toUpperCase()
+    })
+
   /*
    *  同样长度的密码使用常量级的计算时间，用来防止计时攻击
    */

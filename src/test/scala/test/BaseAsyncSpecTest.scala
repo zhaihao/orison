@@ -25,11 +25,6 @@ class BaseAsyncSpecTest extends BaseAsyncSpec {
     f.map(_ ==> 15)
   }
 
-  "async unit test" in {
-    val f = addSoon(1,2,3,4)
-    f.map(_ >>>)
-  }
-
   "sync test" in {
     // 在BaseAsyncSpec 中必须以 Assertions 对象返回
     1 ==> 1

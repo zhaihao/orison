@@ -17,6 +17,14 @@ import test.BaseSpec
 class StringOpsSpec extends BaseSpec {
   import syntax.string._
 
+  "underscores" in {
+    "user3Id".underscores ==> "user_3_id"
+  }
+
+  "camel" in {
+    "user_3_id".camel ==> "user3Id"
+  }
+
   "string toInt" in {
     "A".toInt(16)  ==> 10
     "a".toInt(16)  ==> 10

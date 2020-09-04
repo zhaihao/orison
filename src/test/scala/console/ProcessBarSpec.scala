@@ -8,7 +8,6 @@
 package console
 
 import config.HConfig
-import test.BaseSpec
 
 import scala.util.Random
 
