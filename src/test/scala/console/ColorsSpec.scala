@@ -10,6 +10,8 @@ package console
 import com.typesafe.scalalogging.StrictLogging
 import test.BaseSpec
 
+import scala.Console.RED
+
 /**
   * ColorsSpec
   *
@@ -27,7 +29,16 @@ class ColorsSpec extends BaseSpec with StrictLogging {
   "RB_INDIGO" in { logger.info(Colors.RB_INDIGO("RB_INDIGO")) }
   "RB_VIOLET" in { logger.info(Colors.RB_VIOLET("RB_VIOLET")) }
 
+  "RED" in { logger.info(Colors.red("RED")) }
+  "BLUE" in { logger.info(Colors.blue("BLUE")) }
+  "CYAN" in { logger.info(Colors.cyan("CYAN")) }
+  "GREEN" in { logger.info(Colors.green("GREEN")) }
+  "MAGENTA" in { logger.info(Colors.magenta("MAGENTA")) }
+  "WHITE" in { logger.info(Colors.white("WHITE")) }
+  "BLACK" in { logger.info(Colors.black("BLACK")) }
+  "YELLOW" in { logger.info(Colors.yellow("YELLOW")) }
+
   "render" in {
-    logger.info(Colors.render("\u001b[38;5;082m","hello color"))
+    logger.info(Colors.render("\u001b[38;5;082m", "hello color"))
   }
 }
