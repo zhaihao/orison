@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
 import scala.collection.immutable.Stream.cons
-import scala.util.Random
 
 /**
   * ProcessBar
