@@ -26,6 +26,8 @@ trait Syntax {
 
   object config extends ToConfigOps
 
+  object numeric extends ToNumericOps
+
 }
 
 // 批量 import
