@@ -17,7 +17,6 @@ import scala.Console._
   * @version 1.0
   * @since 2020/6/26 00:43
   */
-
 class ColoredLogger extends ClassicConverter {
   private[this] var abbreviator: Abbreviator = _
 
@@ -36,8 +35,8 @@ class ColoredLogger extends ClassicConverter {
   override def convert(event: ILoggingEvent) = {
     val fqn    = event.getLoggerName
     val cda    = event.getCallerData
-    val line   = if (cda != null && cda.nonEmpty) cda(0).getLineNumber.toString else CallerData.NA
+    val line   = if (cda != null && cda.nonEmpty) "(" + cda(0).getLineNumber + ")" else ""
     val logger = if (abbreviator == null) fqn else abbreviator.abbreviate(fqn)
-    WHITE + logger + "(" + line + ")" + RESET
+    WHITE + logger + line + RESET
   }
 }
