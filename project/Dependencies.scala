@@ -22,7 +22,7 @@ object Dependencies extends AutoPlugin {
     lazy val play_json       = "com.typesafe.play" %% "play-json"          % "2.9.1" % Provided
     lazy val os_lib          = "com.lihaoyi"       %% "os-lib"             % "0.7.1" % Provided
     lazy val json4s          = "org.json4s"        %% "json4s-jackson"     % "3.6.10" % Provided
-    lazy val typesafe_config = "com.typesafe"      % "config"              % "1.4.0" % Provided
+    lazy val typesafe_config = "com.typesafe"      % "config"              % "1.4.1" % Provided
     lazy val argon2          = "de.mkammerer"      % "argon2-jvm"          % "2.7"   % Provided
 
     lazy val java_mail = Seq(
