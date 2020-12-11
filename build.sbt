@@ -5,8 +5,7 @@ scalaVersion in Global := "2.12.12"
 organization in Global := "me.ooon"
 
 scalacOptions in Global ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
-externalResolvers in Global := Resolver.combineDefaultResolvers(resolvers.value.toVector,
-                                                                mavenCentral = true)
+externalResolvers in Global := Resolver.combineDefaultResolvers(resolvers.value.toVector, mavenCentral = true)
 
 excludeDependencies in Global ++= excludes
 dependencyOverrides in Global ++= overrides
@@ -23,6 +22,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(log, java_mail).flatten,
     libraryDependencies ++= Seq(typesafe_config,
                                 scalatest,
+                                tools,
                                 play_json,
                                 os_lib,
                                 argon2,
