@@ -44,4 +44,7 @@ class SystemSpec extends BaseSpec {
   "systemCpuLoad" in { println(system.systemCpuLoad) }
 
   "systemLoadAverage" in { println(system.systemLoadAverage) }
+
+  "pid" in { println(system.pid) }
+
 }

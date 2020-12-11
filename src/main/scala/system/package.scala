@@ -1,7 +1,8 @@
 import java.net.InetAddress
-
 import com.sun.management.OperatingSystemMXBean
+import sun.jvmstat.monitor.{MonitoredHost, MonitoredVmUtil, VmIdentifier}
 import sun.management.ManagementFactoryHelper
+
 /*
  * Copyright (c) 2019.
  * OOON.ME ALL RIGHTS RESERVED.
@@ -17,22 +18,25 @@ import sun.management.ManagementFactoryHelper
   * @since 2019-03-29 16:30
   */
 package object system {
-  private val bean: OperatingSystemMXBean =
+  private val osBean =
     ManagementFactoryHelper.getOperatingSystemMXBean.asInstanceOf[OperatingSystemMXBean]
 
-  val osName:                  String = bean.getName
-  val osArch:                  String = bean.getArch
-  val osVersion:               String = bean.getVersion
-  val availableProcessors:     Int    = bean.getAvailableProcessors
-  val totalPhysicalMemorySize: Long   = bean.getTotalPhysicalMemorySize
+  private val rtBean = ManagementFactoryHelper.getRuntimeMXBean
+
+  val osName:                  String = osBean.getName
+  val osArch:                  String = osBean.getArch
+  val osVersion:               String = osBean.getVersion
+  val availableProcessors:     Int    = osBean.getAvailableProcessors
+  val totalPhysicalMemorySize: Long   = osBean.getTotalPhysicalMemorySize
+  val pid:                     String = rtBean.getName.split("@").head
 
   def ip:                         String = InetAddress.getLocalHost.getHostAddress
   def hostname:                   String = InetAddress.getLocalHost.getHostName
-  def freePhysicalMemorySize:     Long   = bean.getFreePhysicalMemorySize
-  def committedVirtualMemorySize: Long   = bean.getCommittedVirtualMemorySize
-  def freeSwapSpaceSize:          Long   = bean.getFreeSwapSpaceSize
-  def processCpuTime:             Long   = bean.getProcessCpuTime
-  def processCpuLoad:             Double = bean.getProcessCpuLoad
-  def systemCpuLoad:              Double = bean.getSystemCpuLoad
-  def systemLoadAverage:          Double = bean.getSystemLoadAverage
+  def freePhysicalMemorySize:     Long   = osBean.getFreePhysicalMemorySize
+  def committedVirtualMemorySize: Long   = osBean.getCommittedVirtualMemorySize
+  def freeSwapSpaceSize:          Long   = osBean.getFreeSwapSpaceSize
+  def processCpuTime:             Long   = osBean.getProcessCpuTime
+  def processCpuLoad:             Double = osBean.getProcessCpuLoad
+  def systemCpuLoad:              Double = osBean.getSystemCpuLoad
+  def systemLoadAverage:          Double = osBean.getSystemLoadAverage
 }
