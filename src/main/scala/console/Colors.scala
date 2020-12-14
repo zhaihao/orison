@@ -6,6 +6,7 @@
  */
 
 package console
+import syntax.string._
 
 /**
   * Colors
@@ -48,6 +49,35 @@ object Colors {
   def RB_INDIGO(str: String): String = if (isANSISupported) "\u001b[38;5;093m" + str + RESET else str
   def RB_VIOLET(str: String): String = if (isANSISupported) "\u001b[38;5;163m" + str + RESET else str
 
-  def render(colorExpr: String, str: String) = if (isANSISupported) colorExpr + str + RESET else str
+  def text(color: Int, str: String) = if (isANSISupported) "\u001b[38;5;" + color + "m" + str + RESET else str
+  def background(color: Int, str: String) = if (isANSISupported) "\u001b[48;5;" + color + "m" + str + RESET else str
+
+  def colorTable = {
+    var i, j = 0
+    while (i < 16) {
+      while (j < 16) {
+        val code = i * 16 + j
+        print(text(code, code.toString.padStart(4, ' ')))
+        j += 1
+      }
+      i += 1
+      j = 0
+      println(RESET)
+    }
+  }
+
+  def backgroundTable = {
+    var i, j = 0
+    while (i < 16) {
+      while (j < 16) {
+        val code = i * 16 + j
+        print(background(code, code.toString.padStart(4, ' ')))
+        j += 1
+      }
+      i += 1
+      j = 0
+      println(RESET)
+    }
+  }
 
 }

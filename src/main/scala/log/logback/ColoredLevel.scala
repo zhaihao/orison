@@ -25,11 +25,11 @@ class ColoredLevel extends ClassicConverter {
 
   def convert(event: ILoggingEvent): String = {
     event.getLevel match {
-      case Level.TRACE => "[" + Colors.blue("trace") + "]"
-      case Level.DEBUG => "[" + Colors.cyan("debug") + "]"
-      case Level.INFO  => "[" + Colors.green("info") + " ]"
-      case Level.WARN  => "[" + Colors.yellow("warn") + " ]"
-      case Level.ERROR => "[" + Colors.red("error") + "]"
+      case Level.TRACE => "[" + Colors.text(28, "trace") + "]"
+      case Level.DEBUG => "[" + Colors.text(51, "debug") + "]"
+      case Level.INFO  => "[" + Colors.text(82, "info") + " ]"
+      case Level.WARN  => "[" + Colors.text(11, "warn") + " ]"
+      case Level.ERROR => "[" + Colors.text(196, "error") + "]"
     }
   }
 

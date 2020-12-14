@@ -9,9 +9,6 @@ package console
 
 import com.typesafe.scalalogging.StrictLogging
 import test.BaseSpec
-
-import scala.Console.RED
-
 /**
   * ColorsSpec
   *
@@ -38,7 +35,11 @@ class ColorsSpec extends BaseSpec with StrictLogging {
   "BLACK" in { logger.info(Colors.black("BLACK")) }
   "YELLOW" in { logger.info(Colors.yellow("YELLOW")) }
 
-  "render" in {
-    logger.info(Colors.render("\u001b[38;5;082m", "hello color"))
+  "256色" in {
+    Colors.colorTable
+  }
+
+  "256背景色" in {
+    Colors.backgroundTable
   }
 }

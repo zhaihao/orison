@@ -13,21 +13,17 @@ import sun.jvmstat.monitor.{MonitoredHost, MonitoredVmUtil, VmIdentifier}
   */
 class JvmDiscriminator extends AbstractDiscriminator[ILoggingEvent] {
   var jvmName: String = _
-  val key: String = "jvmName"
-  var defaultValue: String = _
 
   override def start() = {
     val pid = _root_.system.pid.toInt
-    jvmName = JvmDiscriminator.jvmName(pid).getOrElse(defaultValue)
+    jvmName = JvmDiscriminator.jvmName(pid).getOrElse("application")
+    println(jvmName)
+    started = true
   }
 
   override def getDiscriminatingValue(e: ILoggingEvent) = jvmName
 
-  override def getKey = key
-
-  def setDefaultValue(defaultValue: String) = this.defaultValue = defaultValue
-
-  def getDefaultValue = defaultValue
+  override def getKey = "jvmName"
 }
 
 object JvmDiscriminator {
@@ -38,6 +34,9 @@ object JvmDiscriminator {
     val mh      = MonitoredHost.getMonitoredHost("localhost")
     val vm      = mh.getMonitoredVm(vmID)
     val command = MonitoredVmUtil.commandLine(vm)
-    regex.findFirstIn(command)
+    command match {
+      case regex(name) => Some(name)
+      case _ => None
+    }
   }
 }

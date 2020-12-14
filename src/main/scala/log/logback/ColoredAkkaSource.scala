@@ -9,6 +9,8 @@ package log.logback
 
 import ch.qos.logback.classic.pattern.ClassicConverter
 import ch.qos.logback.classic.spi.ILoggingEvent
+import console.Colors
+
 import scala.Console._
 
 /**
@@ -22,6 +24,6 @@ class ColoredAkkaSource extends ClassicConverter {
   override def convert(event: ILoggingEvent) = {
     val str = event.getMDCPropertyMap.get("akkaSource")
     if (str == null) ""
-    else " " + WHITE + "[" + str + "]" + RESET
+    else " " + "[" + Colors.text(239, str) + "]"
   }
 }

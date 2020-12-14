@@ -7,6 +7,7 @@ import ch.qos.logback.classic.pattern.{
   TargetLengthBasedClassNameAbbreviator
 }
 import ch.qos.logback.classic.spi.{CallerData, ILoggingEvent}
+import console.Colors
 
 import scala.Console._
 
@@ -37,6 +38,6 @@ class ColoredLogger extends ClassicConverter {
     val cda    = event.getCallerData
     val line   = if (cda != null && cda.nonEmpty) "(" + cda(0).getLineNumber + ")" else ""
     val logger = if (abbreviator == null) fqn else abbreviator.abbreviate(fqn)
-    WHITE + logger + line + RESET
+    Colors.text(239, logger + line)
   }
 }
