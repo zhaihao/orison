@@ -17,7 +17,6 @@ class JvmDiscriminator extends AbstractDiscriminator[ILoggingEvent] {
   override def start() = {
     val pid = _root_.system.pid.toInt
     jvmName = JvmDiscriminator.jvmName(pid).getOrElse("application")
-    println(jvmName)
     started = true
   }
 
