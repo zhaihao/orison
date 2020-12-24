@@ -23,7 +23,6 @@ import scala.Console._
 class ColoredAkkaSource extends ClassicConverter {
   override def convert(event: ILoggingEvent) = {
     val str = event.getMDCPropertyMap.get("akkaSource")
-    if (str == null) ""
-    else " " + "[" + Colors.text(239, str) + "]"
+    if (str == null) "" else " " + Colors.text(239, str)
   }
 }
