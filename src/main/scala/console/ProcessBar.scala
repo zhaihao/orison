@@ -21,25 +21,24 @@ import scala.collection.immutable.Stream.cons
   * @version 1.0
   * @since 2020/7/4 21:53
   */
-
 trait BarFormat {
-  def leftBoundary: String
-  def bar: String
-  def empty: String
+  def leftBoundary:  String
+  def bar:           String
+  def empty:         String
   def rightBoundary: String
 }
 
 trait AsciiBarFormat extends BarFormat {
-  override def leftBoundary: String = "|"
-  override def bar: String = "#"
-  override def empty: String = "-"
+  override def leftBoundary:  String = "|"
+  override def bar:           String = "#"
+  override def empty:         String = "-"
   override def rightBoundary: String = "|"
 }
 
 trait UnicodeBarFormat extends BarFormat {
-  override def leftBoundary: String = "|"
-  override def bar: String = "\u2588"
-  override def empty: String = " "
+  override def leftBoundary:  String = "|"
+  override def bar:           String = "\u2588"
+  override def empty:         String = " "
   override def rightBoundary: String = "|"
 }
 
@@ -54,7 +53,8 @@ trait OrdersOfMagnitudeScaling extends Scaling {
 
   override def scale(num: Double): String = {
     require(num >= 0 && divisor > 0)
-    val (unit: String, value: Double) = units.toStream.zip(scale(num, divisor)).takeWhile(_._2 > 1d).lastOption.getOrElse(("", num))
+    val (unit: String, value: Double) =
+      units.toStream.zip(scale(num, divisor)).takeWhile(_._2 > 1d).lastOption.getOrElse(("", num))
     s"${formatValue(value)}$unit"
   }
 
@@ -70,18 +70,18 @@ trait BinaryScaling extends OrdersOfMagnitudeScaling {
 }
 
 class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scaling with AsciiBarFormat {
-  private val longFmt = DateTimeFormatter.ofPattern("HH:mm:ss")
+  private val longFmt  = DateTimeFormatter.ofPattern("HH:mm:ss")
   private val shortFmt = DateTimeFormatter.ofPattern("mm:ss")
 
   def format(n: Int, total: Int, elapsed: Long): String = {
     require(n <= total && total > 0, s"Current n is $n, total is $total")
     require(n >= 0, "n should be greater or equal to 0")
 
-    val leftBarStr = leftBar(n, total)
+    val leftBarStr  = leftBar(n, total)
     val rightBarStr = rightBar(n, total, elapsed)
 
     val nBars = Math.max(1, ncols - leftBarStr.length - rightBarStr.length - 2)
-    val bar = if (nBars > 6) " " + progressBar(n, total, nBars) + " " else "|"
+    val bar   = if (nBars > 6) " " + progressBar(n, total, nBars) + " " else "|"
 
     s"$leftBarStr$bar$rightBarStr"
   }
@@ -100,17 +100,17 @@ class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scaling with As
 
   private def progressBar(n: Int, total: Int, nBars: Int): String = {
     val bodyLength = nBars - leftBoundary.length - rightBoundary.length
-    val frac = n.toDouble / total
-    val done = (frac * bodyLength).toInt
-    val remaining = bodyLength - done
+    val frac       = n.toDouble / total
+    val done       = (frac * bodyLength).toInt
+    val remaining  = bodyLength - done
 
     s"$leftBoundary${bar * done}${empty * remaining}$rightBoundary"
   }
 
   private def rightBar(n: Int, total: Int, elapsed: Long): String = {
     val elapsedSecs: Double = 1d * elapsed / 1000
-    val rate: Double = n.toDouble / elapsedSecs
-    val elapsedFmt = formatInterval(elapsed)
+    val rate:        Double = n.toDouble / elapsedSecs
+    val elapsedFmt   = formatInterval(elapsed)
     val remainingFmt = formatInterval((1000 * (total - n) / rate).toLong)
 
     s"${scale(n)}/${scale(total)} [$elapsedFmt < $remainingFmt, ${formatRate(rate)}]"
@@ -118,11 +118,11 @@ class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scaling with As
 
   private def rightBar(n: Int, elapsed: Long): String = {
     val elapsedSecs = 1d * elapsed / 1000
-    val rate = n.toDouble / elapsedSecs
+    val rate        = n.toDouble / elapsedSecs
     s"${scale(n)} [${formatInterval(elapsed)}, ${formatRate(rate)}]"
   }
 
-  override def scale(num: Double): String = f"$num%.1f"
+  override def scale(num:      Double): String = f"$num%.1f"
   private def formatRate(rate: Double): String = s"${scale(rate)} $unit/s"
 }
 
@@ -130,18 +130,18 @@ trait Updater {
   def update(incr: Int): Unit
 }
 
-class ProgressBar private(total: Int, barFormatter: BarFormatter) {
+class ProgressBar private (total: Int, barFormatter: BarFormatter) {
   private lazy val console = new PrintStream(System.err, true, "UTF-8")
   private val renderInterval: Long = 100
 
   private var startTime: Long = _
-  private var n = 0
+  private var n       = 0
   private var lastLen = 0
   private var lastRenderTime: Long = 0
 
   private def now(): Long = TimeUnit.NANOSECONDS.toMillis(System.nanoTime)
 
-  private def update(incr: Int): Unit = {
+  def update(incr: Int): Unit = {
     require(incr >= 0)
     n += incr
     val curTime = now()
@@ -171,13 +171,13 @@ class ProgressBar private(total: Int, barFormatter: BarFormatter) {
     stop()
   }
 
-  private def start(): Unit = {
+  def start(): Unit = {
     startTime = now()
     n = 0
     lastLen = 0
   }
 
-  private def stop(): Unit = {
+  def stop(): Unit = {
     console.println(" Done.")
   }
 }
@@ -185,9 +185,8 @@ class ProgressBar private(total: Int, barFormatter: BarFormatter) {
 object ProgressBar {
   private val UnknownTotal: Int = -1
 
-  def apply(total: Int, barFormatter: BarFormatter): ProgressBar = new ProgressBar(total, barFormatter)
-  def apply(total: Int): ProgressBar = new ProgressBar(total, new BarFormatter())
+  def apply(total:        Int, barFormatter: BarFormatter): ProgressBar = new ProgressBar(total, barFormatter)
+  def apply(total:        Int): ProgressBar = new ProgressBar(total, new BarFormatter())
   def apply(barFormatter: BarFormatter): ProgressBar = new ProgressBar(UnknownTotal, barFormatter)
   def apply(): ProgressBar = new ProgressBar(UnknownTotal, new BarFormatter())
 }
-

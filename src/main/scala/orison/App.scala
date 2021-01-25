@@ -40,7 +40,7 @@ trait App extends StrictLogging { config: HConfig =>
   |${white("**")}  ${RB_RED("(  <_> )")} ${RB_ORANGE("|  | \\/")}${RB_YELLOW("|  |")} ${RB_GREEN("\\___ \\")} ${RB_INDIGO("(  <_> )")}${RB_VIOLET("|   |  \\")}   (c) 2017-$year           ${white("**")}
   |${white("**")}   ${RB_RED("\\____/")}  ${RB_ORANGE("|__|")}   ${RB_YELLOW("|__|")}${RB_GREEN("/____  >")} ${RB_INDIGO("\\____/")} ${RB_VIOLET("|___|  /")}   https://orison.ooon.me  ${white("**")}
   |${white("**")}                          ${RB_GREEN("\\/")}              ${RB_VIOLET("\\/")}                             ${white("**")}
-  |${white("**")}${"".padEnd(55, ' ')}env: [${env.padStart(4, ' ')}]       ${white("**")}
+  |${white("**")}${"".padEnd(55, ' ')}env: [${RB_ORANGE(env.padStart(4, ' '))}]       ${white("**")}
   |${white("\\*")}${"".padEnd(73, ' ')}${white("*/")}
   |""".stripMargin
   // format: off
