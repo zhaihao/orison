@@ -23,6 +23,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(typesafe_config,
                                 scalatest,
                                 tools,
+                                squants,
                                 play_json,
                                 os_lib,
                                 argon2,

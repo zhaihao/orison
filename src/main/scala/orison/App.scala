@@ -15,6 +15,10 @@ import syntax.string._
 import console.Colors._
 import scala.collection.mutable.ListBuffer
 import scala.compat.Platform.currentTime
+import squants.experimental.formatter.DefaultFormatter
+import squants.experimental.formatter.syntax._
+import squants.experimental.unitgroups.si.expanded.time.ExpandedSiTimes
+import squants.time.TimeConversions._
 
 /**
   * App
@@ -54,7 +58,8 @@ trait App extends StrictLogging { config: HConfig =>
   final def main(args: Array[String]) = {
     this._args = args
     for (proc <- initCode) proc()
-    val total = currentTime - startTime
-    logger.info("[total " + total + "ms]")
+    implicit val timeFormatter = new DefaultFormatter(ExpandedSiTimes)
+    val total                  = (currentTime - startTime).milliseconds.inBestUnit.rounded(3)
+    logger.info("[run total " + total + "]")
   }
 }
