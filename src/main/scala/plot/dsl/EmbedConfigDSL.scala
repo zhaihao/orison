@@ -19,9 +19,9 @@ import plot.spec.{Themes, EmbedConfig}
   */
 trait EmbedConfigDSL {
 
-  var embedConfig = EmbedConfig(Themes.Default)
+  var embedConfig = EmbedConfig(Themes.Quartz)
 
-  def theme(theme: Theme = Themes.Default): this.type = {
+  def theme(theme: Theme): this.type = {
     embedConfig = embedConfig.copy(theme = theme)
     this
   }
