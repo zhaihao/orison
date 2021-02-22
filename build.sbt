@@ -1,32 +1,31 @@
 import sbt.Keys.scalacOptions
-import sbt.librarymanagement.UpdateConfiguration
-// global
-scalaVersion in Global := "2.12.13"
-organization in Global := "me.ooon"
+scalaVersion := "2.12.13"
+organization := "me.ooon"
 
-scalacOptions in Global ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
-externalResolvers in Global := Resolver.combineDefaultResolvers(resolvers.value.toVector, mavenCentral = true)
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
+externalResolvers := Resolver.combineDefaultResolvers(resolvers.value.toVector, mavenCentral = true)
 
-excludeDependencies in Global ++= excludes
-dependencyOverrides in Global ++= overrides
-updateConfiguration in Global := updateConfiguration.value.withMissingOk(true)
+excludeDependencies ++= excludes
+dependencyOverrides ++= overrides
+updateConfiguration := updateConfiguration.value.withMissingOk(true)
 
-cancelable in Global := true
-//
+cancelable := true
+unmanagedJars in Compile ~= { uj =>
+  Seq(Attributed.blank(file(System.getProperty("java.home").dropRight(3) + "lib/tools.jar"))) ++ uj
+}
+assemblyExcludedJars in assembly := ((fullClasspath in assembly) map { cp =>
+  cp filter { _.data.getName == "tools.jar" }
+}).value
 
-lazy val root = (project in file("."))
-  .settings(
-    moduleName          := "orison",
-    name                := "orison",
-    logBuffered in Test := false,
-    libraryDependencies ++= Seq(log, java_mail).flatten,
-    libraryDependencies ++= Seq(typesafe_config,
-                                scalatest,
-                                tools,
-                                squants,
-                                play_json,
-                                os_lib,
-                                argon2,
-                                json4s,
-                                "org.scala-lang" % "scala-compiler" % scalaVersion.value)
-  )
+moduleName          := "orison"
+name                := "orison"
+logBuffered in Test := false
+libraryDependencies ++= Seq(log, java_mail).flatten
+libraryDependencies ++= Seq(typesafe_config,
+                            scalatest,
+                            squants,
+                            play_json,
+                            os_lib,
+                            argon2,
+                            json4s,
+                            "org.scala-lang" % "scala-compiler" % scalaVersion.value)
