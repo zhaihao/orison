@@ -1,3 +1,5 @@
+import maths.ToPowOps
+
 /*
  * Copyright (c) 2019.
  * OOON.ME ALL RIGHTS RESERVED.
@@ -5,14 +7,13 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-
 /**
   * package
   *
   * @author zhaihao
   * @version 1.0 2019-01-07 10:54
   */
-package object maths {
+package object maths extends maths {
 
   /**
     * 支持 BigDecimal 的 e
@@ -37,3 +38,5 @@ package object maths {
 
   def sigmoid(x: BigDecimal, p: Int) = 1.0 / (1.0 + exp(-x, p))
 }
+
+trait maths extends ToPowOps
