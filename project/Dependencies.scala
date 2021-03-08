@@ -21,7 +21,7 @@ object Dependencies extends AutoPlugin {
     lazy val scalatest       = "org.scalatest"     %% "scalatest-freespec" % "3.2.5"  % Provided
     lazy val play_json       = "com.typesafe.play" %% "play-json"          % "2.9.2"  % Provided
     lazy val os_lib          = "com.lihaoyi"       %% "os-lib"             % "0.7.3"  % Provided
-    lazy val json4s          = "org.json4s"        %% "json4s-jackson"     % "3.6.10" % Provided
+    lazy val json4s          = "org.json4s"        %% "json4s-jackson"     % "3.6.11" % Provided
     lazy val typesafe_config = "com.typesafe"      % "config"              % "1.4.1"  % Provided
     lazy val squants         = "org.typelevel"     %% "squants"            % "1.7.0"  % Provided
     lazy val argon2          = "de.mkammerer"      % "argon2-jvm"          % "2.9.1"  % Provided
