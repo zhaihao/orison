@@ -21,4 +21,14 @@ package object closeable {
       if (c != null) c.close()
     }
   }
+
+  def usingErr[T <: AutoCloseable, B](c: T)(f: T => B)(g: PartialFunction[Throwable,B]): B = {
+    try {
+      f(c)
+    } catch {
+      g
+    } finally {
+      if (c != null) c.close()
+    }
+  }
 }
