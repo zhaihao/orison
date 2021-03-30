@@ -2,9 +2,11 @@ import sun.misc.{Unsafe => JUnsafe}
 
 import scala.reflect.runtime.currentMirror
 import scala.tools.reflect.ToolBox
-import java.io.File
+import java.nio.ByteOrder
 import scala.language.{existentials, postfixOps}
 import scala.util.Try
+import java.lang.Long.{reverseBytes => swap64}
+import java.lang.Integer.{reverseBytes => swap32}
 /*
  * Copyright (c) 2019.
  * OOON.ME ALL RIGHTS RESERVED.
@@ -40,4 +42,38 @@ package object unsafe {
     val tree    = toolbox.parse(expr)
     toolbox.eval(tree).asInstanceOf[A]
   }
+
+  private[this] final val isLittleEndian = ByteOrder.nativeOrder == ByteOrder.LITTLE_ENDIAN
+
+  final val ByteArrayBase: Long = unsafe.arrayBaseOffset(Array[Byte]().getClass)
+
+  final def getByte(input: Array[Byte], offset: Long): Byte =
+    unsafe.getByte(input, offset)
+
+  final def getInt(input: Array[Byte], offset: Long): Int =
+    if (isLittleEndian) {
+      unsafe.getInt(input, offset)
+    } else {
+      swap32(unsafe.getInt(input, offset))
+    }
+
+  final def getLong(input: Array[Byte], offset: Long): Long =
+    if (isLittleEndian) {
+      unsafe.getLong(input, offset)
+    } else {
+      swap64(unsafe.getLong(input, offset))
+    }
+
+  final def getUnsignedByte(input: Array[Byte], offset: Long): Int =
+    unsafe.getByte(input, offset) & 0xFF
+
+  final def getUnsignedInt(input: Array[Byte], offset: Long): Long =
+    if (isLittleEndian) {
+      unsafe.getInt(input, offset) & 0xFFFFFFFFL
+    } else {
+      swap32(unsafe.getInt(input, offset)) & 0xFFFFFFFFL
+    }
+
+  final def copyMemory(src: Array[Byte], srcOffset: Long, dest: Array[Byte], destOffset: Long, length: Int): Unit =
+    unsafe.copyMemory(src, srcOffset, dest, destOffset, length)
 }
