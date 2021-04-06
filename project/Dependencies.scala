@@ -18,7 +18,7 @@ object Dependencies extends AutoPlugin {
   override def trigger  = allRequirements
 
   object autoImport {
-    lazy val scalatest       = "org.scalatest"     %% "scalatest-freespec" % "3.2.6"  % Provided
+    lazy val scalatest       = "org.scalatest"     %% "scalatest-freespec" % "3.2.7"  % Provided
     lazy val play_json       = "com.typesafe.play" %% "play-json"          % "2.9.2"  % Provided
     lazy val os_lib          = "com.lihaoyi"       %% "os-lib"             % "0.7.4"  % Provided
     lazy val json4s          = "org.json4s"        %% "json4s-jackson"     % "3.6.11" % Provided
