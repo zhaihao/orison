@@ -23,7 +23,7 @@ package object maths extends maths {
     * @return
     */
   def exp(x: BigDecimal, p: Int): BigDecimal =
-    Stream
+    LazyList
       .from(1)
       .takeWhile(_ <= p)
       .foldLeft((BigDecimal(1), BigDecimal(1)) -> BigDecimal(1)) {

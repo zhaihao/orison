@@ -20,7 +20,7 @@ class BloomFilter[T] private (val numberOfBits:   Long,
     extends Serializable {
 
   def this(numberOfBits:        Long, numberOfHashes: Int)(
-      implicit canGenerateHash: bloomfilter.CanGenerate128HashFrom[T]) {
+      implicit canGenerateHash: bloomfilter.CanGenerate128HashFrom[T]) = {
     this(numberOfBits, numberOfHashes, new mutable.UnsafeBitArray(numberOfBits))
   }
 

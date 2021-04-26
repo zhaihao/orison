@@ -45,7 +45,7 @@ object Formatter {
           json
             .as[JsObject]
             .value
-            .mapValues {
+            .view.mapValues {
               case v: JsNumber  => v.value
               case v: JsBoolean => v.value
               case v: JsString  => v.value
@@ -58,13 +58,13 @@ object Formatter {
     }
 
     override def writes(o: Map[String, Any]): JsObject = {
-      JsObject(o.mapValues {
+      JsObject(o.view.mapValues {
         case v: String  => JsString(v)
         case v: Int     => JsNumber(v)
         case v: Double  => JsNumber(v)
         case v: Long    => JsNumber(v)
         case v: Boolean => JsBoolean(v)
-      })
+      }.toSeq)
     }
   }
 

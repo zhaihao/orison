@@ -27,7 +27,7 @@ import squants.time.TimeConversions._
   * @version 1.0 26/01/2018 15:54
   */
 trait App extends StrictLogging { config: HConfig =>
-  final val startTime: Long = currentTime
+  final val startTime: Long = System.currentTimeMillis
 
   private var _args: Array[String] = _
 
@@ -51,7 +51,7 @@ trait App extends StrictLogging { config: HConfig =>
   logo.split("\n").foreach(line => logger.info(line))
   logger.info("")
 
-  final def delayedInit(body: => Unit) {
+  final def delayedInit(body: => Unit) = {
     initCode += (() => body)
   }
 
@@ -59,7 +59,7 @@ trait App extends StrictLogging { config: HConfig =>
     this._args = args
     for (proc <- initCode) proc()
     implicit val timeFormatter = new DefaultFormatter(ExpandedSiTimes)
-    val total                  = (currentTime - startTime).milliseconds.inBestUnit.rounded(3)
+    val total                  = (System.currentTimeMillis - startTime).milliseconds.inBestUnit.rounded(3)
     logger.info("[run total " + total + "]")
   }
 }

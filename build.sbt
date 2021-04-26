@@ -1,5 +1,5 @@
 import sbt.Keys.scalacOptions
-scalaVersion := "2.12.13"
+scalaVersion := "2.13.5"
 organization := "me.ooon"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
@@ -13,13 +13,13 @@ cancelable := true
 unmanagedJars in Compile ~= { uj =>
   Seq(Attributed.blank(file(System.getProperty("java.home").dropRight(3) + "lib/tools.jar"))) ++ uj
 }
-assemblyExcludedJars in assembly := ((fullClasspath in assembly) map { cp =>
+assembly / assemblyExcludedJars := ((assembly / fullClasspath) map { cp =>
   cp filter { _.data.getName == "tools.jar" }
 }).value
 
 moduleName          := "orison"
 name                := "orison"
-logBuffered in Test := false
+Test / logBuffered := false
 libraryDependencies ++= Seq(log, java_mail).flatten
 libraryDependencies ++= Seq(typesafe_config,
                             scalatest,

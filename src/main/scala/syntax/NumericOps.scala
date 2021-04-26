@@ -11,7 +11,7 @@ import scala.language.implicitConversions
   */
 final class NumericOps[T: Numeric] private[syntax] (private val value: T) {
   import Numeric.Implicits._
-  def *^(power: T) = scala.math.pow(value.toDouble(), power.toDouble())
+  def *^(power: T) = scala.math.pow(value.toDouble, power.toDouble)
 }
 
 trait ToNumericOps {
