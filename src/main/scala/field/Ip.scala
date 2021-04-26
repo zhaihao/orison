@@ -34,11 +34,11 @@ object Ip {
     def toInt(s: String): Int =
       s.split('.')
         .zip(List(24, 16, 8, 0))
-        .foldLeft(0)((b, si) ⇒ b + (si._1.toInt << si._2))
+        .foldLeft(0)((b, si) => b + (si._1.toInt << si._2))
 
     def toString(a: Int): String =
       List((0xFFFFFFFF, 24), (0x00FFFFFF, 16), (0x0000FFFF, 8), (0x000000FF, 0))
-        .map(i ⇒ (a & i._1) >>> i._2)
+        .map(i => (a & i._1) >>> i._2)
         .mkString(".")
 
     def binarySearch(target: Int)(array: Array[(Int, Int)]) = {

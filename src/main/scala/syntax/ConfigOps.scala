@@ -10,7 +10,7 @@ package syntax
 import com.typesafe.config._
 import syntax.ConfigOps.{Bytes, Getter}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.concurrent.duration.{Duration, FiniteDuration}
 import scala.language.implicitConversions
 

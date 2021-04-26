@@ -139,7 +139,7 @@ object SizeEstimator extends StrictLogging {
 
     def dequeue(): AnyRef = {
       val elem = stack.last
-      stack.trimEnd(1)
+      stack.dropRightInPlace(1)
       elem
     }
   }

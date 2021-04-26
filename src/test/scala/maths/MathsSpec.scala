@@ -21,6 +21,6 @@ class MathsSpec extends BaseSpec {
 
   "sigmoid" in {
     sigmoid(-5)      ==> 0.0066928509242848554
-    sigmoid(-5, 200) ==> BigDecimal("0.006692850924284855559361980381325180")
+    sigmoid(-5, 200) ==> BigDecimal("0.006692850924284855559361980381325179")
   }
 }

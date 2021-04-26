@@ -11,8 +11,8 @@ import java.io.PrintStream
 import java.time.{Instant, ZoneId}
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
+import scala.collection.immutable.LazyList.cons
 
-import scala.collection.immutable.Stream.cons
 
 /**
   * ProcessBar
@@ -54,14 +54,14 @@ trait OrdersOfMagnitudeScaling extends Scaling {
   override def scale(num: Double): String = {
     require(num >= 0 && divisor > 0)
     val (unit: String, value: Double) =
-      units.toStream.zip(scale(num, divisor)).takeWhile(_._2 > 1d).lastOption.getOrElse(("", num))
+      units.to(LazyList).zip(scale(num, divisor)).takeWhile(_._2 > 1d).lastOption.getOrElse(("", num))
     s"${formatValue(value)}$unit"
   }
 
   private def formatValue(value: Double): String =
     if (value > 10) f"$value%.1f" else f"$value%.2f"
 
-  private def scale(num: Double, divisor: Double): Stream[Double] =
+  private def scale(num: Double, divisor: Double): LazyList[Double] =
     cons(num, scale(num / divisor, divisor))
 }
 

@@ -16,7 +16,7 @@ class CuckooFilter[T](
     extends Serializable {
 
   def this(numberOfBuckets:     Long, numberOfBitsPerItem: Int)(
-      implicit canGenerateHash: CanGenerateHashFrom[T]) {
+      implicit canGenerateHash: CanGenerateHashFrom[T]) = {
     this(numberOfBuckets, numberOfBitsPerItem, new UnsafeTable16Bit(numberOfBuckets))
   }
 
