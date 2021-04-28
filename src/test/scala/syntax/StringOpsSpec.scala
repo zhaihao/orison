@@ -8,8 +8,7 @@
 package syntax
 import test.BaseSpec
 
-/**
-  * StringOpsSpec
+/** StringOpsSpec
   *
   * @author zhaihao
   * @version 1.0 2017-12-21 20:14
@@ -26,11 +25,11 @@ class StringOpsSpec extends BaseSpec {
   }
 
   "string toInt" in {
-    "A".toInt(16)  ==> 10
-    "a".toInt(16)  ==> 10
-    "b".toInt(16)  ==> 11
-    "101".toInt(2) ==> 5
-    "10".toInt(8)  ==> 8
+    "A".toRadixInt(16)  ==> 10
+    "a".toRadixInt(16)  ==> 10
+    "b".toRadixInt(16)  ==> 11
+    "101".toRadixInt(2) ==> 5
+    "10".toRadixInt(8)  ==> 8
   }
 
   "string padStart" in {
