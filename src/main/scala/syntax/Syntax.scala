@@ -7,8 +7,7 @@
 
 package syntax
 
-/**
-  * Syntax
+/** Syntax
   *
   * @author zhaihao
   * @version 1.0
@@ -17,17 +16,12 @@ package syntax
 trait Syntax {
 
   // 单个 import
-  object id extends ToIdOps
-
-  // 自定义
-  object file extends ToFileOps
-
-  object string extends ToStringOps
-
-  object config extends ToConfigOps
-
+  object id      extends ToIdOps
+  object file    extends ToFileOps
+  object string  extends ToStringOps
+  object config  extends ToConfigOps
   object numeric extends ToNumericOps
-
+  object feature extends ToFutureOps
 }
 
 // 批量 import
