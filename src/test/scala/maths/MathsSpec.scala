@@ -23,4 +23,8 @@ class MathsSpec extends BaseSpec {
     sigmoid(-5)      ==> 0.0066928509242848554
     sigmoid(-5, 200) ==> BigDecimal("0.006692850924284855559361980381325179")
   }
+
+  "percentile " in {
+    percentile(1 to 100,0.95) ==> 95.05
+  }
 }
