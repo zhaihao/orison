@@ -47,7 +47,7 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
     else if (str.exists(c => !Character.isWhitespace(c))) true
     else false
 
-  def toInt(radix: Int) = Integer.parseInt(str, radix)
+  def toRadixInt(radix: Int) = Integer.parseInt(str, radix)
 
   /**
     * 给 string 在头部补全长度

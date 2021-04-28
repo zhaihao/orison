@@ -26,7 +26,7 @@ object Imei {
       else {
         var sum = 0
         for (i <- 0 to 13) {
-          val c = imei(i).toString.toInt(16)
+          val c = imei(i).toString.toRadixInt(16)
           val v = if (i % 2 == 0) c else { val a = c * 2; a % 10 + a / 10 }
           sum += v
         }
