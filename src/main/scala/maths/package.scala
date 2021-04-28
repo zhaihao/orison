@@ -37,6 +37,18 @@ package object maths extends maths {
   def sigmoid(x: Double) = 1.0 / (1.0 + scala.math.exp(-x))
 
   def sigmoid(x: BigDecimal, p: Int) = 1.0 / (1.0 + exp(-x, p))
+
+  def percentile[T](arr: Seq[T], p: Double)(implicit n: Numeric[T]): Double = {
+    val len = arr.length
+    val ps  = 1 + (len - 1) * p
+    val pz  = math.round(ps).toInt
+
+    val x1 = n.toDouble(arr(pz - 1))
+    val x2 = n.toDouble(arr(pz))
+    val x3 = n.toDouble(arr(pz - 1))
+
+    x1 + (x2 - x3) * (ps - pz)
+  }
 }
 
 trait maths extends ToPowOps
