@@ -13,9 +13,7 @@ import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 import scala.collection.immutable.LazyList.cons
 
-
-/**
-  * ProcessBar
+/** ProcessBar
   *
   * @author zhaihao
   * @version 1.0
@@ -69,7 +67,7 @@ trait BinaryScaling extends OrdersOfMagnitudeScaling {
   override protected val divisor = 1024
 }
 
-class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scaling with AsciiBarFormat {
+class BarFormatter(unit: String = "it", nCols: Int = 10) extends Scaling with AsciiBarFormat {
   private val longFmt  = DateTimeFormatter.ofPattern("HH:mm:ss")
   private val shortFmt = DateTimeFormatter.ofPattern("mm:ss")
 
@@ -80,7 +78,7 @@ class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scaling with As
     val leftBarStr  = leftBar(n, total)
     val rightBarStr = rightBar(n, total, elapsed)
 
-    val nBars = Math.max(1, ncols - leftBarStr.length - rightBarStr.length - 2)
+    val nBars = Math.max(1, nCols - leftBarStr.length - rightBarStr.length - 2)
     val bar   = if (nBars > 6) " " + progressBar(n, total, nBars) + " " else "|"
 
     s"$leftBarStr$bar$rightBarStr"

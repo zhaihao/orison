@@ -22,7 +22,7 @@ object ProcessBarSpec extends orison.App with HConfig {
   val its = 10
 
   val progress =
-    ProgressBar(its, new BarFormatter(ncols = 100, unit = "samples") with OrdersOfMagnitudeScaling with UnicodeBarFormat)
+    ProgressBar(its, new BarFormatter(nCols = 100, unit = "samples") with OrdersOfMagnitudeScaling with UnicodeBarFormat)
   progress meter { updater =>
     (1 to its).foreach { _ =>
       Thread.sleep(Random.nextInt(1000))
