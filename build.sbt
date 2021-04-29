@@ -10,17 +10,17 @@ dependencyOverrides ++= overrides
 updateConfiguration := updateConfiguration.value.withMissingOk(true)
 
 cancelable := true
-unmanagedJars in Compile ~= { uj =>
+Compile / unmanagedJars ~= { uj =>
   Seq(Attributed.blank(file(System.getProperty("java.home").dropRight(3) + "lib/tools.jar"))) ++ uj
 }
 assembly / assemblyExcludedJars := ((assembly / fullClasspath) map { cp =>
   cp filter { _.data.getName == "tools.jar" }
 }).value
 
-moduleName          := "orison"
-name                := "orison"
+moduleName         := "orison"
+name               := "orison"
 Test / logBuffered := false
-libraryDependencies ++= Seq(log, java_mail).flatten
+libraryDependencies ++= Seq(log, java_mail, slick).flatten
 libraryDependencies ++= Seq(typesafe_config,
                             scalatest,
                             squants,
@@ -28,4 +28,5 @@ libraryDependencies ++= Seq(typesafe_config,
                             os_lib,
                             argon2,
                             json4s,
-                            "org.scala-lang" % "scala-compiler" % scalaVersion.value)
+                            "org.scala-lang" % "scala-compiler" % scalaVersion.value
+)
