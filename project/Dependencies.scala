@@ -23,7 +23,7 @@ object Dependencies extends AutoPlugin {
     lazy val json4s          = "org.json4s"        %% "json4s-jackson"     % "3.6.11" % Provided
     lazy val typesafe_config = "com.typesafe"       % "config"             % "1.4.1"  % Provided
     lazy val squants         = "org.typelevel"     %% "squants"            % "1.8.0"  % Provided
-    lazy val argon2          = "de.mkammerer"       % "argon2-jvm"         % "2.9.1"  % Provided
+    lazy val argon2          = "de.mkammerer"       % "argon2-jvm"         % "2.10.1" % Provided
 
     lazy val java_mail = Seq(
       "javax.mail"   % "javax.mail-api" % "1.6.2" % Provided,
