@@ -4,13 +4,14 @@ import sbtrelease.ReleaseStateTransformations._
 import xerial.sbt.Sonatype._
 
 // sonatype settings
-useGpg                 := false
-credentials            += Credentials(Path.userHome / ".sbt" / "sonatype_credential")
-publishMavenStyle      := true
-sonatypeProfileName    := "me.ooon"
-licenses               := Seq("MPL2" -> url("https://www.mozilla.org/en-US/MPL/2.0/"))
-sonatypeProjectHosting := Some(GitHubHosting("zhaihao", "orison", "zhaihao@ooon.me"))
-publishTo              := sonatypePublishTo.value
+// useGpg                        := false
+credentials                   += Credentials(Path.userHome / ".sbt" / "sonatype_credential")
+publishMavenStyle             := true
+sonatypeProfileName           := "me.ooon"
+licenses                      := Seq("MPL2" -> url("https://www.mozilla.org/en-US/MPL/2.0/"))
+sonatypeProjectHosting        := Some(GitHubHosting("zhaihao", "orison", "zhaihao@ooon.me"))
+publishTo                     := sonatypePublishTo.value
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
 releaseCrossBuild           := true
 releaseIgnoreUntrackedFiles := true
