@@ -8,7 +8,7 @@ import java.lang.Long.{rotateLeft => rotl64}
   * @version 1.0
   * @since 2021/3/30 4:10 下午
   */
-object XxHash64 extends Hash[Long] {
+object XxHash64 extends FastHash[Long] {
   val Prime1: Long = -7046029288634856825L
   val Prime2: Long = -4417276706812531889L
   val Prime3: Long = 1609587929392839161L

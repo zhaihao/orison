@@ -8,7 +8,7 @@ import java.lang.Integer.{rotateLeft => rotl32}
   * @version 1.0
   * @since 2021/3/30 4:08 下午
   */
-object XxHash32 extends Hash[Int] {
+object XxHash32 extends FastHash[Int] {
   val Prime1: Int = -1640531535
   val Prime2: Int = -2048144777
   val Prime3: Int = -1028477379

@@ -10,7 +10,7 @@ import java.lang.Integer.{rotateLeft => rotl32}
   * @version 1.0
   * @since 2021/3/30 3:56 下午
   */
-object MurmurHash3_32 extends Hash[Int] {
+object MurmurHash3_32 extends FastHash[Int] {
   val C1 = 0xcc9e2d51
   val C2 = 0x1b873593
 
