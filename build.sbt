@@ -9,7 +9,7 @@ excludeDependencies ++= excludes
 dependencyOverrides ++= overrides
 updateConfiguration := updateConfiguration.value.withMissingOk(true)
 
-cancelable := true
+cancelable.withRank(KeyRanks.Invisible) := true
 Compile / unmanagedJars ~= { uj =>
   Seq(Attributed.blank(file(System.getProperty("java.home").dropRight(3) + "lib/tools.jar"))) ++ uj
 }
