@@ -45,9 +45,8 @@ package object maths extends maths {
 
     val x1 = n.toDouble(arr(pz - 1))
     val x2 = n.toDouble(arr(pz))
-    val x3 = n.toDouble(arr(pz - 1))
 
-    x1 + (x2 - x3) * (ps - pz)
+    x1 + (x2 - x1) * (ps - pz)
   }
 }
 
