@@ -2,7 +2,6 @@ package hash
 
 import test.BaseSpec
 
-import java.io.FileInputStream
 import java.nio.ByteBuffer
 import java.nio.channels.Channels
 
@@ -15,7 +14,7 @@ import java.nio.channels.Channels
   */
 class HashingSpec extends BaseSpec {
 
-  "hash" in {
+  "fast hash" in {
     // hash a long
     XxHash64.hashLong(123, seed       = 0) ==> -7945237082106452088L
     MurmurHash3_32.hashLong(123, seed = 0) ==> 823512154
@@ -42,5 +41,12 @@ class HashingSpec extends BaseSpec {
 
     val hash = checksum.value
     hash ==> 5020219685658847592L
+  }
+
+  "hash" - {
+    import hash.Implicits._
+    "md5" in {
+      "hello".md5.hex ==> "5d41402abc4b2a76b9719d911017c592"
+    }
   }
 }
