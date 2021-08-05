@@ -8,8 +8,10 @@ trait WithAlgo[A] {
 
   protected def withAlgo(algo: Algo): A
 
+  def md2    = withAlgo(new Algo(() => new MessageDigest("MD2")))
   def md5    = withAlgo(new Algo(() => new MessageDigest("MD5")))
   def sha1   = withAlgo(new Algo(() => new MessageDigest("SHA-1")))
+  def sha224 = withAlgo(new Algo(() => new MessageDigest("SHA-224")))
   def sha256 = withAlgo(new Algo(() => new MessageDigest("SHA-256")))
   def sha384 = withAlgo(new Algo(() => new MessageDigest("SHA-384")))
   def sha512 = withAlgo(new Algo(() => new MessageDigest("SHA-512")))
