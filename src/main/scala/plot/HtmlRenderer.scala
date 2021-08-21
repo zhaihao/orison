@@ -9,18 +9,20 @@ package plot
 
 import com.typesafe.scalalogging.StrictLogging
 
-/**
-  * HtmlRenderer
+/** HtmlRenderer
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-22 10:43
+  * @since 2019-03-22
+  *   10:43
   */
-/**
-  * HtmlRenderer
+/** HtmlRenderer
   *
-  * @author zhaihao
-  * @version 1.0 2019-03-20 20:36
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2019-03-20 20:36
   */
 class HtmlRenderer(vega: Vega) extends StrictLogging {
 

@@ -11,11 +11,12 @@ import java.io.File
 
 import scala.language.implicitConversions
 
-/**
-  * FileOps
+/** FileOps
   *
-  * @author zhaihao
-  * @version 1.0 2018-01-18 16:42
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-01-18 16:42
   */
 final class FileOps private[syntax] (private val file: File) extends AnyVal {
   def deleteRecursively: Unit = {

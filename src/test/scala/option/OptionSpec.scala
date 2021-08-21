@@ -8,12 +8,13 @@
 package option
 import test.BaseSpec
 
-/**
-  * OptionSpec
+/** OptionSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-21 17:19
+  * @since 2019-03-21
+  *   17:19
   */
 class OptionSpec extends BaseSpec {
   def test1(a: Option[Int])    = a.get * 2

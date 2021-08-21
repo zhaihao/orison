@@ -8,12 +8,13 @@
 package plot.spec
 import plot.Theme
 
-/**
-  * EmbedConfig
+/** EmbedConfig
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-22 10:45
+  * @since 2019-03-22
+  *   10:45
   */
 case class EmbedConfig(theme: Theme)
 

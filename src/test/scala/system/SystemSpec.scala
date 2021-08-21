@@ -8,12 +8,13 @@
 package system
 import test.BaseSpec
 
-/**
-  * SystemSpec
+/** SystemSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-29 16:59
+  * @since 2019-03-29
+  *   16:59
   */
 class SystemSpec extends BaseSpec {
 

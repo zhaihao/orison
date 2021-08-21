@@ -11,11 +11,12 @@ import java.sql.Timestamp
 
 import play.api.libs.json._
 
-/**
-  * Formatter
+/** Formatter
   *
-  * @author zhaihao
-  * @version 1.0 2018/4/3 14:34
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018/4/3 14:34
   */
 object Formatter {
 
@@ -45,13 +46,15 @@ object Formatter {
           json
             .as[JsObject]
             .value
-            .view.mapValues {
+            .view
+            .mapValues {
               case v: JsNumber  => v.value
               case v: JsBoolean => v.value
               case v: JsString  => v.value
               case _ => throw new Exception
             }
-            .toMap)
+            .toMap
+        )
       } catch {
         case e: Exception => JsError(e.getMessage)
       }

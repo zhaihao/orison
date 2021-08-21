@@ -9,11 +9,12 @@ package syntax
 
 import scala.language.implicitConversions
 
-/**
-  * IdOps
+/** IdOps
   *
-  * @author zhaihao
-  * @version 1.0 2018-01-18 16:13
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-01-18 16:13
   */
 final class IdOps[A] private[syntax] (private val self: A) extends AnyVal {
   def |>[B](f: A => B): B = f(self)

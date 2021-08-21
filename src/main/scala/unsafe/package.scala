@@ -14,12 +14,13 @@ import java.lang.Integer.{reverseBytes => swap32}
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-04-01 11:49
+  * @since 2019-04-01
+  *   11:49
   */
 package object unsafe {
 
@@ -33,8 +34,8 @@ package object unsafe {
         field.get(null).asInstanceOf[JUnsafe]
       }
       .getOrElse(throw new IllegalStateException("Can't find instance of sun.misc.Unsafe"))
-  } recover {
-    case th: Throwable => throw new ExceptionInInitializerError(th)
+  } recover { case th: Throwable =>
+    throw new ExceptionInInitializerError(th)
   } get
 
   def eval[A](expr: String) = {
@@ -65,13 +66,13 @@ package object unsafe {
     }
 
   final def getUnsignedByte(input: Array[Byte], offset: Long): Int =
-    unsafe.getByte(input, offset) & 0xFF
+    unsafe.getByte(input, offset) & 0xff
 
   final def getUnsignedInt(input: Array[Byte], offset: Long): Long =
     if (isLittleEndian) {
-      unsafe.getInt(input, offset) & 0xFFFFFFFFL
+      unsafe.getInt(input, offset) & 0xffffffffL
     } else {
-      swap32(unsafe.getInt(input, offset)) & 0xFFFFFFFFL
+      swap32(unsafe.getInt(input, offset)) & 0xffffffffL
     }
 
   final def copyMemory(src: Array[Byte], srcOffset: Long, dest: Array[Byte], destOffset: Long, length: Int): Unit =

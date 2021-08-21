@@ -9,18 +9,16 @@ package field
 
 import scala.annotation.tailrec
 
-/**
-  * Ip
+/** Ip
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-27 19:19
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-27 19:19
   */
 object Ip {
 
-  /**
-    * 127.0.0.1 为正
-    * 128.0.0.1 为负
-    * 由于127是本地保留段，不会产生 start > end 的情况
+  /** 127.0.0.1 为正 128.0.0.1 为负 由于127是本地保留段，不会产生 start > end 的情况
     */
   object v4 {
 
@@ -37,7 +35,7 @@ object Ip {
         .foldLeft(0)((b, si) => b + (si._1.toInt << si._2))
 
     def toString(a: Int): String =
-      List((0xFFFFFFFF, 24), (0x00FFFFFF, 16), (0x0000FFFF, 8), (0x000000FF, 0))
+      List((0xffffffff, 24), (0x00ffffff, 16), (0x0000ffff, 8), (0x000000ff, 0))
         .map(i => (a & i._1) >>> i._2)
         .mkString(".")
 

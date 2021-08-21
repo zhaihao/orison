@@ -8,24 +8,29 @@
 package syntax
 import scala.language.implicitConversions
 
-/**
-  * StringOps
+/** StringOps
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-04-01 11:41
+  * @since 2019-04-01
+  *   11:41
   */
 final class StringOps private[syntax] (private val str: String) extends AnyVal {
 
   def underscores =
-    "[A-Z\\d]".r.replaceAllIn(str, { m =>
-      "_" + m.group(0).toLowerCase()
-    })
+    "[A-Z\\d]".r.replaceAllIn(str,
+                              { m =>
+                                "_" + m.group(0).toLowerCase()
+                              }
+    )
 
   def camel =
-    "_([a-z\\d])".r.replaceAllIn(str, { m =>
-      m.group(1).toUpperCase()
-    })
+    "_([a-z\\d])".r.replaceAllIn(str,
+                                 { m =>
+                                   m.group(1).toUpperCase()
+                                 }
+    )
 
   /*
    *  同样长度的密码使用常量级的计算时间，用来防止计时攻击
@@ -49,14 +54,15 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
 
   def toRadixInt(radix: Int) = Integer.parseInt(str, radix)
 
-  /**
-    * 给 string 在头部补全长度
+  /** 给 string 在头部补全长度
     * {{{
     *   "1".padStart(5,'0') ==> "00001"
     * }}}
     *
-    * @param length 最小长度
-    * @param c      补充的字符
+    * @param length
+    *   最小长度
+    * @param c
+    *   补充的字符
     */
   def padStart(length: Int, c: Char) = {
     require(str != null, "string is null")
@@ -72,15 +78,16 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
     }
   }
 
-  /**
-    * 给 string 在尾部补全长度
+  /** 给 string 在尾部补全长度
     *
     * {{{
     *   "1".padEnd(5,'0') ==> "10000"
     * }}}
     *
-    * @param length 最小的长度
-    * @param c      补充的字符
+    * @param length
+    *   最小的长度
+    * @param c
+    *   补充的字符
     */
   def padEnd(length: Int, c: Char) = {
     require(str != null, "string is null")
@@ -97,10 +104,10 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
     }
   }
 
-  /**
-    * string 重复若干次
+  /** string 重复若干次
     *
-    * @param count 重复次数
+    * @param count
+    *   重复次数
     */
   def repeat(count: Int) = {
     require(str != null, "string is null")
@@ -126,10 +133,10 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
     }
   }
 
-  /**
-    * 后几位
+  /** 后几位
     *
-    * @param n 整数
+    * @param n
+    *   整数
     * @return
     */
   def subStringR(n: Int) = {

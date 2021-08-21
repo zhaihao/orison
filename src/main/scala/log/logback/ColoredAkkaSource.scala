@@ -13,12 +13,13 @@ import console.Colors
 
 import scala.Console._
 
-/**
-  * ColoredAkkaSource
+/** ColoredAkkaSource
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/7/27 23:32
+  * @since 2020/7/27
+  *   23:32
   */
 class ColoredAkkaSource extends ClassicConverter {
   override def convert(event: ILoggingEvent) = {

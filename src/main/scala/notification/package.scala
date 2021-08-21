@@ -5,12 +5,13 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-07-18 14:36
+  * @since 2019-07-18
+  *   14:36
   */
 package object notification {
 
@@ -19,14 +20,15 @@ package object notification {
     object Sound extends Enumeration {
       type Sound = Value
 
-      val Basso, Blow, Bottle, Frog, Funk, Glass, Hero, Morse, Ping, Pop, Purr, Sosumi, Submarine,
-      Tink = Value
+      val Basso, Blow, Bottle, Frog, Funk, Glass, Hero, Morse, Ping, Pop, Purr, Sosumi, Submarine, Tink = Value
     }
 
-    case class Notice(title:    Option[String] = None,
-                      subtitle: Option[String] = None,
-                      message:  String,
-                      sound:    Option[Sound.Value] = None) {
+    case class Notice(
+        title:    Option[String] = None,
+        subtitle: Option[String] = None,
+        message:  String,
+        sound:    Option[Sound.Value] = None
+    ) {
       override def toString = {
         s"""display notification "$message"""" +
           title.map(t => s""" with title "$t"""").getOrElse("") +

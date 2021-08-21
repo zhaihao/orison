@@ -11,12 +11,13 @@ import test.BaseSpec
 
 import scala.sys.process.ProcessLogger
 
-/**
-  * ProcSpec
+/** ProcSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-29 17:10
+  * @since 2019-03-29
+  *   17:10
   */
 class ProcSpec extends BaseSpec {
   "start another jvm process" ignore {

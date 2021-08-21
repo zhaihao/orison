@@ -8,11 +8,12 @@
 package field
 import syntax.string._
 
-/**
-  * Imei
+/** Imei
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-27 19:08
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-27 19:08
   */
 object Imei {
 
@@ -39,7 +40,8 @@ object Imei {
     if (imei != null && imei.matches(REGEX)) {
       Some(
         if (imei.length == 15) imei.substring(0, 14).toLowerCase
-        else imei.toLowerCase)
+        else imei.toLowerCase
+      )
     } else None
 
   // 小写 15 位

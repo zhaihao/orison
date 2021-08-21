@@ -2,37 +2,31 @@ package performance.collection
 
 import java.util
 
-/**
-  * BitSet
+/** BitSet
   *
   * copy from spark
   *
-  * A simple, fixed-size bit set implementation. This implementation is fast because it avoids
-  * safety/bound checking.
+  * A simple, fixed-size bit set implementation. This implementation is fast because it avoids safety/bound checking.
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 3:35 下午
+  * @since 2021/3/30
+  *   3:35 下午
   */
 class BitSet(numBits: Int) extends Serializable {
 
   private val words    = new Array[Long](bit2words(numBits))
   private val numWords = words.length
 
-  /**
-    * Compute the capacity (number of bits) that can be represented
-    * by this bitset.
+  /** Compute the capacity (number of bits) that can be represented by this bitset.
     */
   def capacity: Int = numWords * 64
 
-  /**
-    * Clear all set bits.
-    */
+  /** Clear all set bits. */
   def clear(): Unit = util.Arrays.fill(words, 0)
 
-  /**
-    * Set all the bits up to a given index
-    */
+  /** Set all the bits up to a given index */
   def setUntil(bitIndex: Int): Unit = {
     val wordIndex = bitIndex >> 6 // divide by 64
     util.Arrays.fill(words, 0, wordIndex, -1)
@@ -43,9 +37,7 @@ class BitSet(numBits: Int) extends Serializable {
     }
   }
 
-  /**
-    * Clear all the bits up to a given index
-    */
+  /** Clear all the bits up to a given index */
   def clearUntil(bitIndex: Int): Unit = {
     val wordIndex = bitIndex >> 6 // divide by 64
     util.Arrays.fill(words, 0, wordIndex, 0)
@@ -56,9 +48,7 @@ class BitSet(numBits: Int) extends Serializable {
     }
   }
 
-  /**
-    * Compute the bit-wise AND of the two sets returning the
-    * result.
+  /** Compute the bit-wise AND of the two sets returning the result.
     */
   def &(other: BitSet): BitSet = {
     val newBS   = new BitSet(math.max(capacity, other.capacity))
@@ -73,9 +63,7 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /**
-    * Compute the bit-wise OR of the two sets returning the
-    * result.
+  /** Compute the bit-wise OR of the two sets returning the result.
     */
   def |(other: BitSet): BitSet = {
     val newBS = new BitSet(math.max(capacity, other.capacity))
@@ -98,9 +86,7 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /**
-    * Compute the symmetric difference by performing bit-wise XOR of the two sets returning the
-    * result.
+  /** Compute the symmetric difference by performing bit-wise XOR of the two sets returning the result.
     */
   def ^(other: BitSet): BitSet = {
     val newBS   = new BitSet(math.max(capacity, other.capacity))
@@ -119,9 +105,7 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /**
-    * Compute the difference of the two sets by performing bit-wise AND-NOT returning the
-    * result.
+  /** Compute the difference of the two sets by performing bit-wise AND-NOT returning the result.
     */
   def andNot(other: BitSet): BitSet = {
     val newBS   = new BitSet(capacity)
@@ -137,9 +121,9 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /**
-    * Sets the bit at the specified index to true.
-    * @param index the bit index
+  /** Sets the bit at the specified index to true.
+    * @param index
+    *   the bit index
     */
   def set(index: Int): Unit = {
     val bitmask = 1L << (index & 0x3f) // mod 64 and shift
@@ -151,21 +135,20 @@ class BitSet(numBits: Int) extends Serializable {
     words(index >> 6) &= ~bitmask // div by 64 and mask
   }
 
-  /**
-    * Return the value of the bit with the specified index. The value is true if the bit with
-    * the index is currently set in this BitSet; otherwise, the result is false.
+  /** Return the value of the bit with the specified index. The value is true if the bit with the index is currently set
+    * in this BitSet; otherwise, the result is false.
     *
-    * @param index the bit index
-    * @return the value of the bit with the specified index
+    * @param index
+    *   the bit index
+    * @return
+    *   the value of the bit with the specified index
     */
   def get(index: Int): Boolean = {
     val bitmask = 1L << (index & 0x3f) // mod 64 and shift
     (words(index >> 6) & bitmask) != 0 // div by 64 and mask
   }
 
-  /**
-    * Get an iterator over the set bits.
-    */
+  /** Get an iterator over the set bits. */
   def iterator: Iterator[Int] = new Iterator[Int] {
     var ind = nextSetBit(0)
     override def hasNext: Boolean = ind >= 0
@@ -187,18 +170,17 @@ class BitSet(numBits: Int) extends Serializable {
     sum
   }
 
-  /**
-    * Returns the index of the first bit that is set to true that occurs on or after the
-    * specified starting index. If no such bit exists then -1 is returned.
+  /** Returns the index of the first bit that is set to true that occurs on or after the specified starting index. If no
+    * such bit exists then -1 is returned.
     *
     * To iterate over the true bits in a BitSet, use the following loop:
     *
-    *  for (int i = bs.nextSetBit(0); i >= 0; i = bs.nextSetBit(i+1)) {
-    *    // operate on index i here
-    *  }
+    * for (int i = bs.nextSetBit(0); i >= 0; i = bs.nextSetBit(i+1)) { // operate on index i here }
     *
-    * @param fromIndex the index to start checking from (inclusive)
-    * @return the index of the next set bit, or -1 if there is no such bit
+    * @param fromIndex
+    *   the index to start checking from (inclusive)
+    * @return
+    *   the index of the next set bit, or -1 if there is no such bit
     */
   def nextSetBit(fromIndex: Int): Int = {
     var wordIndex = fromIndex >> 6

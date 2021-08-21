@@ -10,12 +10,13 @@ package plot.dsl
 import os.ReadablePath
 import plot._
 
-/**
-  * JsonDSL
+/** JsonDSL
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-27 17:58
+  * @since 2019-03-27
+  *   17:58
   */
 trait VizDSL { vega: Vega =>
   var viz: String = ""

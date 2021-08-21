@@ -9,12 +9,13 @@ package plot.dsl
 import json.Formatter._
 import play.api.libs.json._
 
-/**
-  * DataDSL
+/** DataDSL
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-22 10:44
+  * @since 2019-03-22
+  *   10:44
   */
 trait DataDSL {
   protected var data: JsValue = JsNull

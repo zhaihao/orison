@@ -13,20 +13,23 @@ import javax.activation.DataHandler
 import javax.mail.{Message, Part}
 import javax.mail.internet.{InternetAddress, MimeBodyPart, MimeMessage, MimeMultipart}
 
-/**
-  * EMail
+/** EMail
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-07-18 14:23
+  * @since 2019-07-18
+  *   14:23
   */
-case class Email(subject:     String,
-                 from:        EmailAddress,
-                 text:        String,
-                 htmlText:    Option[String] = None,
-                 replyTo:     Option[EmailAddress] = None,
-                 recipients:  Seq[Recipient] = Seq.empty,
-                 attachments: Seq[Attachment] = Seq.empty) {
+case class Email(
+    subject:     String,
+    from:        EmailAddress,
+    text:        String,
+    htmlText:    Option[String] = None,
+    replyTo:     Option[EmailAddress] = None,
+    recipients:  Seq[Recipient] = Seq.empty,
+    attachments: Seq[Attachment] = Seq.empty
+) {
 
   def withHtmlText(htmlText: String) =
     copy(htmlText = Some(htmlText))
@@ -34,17 +37,20 @@ case class Email(subject:     String,
   def to(name: String, address: String) =
     copy(
       recipients = recipients :+
-        Recipient(RecipientType.TO, EmailAddress(name, address)))
+        Recipient(RecipientType.TO, EmailAddress(name, address))
+    )
 
   def cc(name: String, address: String) =
     copy(
       recipients = recipients :+
-        Recipient(RecipientType.CC, EmailAddress(name, address)))
+        Recipient(RecipientType.CC, EmailAddress(name, address))
+    )
 
   def bcc(name: String, address: String) =
     copy(
       recipients = recipients :+
-        Recipient(RecipientType.BCC, EmailAddress(name, address)))
+        Recipient(RecipientType.BCC, EmailAddress(name, address))
+    )
 
   def replyTo(name: String, address: String) =
     copy(replyTo = Some(EmailAddress(name, address)))
@@ -88,8 +94,7 @@ case class Email(subject:     String,
     (root, related, alternative)
   }
 
-  private def createMimeMessage(session: Session,
-                                root:    Email.this.Root): javax.mail.internet.MimeMessage = {
+  private def createMimeMessage(session: Session, root: Email.this.Root): javax.mail.internet.MimeMessage = {
 
     val message = new MimeMessage(session)
     message setSubject (subject, "UTF-8")
@@ -101,9 +106,8 @@ case class Email(subject:     String,
   }
 
   private def addRecipients(message: javax.mail.internet.MimeMessage): Unit =
-    recipients foreach {
-      case Recipient(tpe, emailAddress) =>
-        message addRecipient (tpe, emailAddress)
+    recipients foreach { case Recipient(tpe, emailAddress) =>
+      message addRecipient (tpe, emailAddress)
     }
 
   private def addTextPart(alternative: Alternative): Unit = {
@@ -139,9 +143,9 @@ case class Email(subject:     String,
     val attachmentPart = new MimeBodyPart
     attachmentPart.setDataHandler(new DataHandler(datasource))
     attachmentPart.setFileName(name)
-    attachmentPart.setHeader(
-      "Content-Type",
-      datasource.getContentType + "; filename=" + datasourceName + "; name=" + datasourceName)
+    attachmentPart.setHeader("Content-Type",
+                             datasource.getContentType + "; filename=" + datasourceName + "; name=" + datasourceName
+    )
     attachmentPart.setContentID("<" + datasourceName + ">")
     attachmentPart.setDisposition(disposition.value + "; size=0")
 
@@ -154,33 +158,33 @@ object Email {
   def apply(subject: String, from: EmailAddress, text: String, htmlText: String): Email =
     new Email(subject, from, text, Some(htmlText))
 
-  def apply(subject:  String,
-            from:     EmailAddress,
-            text:     String,
-            htmlText: String,
-            replyTo:  Option[EmailAddress]): Email =
+  def apply(subject: String, from: EmailAddress, text: String, htmlText: String, replyTo: Option[EmailAddress]): Email =
     new Email(subject, from, text, Some(htmlText), replyTo)
 
-  def apply(subject:    String,
-            from:       EmailAddress,
-            text:       String,
-            htmlText:   String,
-            replyTo:    Option[EmailAddress],
-            recipients: Seq[Recipient]): Email =
+  def apply(
+      subject:    String,
+      from:       EmailAddress,
+      text:       String,
+      htmlText:   String,
+      replyTo:    Option[EmailAddress],
+      recipients: Seq[Recipient]
+  ): Email =
     new Email(subject, from, text, Some(htmlText), replyTo, recipients)
 
-  def apply(subject:     String,
-            from:        EmailAddress,
-            text:        String,
-            htmlText:    String,
-            replyTo:     Option[EmailAddress],
-            recipients:  Seq[Recipient],
-            attachments: Seq[Attachment]): Email =
+  def apply(
+      subject:     String,
+      from:        EmailAddress,
+      text:        String,
+      htmlText:    String,
+      replyTo:     Option[EmailAddress],
+      recipients:  Seq[Recipient],
+      attachments: Seq[Attachment]
+  ): Email =
     new Email(subject, from, text, Some(htmlText), replyTo, recipients, attachments)
 }
 
-case class EmailAddress(name: String, address:             String)
-case class Recipient(tpe:     RecipientType, emailAddress: EmailAddress)
+case class EmailAddress(name: String, address: String)
+case class Recipient(tpe: RecipientType, emailAddress: EmailAddress)
 
 abstract sealed class Disposition(val value: String)
 
@@ -201,10 +205,7 @@ object Attachment extends ((String, DataSource, Disposition) => Attachment) {
   def apply(name: String, data: Array[Byte], mimeType: String): Attachment =
     apply(name, data, mimeType, Disposition.Attachment)
 
-  def apply(name:        String,
-            data:        Array[Byte],
-            mimeType:    String,
-            disposition: Disposition): Attachment = {
+  def apply(name: String, data: Array[Byte], mimeType: String, disposition: Disposition): Attachment = {
     require(mimeType matches ".+/.+", "Invalid MIME type, should contain a /")
 
     val dataSource = ByteArrayDataSource(data, mimeType)

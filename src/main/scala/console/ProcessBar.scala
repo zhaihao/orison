@@ -15,9 +15,11 @@ import scala.collection.immutable.LazyList.cons
 
 /** ProcessBar
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/7/4 21:53
+  * @since 2020/7/4
+  *   21:53
   */
 trait BarFormat {
   def leftBoundary:  String

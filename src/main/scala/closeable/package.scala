@@ -5,12 +5,13 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019/8/26 4:07 下午
+  * @since 2019/8/26
+  *   4:07 下午
   */
 package object closeable {
 
@@ -22,7 +23,7 @@ package object closeable {
     }
   }
 
-  def usingErr[T <: AutoCloseable, B](c: T)(f: T => B)(g: PartialFunction[Throwable,B]): B = {
+  def usingErr[T <: AutoCloseable, B](c: T)(f: T => B)(g: PartialFunction[Throwable, B]): B = {
     try {
       f(c)
     } catch {

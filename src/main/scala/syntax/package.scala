@@ -7,12 +7,13 @@ import scala.language.experimental.macros
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-04-01 11:40
+  * @since 2019-04-01
+  *   11:40
   */
 package object syntax extends Syntax {
   def cfor[A](init: A)(test: A => Boolean, next: A => A)(body: A => Unit): Unit = macro CForImpl.cforMacro[A]

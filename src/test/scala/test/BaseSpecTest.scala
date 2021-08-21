@@ -7,11 +7,12 @@
 
 package test
 
-/**
-  * BaseSpecTest
+/** BaseSpecTest
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-8 11:47
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-8 11:47
   */
 class BaseSpecTest extends BaseSpec {
 

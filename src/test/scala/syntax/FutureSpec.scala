@@ -15,9 +15,11 @@ import scala.util.Try
 
 /** FutureSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/4/28 18:24
+  * @since 2021/4/28
+  *   18:24
   */
 class FutureSpec extends BaseSpec {
   import syntax.feature._

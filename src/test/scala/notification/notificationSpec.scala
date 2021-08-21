@@ -9,15 +9,16 @@ package notification
 
 import test.BaseSpec
 
-/**
-  * notificationSpec
+/** notificationSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-07-18 14:51
+  * @since 2019-07-18
+  *   14:51
   */
 class notificationSpec extends BaseSpec {
-  "osx" ignore  {
+  "osx" ignore {
     "message" in {
       import notification.osx._
       osx.notice(Notice(message = "hello world"))
@@ -30,8 +31,7 @@ class notificationSpec extends BaseSpec {
 
     "message with title with subtitle" in {
       import notification.osx._
-      osx.notice(
-        Notice(message = "hello world", title = Some("title"), subtitle = Some("subtitle")))
+      osx.notice(Notice(message = "hello world", title = Some("title"), subtitle = Some("subtitle")))
     }
 
     "message with title with sound" in {
