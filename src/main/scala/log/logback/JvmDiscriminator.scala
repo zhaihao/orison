@@ -4,12 +4,13 @@ import ch.qos.logback.classic.spi.ILoggingEvent
 import ch.qos.logback.core.sift.AbstractDiscriminator
 import sun.jvmstat.monitor.{MonitoredHost, MonitoredVmUtil, VmIdentifier}
 
-/**
-  * JvmDiscriminator
+/** JvmDiscriminator
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/12/11 5:21 下午
+  * @since 2020/12/11
+  *   5:21 下午
   */
 class JvmDiscriminator extends AbstractDiscriminator[ILoggingEvent] {
   var jvmName: String = _
@@ -35,7 +36,7 @@ object JvmDiscriminator {
     val command = MonitoredVmUtil.commandLine(vm)
     command match {
       case regex(name) => Some(name)
-      case _ => None
+      case _           => None
     }
   }
 }

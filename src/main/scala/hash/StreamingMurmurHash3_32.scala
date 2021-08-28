@@ -1,11 +1,12 @@
 package hash
 
-/**
-  * StreamingMurmurHash3_32
+/** StreamingMurmurHash3_32
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 4:07 下午
+  * @since 2021/3/30
+  *   4:07 下午
   */
 object StreamingMurmurHash3_32 {
   def apply(seed: Int) = new StreamingMurmurHash3_32(seed)
@@ -20,8 +21,8 @@ final class StreamingMurmurHash3_32(seed: Int) extends StreamingHash[Int] {
 
   def reset(): Unit = {
     totalLength = 0
-    bufferSize  = 0
-    hash        = seed
+    bufferSize = 0
+    hash = seed
   }
 
   def value: Int = {

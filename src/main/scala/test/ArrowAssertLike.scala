@@ -10,11 +10,12 @@ package test
 import org.scalatest.Assertions._
 import org.scalatest.Succeeded
 
-/**
-  * ArrowAssertLike
+/** ArrowAssertLike
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-8 11:22
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-8 11:22
   */
 trait ArrowAssertLike {
 

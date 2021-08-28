@@ -12,14 +12,11 @@ import java.io.{DataInputStream, DataOutputStream, InputStream, OutputStream}
 import bloomfilter.CanGenerateHashFrom
 
 @SerialVersionUID(1L)
-class BloomFilter[T] private (
-    val numberOfBits:   Long,
-    val numberOfHashes: Int,
-    private val bits:   UnsafeBitArray)(implicit canGenerateHash: CanGenerateHashFrom[T])
-    extends Serializable {
+class BloomFilter[T] private (val numberOfBits: Long, val numberOfHashes: Int, private val bits: UnsafeBitArray)(
+    implicit canGenerateHash:                   CanGenerateHashFrom[T]
+) extends Serializable {
 
-  def this(numberOfBits:        Long, numberOfHashes: Int)(
-      implicit canGenerateHash: CanGenerateHashFrom[T]) = {
+  def this(numberOfBits: Long, numberOfHashes: Int)(implicit canGenerateHash: CanGenerateHashFrom[T]) = {
     this(numberOfBits, numberOfHashes, new UnsafeBitArray(numberOfBits))
   }
 
@@ -32,7 +29,7 @@ class BloomFilter[T] private (
     while (i < numberOfHashes) {
       val computedHash = hash1 + i * hash2
       bits.set((computedHash & Long.MaxValue) % numberOfBits)
-      i += 1
+      i                                      += 1
     }
   }
 
@@ -83,8 +80,9 @@ class BloomFilter[T] private (
 
 object BloomFilter {
 
-  def apply[T](numberOfItems:   Long, falsePositiveRate: Double)(
-      implicit canGenerateHash: CanGenerateHashFrom[T]): BloomFilter[T] = {
+  def apply[T](numberOfItems: Long, falsePositiveRate: Double)(implicit
+      canGenerateHash:        CanGenerateHashFrom[T]
+  ): BloomFilter[T] = {
 
     val nb = optimalNumberOfBits(numberOfItems, falsePositiveRate)
     val nh = optimalNumberOfHashes(numberOfItems, nb)
@@ -95,7 +93,8 @@ object BloomFilter {
     math
       .ceil(
         -1 * numberOfItems * math.log(falsePositiveRate) / math.log(2) / math
-          .log(2))
+          .log(2)
+      )
       .toLong
   }
 
@@ -103,8 +102,7 @@ object BloomFilter {
     math.ceil(numberOfBits / numberOfItems * math.log(2)).toInt
   }
 
-  def readFrom[T](in:           InputStream)(
-      implicit canGenerateHash: CanGenerateHashFrom[T]): BloomFilter[T] = {
+  def readFrom[T](in: InputStream)(implicit canGenerateHash: CanGenerateHashFrom[T]): BloomFilter[T] = {
     val din            = new DataInputStream(in)
     val numberOfBits   = din.readLong()
     val numberOfHashes = din.readInt()

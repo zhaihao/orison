@@ -7,30 +7,31 @@ import maths.ToPowOps
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
-  * @version 1.0 2019-01-07 10:54
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2019-01-07 10:54
   */
 package object maths extends maths {
 
-  /**
-    * 支持 BigDecimal 的 e
+  /** 支持 BigDecimal 的 e
     *
-    * @param x 指数
-    * @param p 求 e 的精度，迭代的次数
+    * @param x
+    *   指数
+    * @param p
+    *   求 e 的精度，迭代的次数
     * @return
     */
   def exp(x: BigDecimal, p: Int): BigDecimal =
     LazyList
       .from(1)
       .takeWhile(_ <= p)
-      .foldLeft((BigDecimal(1), BigDecimal(1)) -> BigDecimal(1)) {
-        case (((fac, pow), res), n) =>
-          val f = fac * n
-          val p = pow * x
-          ((f, p), res + p / f)
+      .foldLeft((BigDecimal(1), BigDecimal(1)) -> BigDecimal(1)) { case (((fac, pow), res), n) =>
+        val f = fac * n
+        val p = pow * x
+        ((f, p), res + p / f)
       }
       ._2
 

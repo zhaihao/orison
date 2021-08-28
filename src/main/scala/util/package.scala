@@ -1,11 +1,12 @@
 import com.typesafe.scalalogging.Logger
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/5/19 6:34 下午
+  * @since 2020/5/19
+  *   6:34 下午
   */
 package object util {
   def timed[T](log: Logger, label: String = "")(t: => T): T = {

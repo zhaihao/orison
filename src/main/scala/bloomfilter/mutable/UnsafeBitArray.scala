@@ -31,10 +31,10 @@ class UnsafeBitArray(val numberOfBits: Long) extends Serializable {
     }
   }
 
-  def fset(index:Long):Unit = {
+  def fset(index: Long): Unit = {
     val offset = ptr + (index >>> 6) * 8L
     val long   = unsafe.getLong(offset)
-    val v = 1L << index
+    val v      = 1L << index
     if ((long & (1L << index)) > 0) {
       unsafe.putLong(offset, long & (~v))
     }
@@ -54,15 +54,13 @@ class UnsafeBitArray(val numberOfBits: Long) extends Serializable {
   }
 
   def |(that: UnsafeBitArray): UnsafeBitArray = {
-    require(this.numberOfBits == that.numberOfBits,
-            "Bitwise OR works only on arrays with the same number of bits")
+    require(this.numberOfBits == that.numberOfBits, "Bitwise OR works only on arrays with the same number of bits")
 
     combine(that, _ | _)
   }
 
   def &(that: UnsafeBitArray): UnsafeBitArray = {
-    require(this.numberOfBits == that.numberOfBits,
-            "Bitwise AND works only on arrays with the same number of bits")
+    require(this.numberOfBits == that.numberOfBits, "Bitwise AND works only on arrays with the same number of bits")
 
     combine(that, _ & _)
   }

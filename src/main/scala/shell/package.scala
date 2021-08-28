@@ -9,12 +9,13 @@ import scala.sys.process.ProcessBuilder
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-29 16:16
+  * @since 2019-03-29
+  *   16:16
   */
 package object shell {
   implicit def string2BashProcess(cmd: String): ProcessBuilder = bash(cmd)

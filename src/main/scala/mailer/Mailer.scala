@@ -12,12 +12,13 @@ import javax.mail.Transport
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
 
-/**
-  * Mailer
+/** Mailer
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-07-18 15:48
+  * @since 2019-07-18
+  *   15:48
   */
 class Mailer(session: Session) {
 
@@ -38,9 +39,8 @@ class Mailer(session: Session) {
 
 object Mailer {
 
-  /**
-    * The Java mailing utilities are synchronous. In order to keep the code readable
-    * the synchronous version is a separate class.
+  /** The Java mailing utilities are synchronous. In order to keep the code readable the synchronous version is a
+    * separate class.
     */
   private class Synchronous(session: Session) {
 
@@ -64,8 +64,7 @@ object Mailer {
         emails.map(send)
       }.recoverWith {
         case TransportCloseException(results, cause) =>
-          Failure(
-            SendEmailsTransportCloseException(results.asInstanceOf[Option[Seq[Try[Unit]]]], cause))
+          Failure(SendEmailsTransportCloseException(results.asInstanceOf[Option[Seq[Try[Unit]]]], cause))
 
         case cause =>
           Failure(SendEmailsException(emails, cause))
@@ -77,21 +76,22 @@ object Mailer {
         _ = transport.connect()
         // save the try instead of extracting the value to make sure we can close the transport
         possibleResult = Try(code(transport))
-        _      <- Try(transport.close()) recoverWith createTransportCloseException(possibleResult)
+        _ <- Try(transport.close()) recoverWith createTransportCloseException(possibleResult)
         result <- possibleResult
       } yield result
 
     private def createTransportCloseException[T](
-        result: Try[T]): PartialFunction[Throwable, Try[TransportCloseException[T]]] = {
-      case t: Throwable => Failure(TransportCloseException(result.toOption, t))
+        result: Try[T]
+    ): PartialFunction[Throwable, Try[TransportCloseException[T]]] = { case t: Throwable =>
+      Failure(TransportCloseException(result.toOption, t))
     }
 
     private def send(email: Email)(implicit transport: Transport): Try[Unit] =
       Try {
         val message = email createFor session
         transport.sendMessage(message, message.getAllRecipients)
-      }.recoverWith {
-        case cause => Failure(SendEmailException(email, cause))
+      }.recoverWith { case cause =>
+        Failure(SendEmailException(email, cause))
       }
   }
 }

@@ -7,12 +7,13 @@
 
 package syntax
 
-/**
-  * CForImpl
+/** CForImpl
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/4/28 18:19
+  * @since 2021/4/28
+  *   18:19
   */
 import CForImpl._
 
@@ -31,8 +32,8 @@ private[syntax] case class CFor[C <: Context with Singleton](val c: C) {
     es.forall {
       _.tree match {
         case t @ Ident(_: TermName) if t.symbol.asTerm.isStable => true
-        case Function(_, _)                                     => true
-        case _                                                  => false
+        case Function(_, _) => true
+        case _              => false
       }
     }
 }
@@ -128,8 +129,8 @@ private[syntax] object CForImpl {
   }
 
   def cforMacro[A](
-                    c: Context
-                  )(init: c.Expr[A])(test: c.Expr[A => Boolean], next: c.Expr[A => A])(body: c.Expr[A => Unit]): c.Expr[Unit] = {
+      c:  Context
+  )(init: c.Expr[A])(test: c.Expr[A => Boolean], next: c.Expr[A => A])(body: c.Expr[A => Unit]): c.Expr[Unit] = {
 
     import c.universe._
     val util  = CFor[c.type](c)
@@ -177,7 +178,7 @@ private[syntax] object CForImpl {
       case Literal(Constant(a)) =>
         a match {
           case n: Int => Some(n)
-          case _      => None
+          case _ => None
         }
       case _ => None
     }
@@ -259,12 +260,11 @@ private[syntax] object CForImpl {
   }
 
   def cforRange2Macro(
-                       c: Context
-                     )(r1: c.Expr[Range], r2: c.Expr[Range])(body: c.Expr[(Int, Int) => Unit]): c.Expr[Unit] = {
+      c: Context
+  )(r1:  c.Expr[Range], r2: c.Expr[Range])(body: c.Expr[(Int, Int) => Unit]): c.Expr[Unit] = {
 
     import c.universe._
     c.Expr[Unit](q"cforRange($r1)(i => cforRange($r2)(j => $body(i, j)))")
   }
 
 }
-

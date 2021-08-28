@@ -11,11 +11,12 @@ import java.time.LocalDate
 
 import test.BaseSpec
 
-/**
-  * PeopleIDSpec
+/** PeopleIDSpec
   *
-  * @author zhaihao
-  * @version 1.0 2018-3-31 17:55
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-3-31 17:55
   */
 class PeopleIDSpec extends BaseSpec {
 

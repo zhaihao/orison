@@ -11,26 +11,24 @@ import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.runtime.ScalaRunTime
 
-/**
-  * SizeEstimator
+/** SizeEstimator
   *
   * copy form spark project
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 3:19 下午
+  * @since 2021/3/30
+  *   3:19 下午
   */
 object SizeEstimator extends StrictLogging {
 
-  /**
-    * Estimate the number of bytes that the given object takes up on the JVM heap. The estimate
-    * includes space taken up by objects referenced by the given object, their references, and so on
-    * and so forth.
+  /** Estimate the number of bytes that the given object takes up on the JVM heap. The estimate includes space taken up
+    * by objects referenced by the given object, their references, and so on and so forth.
     *
-    * This is useful for determining the amount of heap space a broadcast variable will occupy on
-    * each executor or the amount of space each object will take when caching objects in
-    * deserialized form. This is not the same as the serialized size of the object, which will
-    * typically be much smaller.
+    * This is useful for determining the amount of heap space a broadcast variable will occupy on each executor or the
+    * amount of space each object will take when caching objects in deserialized form. This is not the same as the
+    * serialized size of the object, which will typically be much smaller.
     */
   def estimate(obj: AnyRef): Long = estimate(obj, new util.IdentityHashMap[AnyRef, AnyRef])
 
@@ -74,7 +72,7 @@ object SizeEstimator extends StrictLogging {
   // from the JVM.
   private def initialize(): Unit = {
     val arch = System.getProperty("os.arch")
-    is64bit          = arch.contains("64") || arch.contains("s390x")
+    is64bit = arch.contains("64") || arch.contains("s390x")
     isCompressedOops = getIsCompressedOops
 
     objectSize =
@@ -119,10 +117,8 @@ object SizeEstimator extends StrictLogging {
     }
   }
 
-  /**
-    * The state of an ongoing size estimation. Contains a stack of objects to visit as well as an
-    * IdentityHashMap of visited objects, and provides utility methods for enqueueing new objects
-    * to visit.
+  /** The state of an ongoing size estimation. Contains a stack of objects to visit as well as an IdentityHashMap of
+    * visited objects, and provides utility methods for enqueueing new objects to visit.
     */
   private class SearchState(val visited: util.IdentityHashMap[AnyRef, AnyRef]) {
     val stack = new ArrayBuffer[AnyRef]
@@ -144,10 +140,8 @@ object SizeEstimator extends StrictLogging {
     }
   }
 
-  /**
-    * Cached information about each class. We remember two things: the "shell size" of the class
-    * (size of all non-static fields plus the java.lang.Object size), and any fields that are
-    * pointers to objects.
+  /** Cached information about each class. We remember two things: the "shell size" of the class (size of all non-static
+    * fields plus the java.lang.Object size), and any fields that are pointers to objects.
     */
   private def estimate(obj: AnyRef, visited: util.IdentityHashMap[AnyRef, AnyRef]): Long = {
     val state = new SearchState(visited)
@@ -222,11 +216,13 @@ object SizeEstimator extends StrictLogging {
     }
   }
 
-  private def sampleArray(array:  AnyRef,
-                          state:  SearchState,
-                          rand:   Random,
-                          drawn:  OpenHashSet[Int],
-                          length: Int): Long = {
+  private def sampleArray(
+      array:  AnyRef,
+      state:  SearchState,
+      rand:   Random,
+      drawn:  OpenHashSet[Int],
+      length: Int
+  ): Long = {
     var size = 0L
     for (_ <- 0 until ARRAY_SAMPLE_SIZE) {
       var index = 0
@@ -264,9 +260,7 @@ object SizeEstimator extends StrictLogging {
     }
   }
 
-  /**
-    * Get or compute the ClassInfo for a given class.
-    */
+  /** Get or compute the ClassInfo for a given class. */
   private def getClassInfo(cls: Class[_]): ClassInfo = {
     // Check whether we've already cached a ClassInfo for this class
     val info = classInfos.get(cls).orNull
@@ -341,12 +335,10 @@ object SizeEstimator extends StrictLogging {
 
   private def alignSize(size: Long): Long = alignSizeUp(size, ALIGN_SIZE)
 
-  /**
-    * Compute aligned size. The alignSize must be `2^n`, otherwise the result will be wrong.
-    * When `alignSize = 2^n, alignSize - 1 = 2^n - 1`. The binary representation of (alignSize - 1)
-    * will only have n trailing 1s(0b00...001..1). ~(alignSize - 1) will be 0b11..110..0. Hence,
-    * (size + alignSize - 1) & ~(alignSize - 1) will set the last n bits to zeros, which leads to
-    * multiple of alignSize.
+  /** Compute aligned size. The alignSize must be `2^n`, otherwise the result will be wrong. When `alignSize = 2^n,
+    * alignSize - 1 = 2^n - 1`. The binary representation of (alignSize - 1) will only have n trailing
+    * 1s(0b00...001..1). ~(alignSize - 1) will be 0b11..110..0. Hence, (size + alignSize - 1) & ~(alignSize - 1) will
+    * set the last n bits to zeros, which leads to multiple of alignSize.
     */
   private def alignSizeUp(size: Long, alignSize: Int): Long =
     (size + alignSize - 1) & ~(alignSize - 1)

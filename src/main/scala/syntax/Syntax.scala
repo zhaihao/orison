@@ -9,9 +9,11 @@ package syntax
 
 /** Syntax
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-04-01 11:40
+  * @since 2019-04-01
+  *   11:40
   */
 trait Syntax {
 

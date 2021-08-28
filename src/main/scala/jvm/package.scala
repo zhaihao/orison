@@ -6,12 +6,13 @@ import java.lang.management.ManagementFactory
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-29 16:31
+  * @since 2019-03-29
+  *   16:31
   */
 package object jvm {
   private val runtime       = Runtime.getRuntime

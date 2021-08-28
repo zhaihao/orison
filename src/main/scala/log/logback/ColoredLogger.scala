@@ -11,12 +11,13 @@ import console.Colors
 
 import scala.Console._
 
-/**
-  * ColoredLogger
+/** ColoredLogger
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/6/26 00:43
+  * @since 2020/6/26
+  *   00:43
   */
 class ColoredLogger extends ClassicConverter {
   private[this] var abbreviator: Abbreviator = _

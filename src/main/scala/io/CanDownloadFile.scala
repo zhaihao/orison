@@ -10,11 +10,12 @@ import java.io.{File, FileOutputStream}
 import java.net.URL
 import java.nio.channels.Channels
 
-/**
-  * CanDownloadFile
+/** CanDownloadFile
   *
-  * @author zhaihao
-  * @version 1.0 2018-12-06 15:49
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-12-06 15:49
   */
 class CanDownloadFile(localPath: String, networkPath: String) extends File(localPath) {
 

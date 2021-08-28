@@ -1,12 +1,13 @@
 package hash
 import java.lang.Long.{rotateLeft => rotl64}
 
-/**
-  * XxHash64
+/** XxHash64
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 4:10 下午
+  * @since 2021/3/30
+  *   4:10 下午
   */
 object XxHash64 extends FastHash[Long] {
   val Prime1: Long = -7046029288634856825L
@@ -16,10 +17,10 @@ object XxHash64 extends FastHash[Long] {
   val Prime5: Long = 2870177450012600261L
 
   final def hashByte(input: Byte, seed: Long): Long =
-    avalanche(processByte(seed + Prime5 + 1L, input & 0xFF))
+    avalanche(processByte(seed + Prime5 + 1L, input & 0xff))
 
   final def hashInt(input: Int, seed: Long): Long =
-    avalanche(processInt(seed + Prime5 + 4L, input & 0xFFFFFFFFL))
+    avalanche(processInt(seed + Prime5 + 4L, input & 0xffffffffL))
 
   final def hashLong(input: Long, seed: Long): Long =
     avalanche(processLong(seed + Prime5 + 8L, input))

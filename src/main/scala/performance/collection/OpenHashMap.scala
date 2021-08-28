@@ -2,21 +2,21 @@ package performance.collection
 
 import scala.reflect.ClassTag
 
-/**
-  * OpenHashMap
+/** OpenHashMap
   *
-  * A fast hash map implementation for nullable keys. This hash map supports insertions and updates,
-  * but not deletions. This map is about 5X faster than java.util.HashMap, while using much less
-  * space overhead.
+  * A fast hash map implementation for nullable keys. This hash map supports insertions and updates, but not deletions.
+  * This map is about 5X faster than java.util.HashMap, while using much less space overhead.
   *
   * Under the hood, it uses our OpenHashSet implementation.
   *
-  * NOTE: when using numeric type as the value type, the user of this class should be careful to
-  * distinguish between the 0/0.0/0L and non-exist value
+  * NOTE: when using numeric type as the value type, the user of this class should be careful to distinguish between the
+  * 0/0.0/0L and non-exist value
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 5:29 下午
+  * @since 2021/3/30
+  *   5:29 下午
   */
 class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](initialCapacity: Int)
     extends Iterable[(K, V)]
@@ -66,7 +66,7 @@ class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](init
   def update(k: K, v: V): Unit = {
     if (k == null) {
       haveNullValue = true
-      nullValue     = v
+      nullValue = v
     } else {
       val pos = _keySet.addWithoutResize(k) & OpenHashSet.POSITION_MASK
       _values(pos) = v
@@ -75,11 +75,11 @@ class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](init
     }
   }
 
-  /**
-    * If the key doesn't exist yet in the hash map, set its value to defaultValue; otherwise,
-    * set its value to mergeValue(oldValue).
+  /** If the key doesn't exist yet in the hash map, set its value to defaultValue; otherwise, set its value to
+    * mergeValue(oldValue).
     *
-    * @return the newly updated value.
+    * @return
+    *   the newly updated value.
     */
   def changeValue(k: K, defaultValue: => V, mergeValue: V => V): V = {
     if (k == null) {
@@ -87,7 +87,7 @@ class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](init
         nullValue = mergeValue(nullValue)
       } else {
         haveNullValue = true
-        nullValue     = defaultValue
+        nullValue = defaultValue
       }
       nullValue
     } else {
@@ -143,7 +143,7 @@ class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](init
   // would throw illegal access error at runtime if they are declared as val's.
   protected var grow = (newCapacity: Int) => {
     _oldValues = _values
-    _values    = new Array[V](newCapacity)
+    _values = new Array[V](newCapacity)
   }
 
   protected var move = (oldPos: Int, newPos: Int) => {

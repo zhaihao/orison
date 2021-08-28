@@ -5,18 +5,19 @@ import test.BaseSpec
 import java.nio.ByteBuffer
 import java.nio.channels.Channels
 
-/**
-  * HashingSpec
+/** HashingSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 4:15 下午
+  * @since 2021/3/30
+  *   4:15 下午
   */
 class HashingSpec extends BaseSpec {
 
   "fast hash" in {
     // hash a long
-    XxHash64.hashLong(123, seed       = 0) ==> -7945237082106452088L
+    XxHash64.hashLong(123, seed = 0)       ==> -7945237082106452088L
     MurmurHash3_32.hashLong(123, seed = 0) ==> 823512154
 
     // hash a Array[Byte]

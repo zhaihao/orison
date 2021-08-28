@@ -7,11 +7,12 @@
 
 package field
 
-/**
-  * Idfa
+/** Idfa
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-27 19:04
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-27 19:04
   */
 object Idfa {
 

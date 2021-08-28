@@ -2,12 +2,13 @@ package hash
 import java.nio.ByteBuffer
 import sun.nio.ch.DirectBuffer
 
-/**
-  * FastHashUtil
+/** FastHashUtil
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 3:55 下午
+  * @since 2021/3/30
+  *   3:55 下午
   */
 object FastHashUtil {
   final def checkBounds(inputLength: Int, offset: Int, length: Int): Unit =

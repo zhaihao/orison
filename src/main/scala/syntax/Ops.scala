@@ -7,11 +7,12 @@
 
 package syntax
 
-/**
-  * Ops
+/** Ops
   *
-  * @author zhaihao
-  * @version 1.0 2018-01-18 16:10
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-01-18 16:10
   */
 trait Ops[A] {
   def self: A
