@@ -9,12 +9,13 @@ package bloomfilter.mutable
 
 import test.BaseSpec
 
-/**
-  * UnsafeBitArraySpec
+/** UnsafeBitArraySpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-08-14 15:36
+  * @since 2019-08-14
+  *   15:36
   */
 class UnsafeBitArraySpec extends BaseSpec {
   "test" in {

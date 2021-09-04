@@ -12,11 +12,12 @@ import java.sql.Timestamp
 import play.api.libs.json.{JsNumber, JsString, Json}
 import test.BaseSpec
 
-/**
-  * FormatterSpec
+/** FormatterSpec
   *
-  * @author zhaihao
-  * @version 1.0 2018/4/3 14:42
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018/4/3 14:42
   */
 class FormatterSpec extends BaseSpec {
 

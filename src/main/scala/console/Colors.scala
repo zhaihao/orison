@@ -8,11 +8,12 @@
 package console
 import syntax.string._
 
-/**
-  * Colors
+/** Colors
   *
-  * @author zhaihao
-  * @version 1.0 2018-03-21 16:35
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-03-21 16:35
   */
 object Colors {
 
@@ -49,7 +50,7 @@ object Colors {
   def RB_INDIGO(str: String): String = if (isANSISupported) "\u001b[38;5;093m" + str + RESET else str
   def RB_VIOLET(str: String): String = if (isANSISupported) "\u001b[38;5;163m" + str + RESET else str
 
-  def text(color: Int, str: String) = if (isANSISupported) "\u001b[38;5;" + color + "m" + str + RESET else str
+  def text(color:       Int, str: String) = if (isANSISupported) "\u001b[38;5;" + color + "m" + str + RESET else str
   def background(color: Int, str: String) = if (isANSISupported) "\u001b[48;5;" + color + "m" + str + RESET else str
 
   def colorTable = {

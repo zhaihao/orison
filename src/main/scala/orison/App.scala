@@ -20,11 +20,12 @@ import squants.experimental.formatter.syntax._
 import squants.experimental.unitgroups.si.expanded.time.ExpandedSiTimes
 import squants.time.TimeConversions._
 
-/**
-  * App
+/** App
   *
-  * @author zhaihao
-  * @version 1.0 26/01/2018 15:54
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 26/01/2018 15:54
   */
 trait App extends StrictLogging { config: HConfig =>
   final val startTime: Long = System.currentTimeMillis

@@ -1,12 +1,13 @@
 package hash
 import java.lang.Long.{rotateLeft => rotl64}
 
-/**
-  * StreamingXxHash64
+/** StreamingXxHash64
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 4:12 下午
+  * @since 2021/3/30
+  *   4:12 下午
   */
 object StreamingXxHash64 {
   def apply(seed: Long) = new StreamingXxHash64(seed)
@@ -23,12 +24,12 @@ final class StreamingXxHash64(seed: Long) extends StreamingHash[Long] {
   private[this] var bufferSize  = 0
 
   def reset(): Unit = {
-    v1          = seed + XxHash64.Prime1 + XxHash64.Prime2
-    v2          = seed + XxHash64.Prime2
-    v3          = seed
-    v4          = seed - XxHash64.Prime1
+    v1 = seed + XxHash64.Prime1 + XxHash64.Prime2
+    v2 = seed + XxHash64.Prime2
+    v3 = seed
+    v4 = seed - XxHash64.Prime1
     totalLength = 0
-    bufferSize  = 0
+    bufferSize = 0
   }
 
   def value: Long = {

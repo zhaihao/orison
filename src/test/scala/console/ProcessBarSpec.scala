@@ -11,18 +11,21 @@ import config.HConfig
 
 import scala.util.Random
 
-/**
-  * ProcessBarSpec
+/** ProcessBarSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/7/4 22:15
+  * @since 2020/7/4
+  *   22:15
   */
 object ProcessBarSpec extends orison.App with HConfig {
   val its = 10
 
   val progress =
-    ProgressBar(its, new BarFormatter(nCols = 100, unit = "samples") with OrdersOfMagnitudeScaling with UnicodeBarFormat)
+    ProgressBar(its,
+                new BarFormatter(nCols = 100, unit = "samples") with OrdersOfMagnitudeScaling with UnicodeBarFormat
+    )
   progress meter { updater =>
     (1 to its).foreach { _ =>
       Thread.sleep(Random.nextInt(1000))
@@ -32,7 +35,7 @@ object ProcessBarSpec extends orison.App with HConfig {
 
   //
   progress.start()
-  (1 to its).foreach {_ =>
+  (1 to its).foreach { _ =>
     Thread.sleep(Random.nextInt(1000))
     progress.update(1)
   }

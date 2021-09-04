@@ -8,11 +8,12 @@
 package syntax
 import test.BaseSpec
 
-/**
-  * IdOpsSpec
+/** IdOpsSpec
   *
-  * @author zhaihao
-  * @version 1.0 2018-01-18 16:16
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-01-18 16:16
   */
 class IdOpsSpec extends BaseSpec {
 

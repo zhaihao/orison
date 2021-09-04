@@ -12,11 +12,12 @@ import system._
 
 import scala.sys.process._
 
-/**
-  * ProcessLike
+/** ProcessLike
   *
-  * @author zhaihao
-  * @version 1.0 2018-8-23 18:44
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-8-23 18:44
   */
 trait ProcessLike extends TestSuiteMixin { this: TestSuite =>
 

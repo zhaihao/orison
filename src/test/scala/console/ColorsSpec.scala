@@ -9,12 +9,14 @@ package console
 
 import com.typesafe.scalalogging.StrictLogging
 import test.BaseSpec
-/**
-  * ColorsSpec
+
+/** ColorsSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/7/4 21:05
+  * @since 2020/7/4
+  *   21:05
   */
 class ColorsSpec extends BaseSpec with StrictLogging {
 

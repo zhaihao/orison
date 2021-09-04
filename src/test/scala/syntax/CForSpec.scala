@@ -11,9 +11,11 @@ import test.BaseSpec
 
 /** CForSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/4/28 18:21
+  * @since 2021/4/28
+  *   18:21
   */
 class CForSpec extends BaseSpec {
 

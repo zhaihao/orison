@@ -9,12 +9,13 @@ import scala.language.implicitConversions
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-22 11:32
+  * @since 2019-03-22
+  *   11:32
   */
 package object plot {
 

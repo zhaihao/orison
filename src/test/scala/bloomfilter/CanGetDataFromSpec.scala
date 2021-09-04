@@ -9,11 +9,12 @@ package bloomfilter
 import bloomfilter.CanGetDataFrom.CanGetDataFromArrayChar
 import test.BaseSpec
 
-/**
-  * CanGetDataFromSpec
+/** CanGetDataFromSpec
   *
-  * @author zhaihao
-  * @version 1.0 12/01/2018 15:59
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 12/01/2018 15:59
   */
 class CanGetDataFromSpec extends BaseSpec {
 

@@ -1,12 +1,13 @@
 package hash
 import java.lang.Integer.{rotateLeft => rotl32}
 
-/**
-  * XxHash32
+/** XxHash32
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 4:08 下午
+  * @since 2021/3/30
+  *   4:08 下午
   */
 object XxHash32 extends FastHash[Int] {
   val Prime1: Int = -1640531535
@@ -16,7 +17,7 @@ object XxHash32 extends FastHash[Int] {
   val Prime5: Int = 374761393
 
   final def hashByte(input: Byte, seed: Int): Int =
-    avalanche(processByte(seed + Prime5 + 1, input & 0xFF))
+    avalanche(processByte(seed + Prime5 + 1, input & 0xff))
 
   final def hashInt(input: Int, seed: Int): Int =
     avalanche(processInt(seed + Prime5 + 4, input))

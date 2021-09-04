@@ -2,12 +2,13 @@ package field
 
 import test.BaseSpec
 
-/**
-  * VersionSpec
+/** VersionSpec
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/6/10 3:27 下午
+  * @since 2020/6/10
+  *   3:27 下午
   */
 class VersionSpec extends BaseSpec {
 

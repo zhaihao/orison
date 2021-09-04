@@ -9,14 +9,11 @@ package bloomfilter.mutable
 import bloomfilter.CanGenerateHashFrom
 
 @SerialVersionUID(1L)
-class CuckooFilter[T](
-    numberOfBuckets:     Long,
-    numberOfBitsPerItem: Int,
-    private val table:   UnsafeTable)(implicit canGenerateHash: CanGenerateHashFrom[T])
-    extends Serializable {
+class CuckooFilter[T](numberOfBuckets: Long, numberOfBitsPerItem: Int, private val table: UnsafeTable)(implicit
+    canGenerateHash:                   CanGenerateHashFrom[T]
+) extends Serializable {
 
-  def this(numberOfBuckets:     Long, numberOfBitsPerItem: Int)(
-      implicit canGenerateHash: CanGenerateHashFrom[T]) = {
+  def this(numberOfBuckets: Long, numberOfBitsPerItem: Int)(implicit canGenerateHash: CanGenerateHashFrom[T]) = {
     this(numberOfBuckets, numberOfBitsPerItem, new UnsafeTable16Bit(numberOfBuckets))
   }
 
@@ -68,15 +65,15 @@ class CuckooFilter[T](
 
 object CuckooFilter {
 
-  def apply[T](numberOfItems:   Long)(
-      implicit canGenerateHash: CanGenerateHashFrom[T]): CuckooFilter[T] = {
+  def apply[T](numberOfItems: Long)(implicit canGenerateHash: CanGenerateHashFrom[T]): CuckooFilter[T] = {
     val nb = optimalNumberOfBuckets(numberOfItems)
     new CuckooFilter[T](nb, 16, new UnsafeTable16Bit(nb))
   }
 
   def optimalNumberOfBuckets(numberOfItems: Long): Long = {
     var numberOfBuckets = upperPowerOf2(
-      (numberOfItems + UnsafeTable16Bit.TagsPerBucket - 1) / UnsafeTable16Bit.TagsPerBucket)
+      (numberOfItems + UnsafeTable16Bit.TagsPerBucket - 1) / UnsafeTable16Bit.TagsPerBucket
+    )
     val f = numberOfItems.toDouble / numberOfBuckets / UnsafeTable16Bit.TagsPerBucket
     if (f > 0.96) numberOfBuckets = numberOfBuckets << 1
     numberOfBuckets

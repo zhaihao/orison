@@ -26,12 +26,13 @@ object MurmurHash3Generic {
     k
   }
 
-  def murmurhash3_x64_128[From](key: From, offset: Int, len: Int, seed: Int)(
-      implicit c0:                   CanGetDataFrom[From]): (Long, Long) = {
-    var h1: Long = seed & 0x00000000FFFFFFFFL
-    var h2: Long = seed & 0x00000000FFFFFFFFL
+  def murmurhash3_x64_128[From](key: From, offset: Int, len: Int, seed: Int)(implicit
+      c0:                            CanGetDataFrom[From]
+  ): (Long, Long) = {
+    var h1: Long = seed & 0x00000000ffffffffL
+    var h2: Long = seed & 0x00000000ffffffffL
 
-    val roundedEnd = offset + (len & 0xFFFFFFF0); // round down to 16 byte block
+    val roundedEnd = offset + (len & 0xfffffff0); // round down to 16 byte block
 
     var i = offset
     while (i < roundedEnd) {
@@ -102,12 +103,11 @@ object MurmurHash3Generic {
     (h1, h2)
   }
 
-  def murmurhash3_x64_64[From](key: From, offset: Int, len: Int, seed: Int)(
-      implicit c0:                  CanGetDataFrom[From]): Long = {
-    var h1: Long = seed & 0x00000000FFFFFFFFL
-    var h2: Long = seed & 0x00000000FFFFFFFFL
+  def murmurhash3_x64_64[From](key: From, offset: Int, len: Int, seed: Int)(implicit c0: CanGetDataFrom[From]): Long = {
+    var h1: Long = seed & 0x00000000ffffffffL
+    var h2: Long = seed & 0x00000000ffffffffL
 
-    val roundedEnd = offset + (len & 0xFFFFFFF0); // round down to 16 byte block
+    val roundedEnd = offset + (len & 0xfffffff0); // round down to 16 byte block
 
     var i = offset
     while (i < roundedEnd) {

@@ -9,10 +9,11 @@ package test
 
 import org.scalatest.freespec.AnyFreeSpec
 
-/**
-  * BaseSpec
+/** BaseSpec
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-8 11:35
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-8 11:35
   */
 trait BaseSpec extends AnyFreeSpec with ArrowAssertLike

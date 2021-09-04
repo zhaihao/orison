@@ -2,12 +2,13 @@ package syntax
 
 import scala.language.implicitConversions
 
-/**
-  * NumericOps
+/** NumericOps
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/9/10 11:05 上午
+  * @since 2020/9/10
+  *   11:05 上午
   */
 final class NumericOps[T: Numeric] private[syntax] (private val value: T) {
   import Numeric.Implicits._

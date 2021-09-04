@@ -9,12 +9,13 @@ package system
 import scala.sys.process.{Process, ProcessLogger}
 import scala.util.Properties
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-29 16:32
+  * @since 2019-03-29
+  *   16:32
   */
 package object proc {
   private val sep       = Properties.propOrEmpty("file.separator")

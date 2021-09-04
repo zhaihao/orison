@@ -13,9 +13,11 @@ import scala.concurrent.{Await, Future}
 
 /** FutureOps
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/4/28 18:16
+  * @since 2021/4/28
+  *   18:16
   */
 final class FutureOps[T] private[syntax] (private val f: Future[T]) extends AnyVal {
   def tryValued(timeout: Duration = 10.seconds) = Await.ready(f, timeout).value.get

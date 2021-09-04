@@ -9,11 +9,12 @@ package syntax
 import com.typesafe.config.{Config, ConfigFactory}
 import test.BaseSpec
 
-/**
-  * ConfigOpsSpec
+/** ConfigOpsSpec
   *
-  * @author zhaihao
-  * @version 1.0 2018-01-19 11:44
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-01-19 11:44
   */
 class ConfigOpsSpec extends BaseSpec {
 
@@ -58,11 +59,11 @@ class ConfigOpsSpec extends BaseSpec {
 
   "json render" in {
     println(config.json)
-      """{
-        |    "a" : 1,
-        |    "b" : 2
-        |}
-        |""".stripMargin
+    """{
+      |    "a" : 1,
+      |    "b" : 2
+      |}
+      |""".stripMargin
   }
 
 }

@@ -9,11 +9,12 @@ package field
 
 import test.BaseSpec
 
-/**
-  * MacSpec
+/** MacSpec
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-25 10:55
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-25 10:55
   */
 class MacSpec extends BaseSpec {
 

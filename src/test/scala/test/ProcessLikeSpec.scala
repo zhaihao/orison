@@ -7,14 +7,15 @@
 
 package test
 
-/**
-  * ProcessLikeSpec
+/** ProcessLikeSpec
   *
-  * @author zhaihao
-  * @version 1.0 2018-8-23 19:25
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-8-23 19:25
   */
 class ProcessLikeSpec extends BaseSpec with ProcessLike {
-  "test" ignore  {
+  "test" ignore {
     println("main process")
     // wait for sub process start
     Thread.sleep(500)

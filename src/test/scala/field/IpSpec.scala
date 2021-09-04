@@ -10,11 +10,12 @@ package field
 import field.Ip.v4
 import test.BaseSpec
 
-/**
-  * IpSpec
+/** IpSpec
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-27 19:22
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-27 19:22
   */
 class IpSpec extends BaseSpec {
 

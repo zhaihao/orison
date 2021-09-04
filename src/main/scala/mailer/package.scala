@@ -10,12 +10,13 @@ import javax.mail.{Authenticator, PasswordAuthentication}
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-07-18 14:25
+  * @since 2019-07-18
+  *   14:25
   */
 package object mailer {
   type DataSource = javax.activation.DataSource
@@ -85,10 +86,10 @@ package object mailer {
       val authenticator =
         if (auth) {
 
-          val username = setting.username.getOrElse(
-            throw new RuntimeException("username is expected in te MailerSettings"))
-          val password = setting.password.getOrElse(
-            throw new RuntimeException("password is expected in te MailerSettings"))
+          val username =
+            setting.username.getOrElse(throw new RuntimeException("username is expected in te MailerSettings"))
+          val password =
+            setting.password.getOrElse(throw new RuntimeException("password is expected in te MailerSettings"))
 
           new Authenticator {
             override def getPasswordAuthentication = new PasswordAuthentication(username, password)
