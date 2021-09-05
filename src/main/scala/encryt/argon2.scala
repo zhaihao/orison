@@ -6,12 +6,13 @@ import de.mkammerer.argon2.Argon2Factory.Argon2Types
 import de.mkammerer.argon2.{Argon2Constants, Argon2Factory, Argon2Helper}
 import syntax.config._
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2020/6/27 16:35
+  * @since 2020/6/27
+  *   16:35
   */
 object argon2 extends HConfig with StrictLogging {
 

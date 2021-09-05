@@ -6,12 +6,13 @@ import scala.language.implicitConversions
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-/**
-  * package
+/** package
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-04-01 14:49
+  * @since 2019-04-01
+  *   14:49
   */
 package object option {
   implicit def anyToOption[T](t: T) = Option(t)

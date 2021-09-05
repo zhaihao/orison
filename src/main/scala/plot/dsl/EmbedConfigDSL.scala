@@ -10,12 +10,13 @@ package plot.dsl
 import plot.Theme
 import plot.spec.{Themes, EmbedConfig}
 
-/**
-  * VegaConfigDSL
+/** VegaConfigDSL
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2019-03-22 10:45
+  * @since 2019-03-22
+  *   10:45
   */
 trait EmbedConfigDSL {
 

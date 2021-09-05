@@ -8,11 +8,12 @@
 package bloomfilter.mutable
 import test.BaseSpec
 
-/**
-  * BloomFilter
+/** BloomFilter
   *
-  * @author zhaihao
-  * @version 1.0 12/01/2018 12:00
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 12/01/2018 12:00
   */
 class BloomFilterSpec extends BaseSpec {
   "bloom filter" in {

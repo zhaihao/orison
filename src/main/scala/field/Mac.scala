@@ -7,11 +7,12 @@
 
 package field
 
-/**
-  * Mac
+/** Mac
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-23 16:09
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-23 16:09
   */
 object Mac {
   // language=RegExp

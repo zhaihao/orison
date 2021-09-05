@@ -2,20 +2,21 @@ package hash
 
 import java.lang.Integer.{rotateLeft => rotl32}
 
-/**
-  * MurmurHash3_32
+/** MurmurHash3_32
   *
   * See [[https://github.com/aappleby/smhasher]]
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 3:56 下午
+  * @since 2021/3/30
+  *   3:56 下午
   */
 object MurmurHash3_32 extends FastHash[Int] {
   val C1 = 0xcc9e2d51
   val C2 = 0x1b873593
 
   final def hashByte(input: Byte, seed: Int): Int =
-    avalanche(fMix(seed, input & 0xFF) ^ 1)
+    avalanche(fMix(seed, input & 0xff) ^ 1)
 
   final def hashInt(input: Int, seed: Int): Int =
     avalanche(mix(seed, input) ^ 4)

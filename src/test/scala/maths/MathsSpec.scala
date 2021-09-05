@@ -8,11 +8,12 @@
 package maths
 import test.BaseSpec
 
-/**
-  * MathsSpec
+/** MathsSpec
   *
-  * @author zhaihao
-  * @version 1.0 2019-01-07 11:01
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2019-01-07 11:01
   */
 class MathsSpec extends BaseSpec {
   "test e" in {
@@ -25,6 +26,6 @@ class MathsSpec extends BaseSpec {
   }
 
   "percentile " in {
-    percentile(1 to 100,0.95) ==> 95.05
+    percentile(1 to 100, 0.95) ==> 95.05
   }
 }

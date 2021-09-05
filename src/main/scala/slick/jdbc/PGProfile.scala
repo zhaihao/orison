@@ -13,9 +13,11 @@ import slick.basic.Capability
 
 /** PGProfile
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/4/29 11:45
+  * @since 2021/4/29
+  *   11:45
   */
 trait PGProfile
     extends ExPostgresProfile

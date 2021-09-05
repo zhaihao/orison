@@ -10,11 +10,12 @@ package test
 import scala.concurrent.Future
 import scala.language.postfixOps
 
-/**
-  * BaseAsyncSpecTest
+/** BaseAsyncSpecTest
   *
-  * @author zhaihao
-  * @version 1.0 2018-03-21 14:28
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2018-03-21 14:28
   */
 class BaseAsyncSpecTest extends BaseAsyncSpec {
 

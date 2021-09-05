@@ -1,12 +1,13 @@
 package hash
 import java.lang.Integer.{rotateLeft => rotl32}
 
-/**
-  * StreamingXxHash32
+/** StreamingXxHash32
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/30 4:11 下午
+  * @since 2021/3/30
+  *   4:11 下午
   */
 object StreamingXxHash32 {
   def apply(seed: Int) = new StreamingXxHash32(seed)
@@ -23,12 +24,12 @@ final class StreamingXxHash32(seed: Int) extends StreamingHash[Int] {
   private[this] var bufferSize  = 0
 
   def reset(): Unit = {
-    v1          = seed + XxHash32.Prime1 + XxHash32.Prime2
-    v2          = seed + XxHash32.Prime2
-    v3          = seed
-    v4          = seed - XxHash32.Prime1
+    v1 = seed + XxHash32.Prime1 + XxHash32.Prime2
+    v2 = seed + XxHash32.Prime2
+    v3 = seed
+    v4 = seed - XxHash32.Prime1
     totalLength = 0
-    bufferSize  = 0
+    bufferSize = 0
   }
 
   def value: Int = {

@@ -9,8 +9,10 @@ import sbt._
 
 /** Dependencies
   *
-  * @author zhaihao
-  * @version 1.0 2019-02-18 13:29
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2019-02-18 13:29
   */
 object Dependencies extends AutoPlugin {
   override def requires = empty

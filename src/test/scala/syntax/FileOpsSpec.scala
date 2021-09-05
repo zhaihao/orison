@@ -11,11 +11,12 @@ import java.io.File
 
 import test.BaseSpec
 
-/**
-  * FileOpsSpec
+/** FileOpsSpec
   *
-  * @author zhaihao
-  * @version 1.0 2017-12-27 18:57
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 2017-12-27 18:57
   */
 class FileOpsSpec extends BaseSpec {
   import syntax.file._

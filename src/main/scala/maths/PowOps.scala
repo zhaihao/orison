@@ -3,12 +3,13 @@ package maths
 import java.io.File
 import scala.language.implicitConversions
 
-/**
-  * PowOps
+/** PowOps
   *
-  * @author zhaihao
+  * @author
+  *   zhaihao
   * @version 1.0
-  * @since 2021/3/8 2:52 下午
+  * @since 2021/3/8
+  *   2:52 下午
   */
 final class PowOps private[maths] (private val a: Double) extends AnyVal {
   def ^*(b: Double) = math.pow(a, b)

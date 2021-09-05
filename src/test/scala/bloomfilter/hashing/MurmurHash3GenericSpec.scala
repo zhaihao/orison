@@ -8,11 +8,12 @@
 package bloomfilter.hashing
 import test.BaseSpec
 
-/**
-  * MurmurHash3GenericSpec
+/** MurmurHash3GenericSpec
   *
-  * @author zhaihao
-  * @version 1.0 12/01/2018 13:48
+  * @author
+  *   zhaihao
+  * @version 1.0
+  * 12/01/2018 13:48
   */
 class MurmurHash3GenericSpec extends BaseSpec {
 
@@ -22,6 +23,10 @@ class MurmurHash3GenericSpec extends BaseSpec {
   }
 
   "128" in {
-    MurmurHash3Generic.murmurhash3_x64_128(values, 0, values.length, 0) ==> (-2132731757477280140L, -9050492812920352835L)
+    MurmurHash3Generic.murmurhash3_x64_128(values,
+                                           0,
+                                           values.length,
+                                           0
+    ) ==> (-2132731757477280140L, -9050492812920352835L)
   }
 }
