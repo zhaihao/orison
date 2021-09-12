@@ -19,8 +19,7 @@ class BitSet(numBits: Int) extends Serializable {
   private val words    = new Array[Long](bit2words(numBits))
   private val numWords = words.length
 
-  /** Compute the capacity (number of bits) that can be represented by this bitset.
-    */
+  /** Compute the capacity (number of bits) that can be represented by this bitset. */
   def capacity: Int = numWords * 64
 
   /** Clear all set bits. */
@@ -48,8 +47,7 @@ class BitSet(numBits: Int) extends Serializable {
     }
   }
 
-  /** Compute the bit-wise AND of the two sets returning the result.
-    */
+  /** Compute the bit-wise AND of the two sets returning the result. */
   def &(other: BitSet): BitSet = {
     val newBS   = new BitSet(math.max(capacity, other.capacity))
     val smaller = math.min(numWords, other.numWords)
@@ -63,8 +61,7 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /** Compute the bit-wise OR of the two sets returning the result.
-    */
+  /** Compute the bit-wise OR of the two sets returning the result. */
   def |(other: BitSet): BitSet = {
     val newBS = new BitSet(math.max(capacity, other.capacity))
     assert(newBS.numWords >= numWords)
@@ -86,8 +83,7 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /** Compute the symmetric difference by performing bit-wise XOR of the two sets returning the result.
-    */
+  /** Compute the symmetric difference by performing bit-wise XOR of the two sets returning the result. */
   def ^(other: BitSet): BitSet = {
     val newBS   = new BitSet(math.max(capacity, other.capacity))
     val smaller = math.min(numWords, other.numWords)
@@ -105,8 +101,7 @@ class BitSet(numBits: Int) extends Serializable {
     newBS
   }
 
-  /** Compute the difference of the two sets by performing bit-wise AND-NOT returning the result.
-    */
+  /** Compute the difference of the two sets by performing bit-wise AND-NOT returning the result. */
   def andNot(other: BitSet): BitSet = {
     val newBS   = new BitSet(capacity)
     val smaller = math.min(numWords, other.numWords)

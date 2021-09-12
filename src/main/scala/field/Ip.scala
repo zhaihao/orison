@@ -18,8 +18,7 @@ import scala.annotation.tailrec
   */
 object Ip {
 
-  /** 127.0.0.1 为正 128.0.0.1 为负 由于127是本地保留段，不会产生 start > end 的情况
-    */
+  /** 127.0.0.1 为正 128.0.0.1 为负 由于127是本地保留段，不会产生 start > end 的情况 */
   object v4 {
 
     // language=RegExp
