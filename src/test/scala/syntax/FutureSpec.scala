@@ -11,6 +11,7 @@ import test.BaseSpec
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.concurrent.duration.DurationInt
 import scala.util.Try
 
 /** FutureSpec
@@ -24,7 +25,8 @@ import scala.util.Try
 class FutureSpec extends BaseSpec {
   import syntax.feature._
   "await" in {
-    Future { 1 + 1 }.valued()    ==> 2
-    Future { 1 + 1 }.tryValued() ==> Try(2)
+    implicit val timeout = 3.seconds
+    Future { 1 + 1 }.valued    ==> 2
+    Future { 1 + 1 }.tryValued ==> Try(2)
   }
 }

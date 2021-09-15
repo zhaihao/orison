@@ -20,8 +20,8 @@ import scala.concurrent.{Await, Future}
   *   18:16
   */
 final class FutureOps[T] private[syntax] (private val f: Future[T]) extends AnyVal {
-  def tryValued(timeout: Duration = 10.seconds) = Await.ready(f, timeout).value.get
-  def valued(timeout:    Duration = 10.second)  = Await.result(f, timeout)
+  def tryValued(implicit timeout: Duration) = Await.ready(f, timeout).value.get
+  def valued(implicit timeout:    Duration)  = Await.result(f, timeout)
 }
 
 trait ToFutureOps {
