@@ -18,8 +18,8 @@ object Digest {
     }
   }
 
-  implicit def digest2hash(in:      Digest): Hash        = in.hash
-  implicit def digest2string(in:    Digest): String      = in.hex
+  implicit def digest2hash(in: Digest):      Hash        = in.hash
+  implicit def digest2string(in: Digest):    String      = in.hex
   implicit def digest2byteArray(in: Digest): Array[Byte] = in.bytes
 }
 

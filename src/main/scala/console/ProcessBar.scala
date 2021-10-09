@@ -122,7 +122,7 @@ class BarFormatter(unit: String = "it", nCols: Int = 10) extends Scaling with As
     s"${scale(n)} [${formatInterval(elapsed)}, ${formatRate(rate)}]"
   }
 
-  override def scale(num:      Double): String = f"$num%.1f"
+  override def scale(num: Double):      String = f"$num%.1f"
   private def formatRate(rate: Double): String = s"${scale(rate)} $unit/s"
 }
 
@@ -185,8 +185,8 @@ class ProgressBar private (total: Int, barFormatter: BarFormatter) {
 object ProgressBar {
   private val UnknownTotal: Int = -1
 
-  def apply(total:        Int, barFormatter: BarFormatter): ProgressBar = new ProgressBar(total, barFormatter)
-  def apply(total:        Int): ProgressBar = new ProgressBar(total, new BarFormatter())
-  def apply(barFormatter: BarFormatter): ProgressBar = new ProgressBar(UnknownTotal, barFormatter)
-  def apply(): ProgressBar = new ProgressBar(UnknownTotal, new BarFormatter())
+  def apply(total: Int, barFormatter: BarFormatter): ProgressBar = new ProgressBar(total, barFormatter)
+  def apply(total: Int):                             ProgressBar = new ProgressBar(total, new BarFormatter())
+  def apply(barFormatter: BarFormatter):             ProgressBar = new ProgressBar(UnknownTotal, barFormatter)
+  def apply():                                       ProgressBar = new ProgressBar(UnknownTotal, new BarFormatter())
 }
