@@ -32,8 +32,8 @@ private[syntax] case class CFor[C <: Context with Singleton](val c: C) {
     es.forall {
       _.tree match {
         case t @ Ident(_: TermName) if t.symbol.asTerm.isStable => true
-        case Function(_, _) => true
-        case _              => false
+        case Function(_, _)                                     => true
+        case _                                                  => false
       }
     }
 }
