@@ -295,9 +295,9 @@ object OpenHashSet {
     override def hash(o: Float): Int = java.lang.Float.floatToIntBits(o)
   }
 
-  //noinspection ScalaUnusedSymbol
+  // noinspection ScalaUnusedSymbol
   private def grow1(newSize: Int): Unit = {}
-  //noinspection ScalaUnusedSymbol
+  // noinspection ScalaUnusedSymbol
   private def move1(oldPos: Int, newPos: Int): Unit = {}
 
   private val grow = grow1 _

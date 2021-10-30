@@ -31,7 +31,7 @@ trait PGProfile
     with PgNetSupport
     with PgLTreeSupport {
 
-  //jsonb support is in postgres 9.4.0 onward; for 9.3.x use "json"
+  // jsonb support is in postgres 9.4.0 onward; for 9.3.x use "json"
   def pgjson = "jsonb"
 
   // pg
