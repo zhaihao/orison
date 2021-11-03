@@ -17,7 +17,7 @@ import syntax.string._
   */
 object Imei {
 
-  //language=RegExp
+  // language=RegExp
   val REGEX =
     """[0-9A-Fa-f]{14,15}"""
 

@@ -14,7 +14,7 @@ object Hash {
 
   implicit def hashToByteArray(from: Hash): Array[Byte] = from.bytes
 
-  //noinspection SpellCheckingInspection
+  // noinspection SpellCheckingInspection
   private[hash] val HexChars = "0123456789abcdef".toCharArray
 }
 

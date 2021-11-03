@@ -55,7 +55,7 @@ private class PlainTextBytes(
   def this(value: String) = this(value.getBytes("UTF8"))
 
   /** Creates an instance from a StringBuilder */
-  //noinspection ScalaUnusedSymbol
+  // noinspection ScalaUnusedSymbol
   def this(value: StringBuilder) = this(value.toString)
 
   override protected[hash] def fill(
