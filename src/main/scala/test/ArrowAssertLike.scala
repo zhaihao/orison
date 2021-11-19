@@ -7,8 +7,9 @@
 
 package test
 
+import org.scalactic.{Prettifier, TripleEquals, source}
 import org.scalatest.Assertions._
-import org.scalatest.Succeeded
+import org.scalatest.{Failed, Succeeded}
 
 /** ArrowAssertLike
   *
@@ -17,16 +18,21 @@ import org.scalatest.Succeeded
   * @version 1.0
   * 2017-12-8 11:22
   */
-trait ArrowAssertLike {
+trait ArrowAssertLike extends TripleEquals {
 
   implicit class ArrowAssertHold(lhs: Any) {
 
-    def ==>[V](rhs: V) = assertResult(rhs)(lhs)
+    def ==>[V](rhs: V)(implicit pf: Prettifier, pos: source.Position) = assertResult(rhs)(lhs)(pf, pos)
 
-    def !=>[V](rhs: V) = assert(lhs != rhs)
+    def !=>[V](rhs: V)(implicit pf: Prettifier, pos: source.Position) = assert(lhs != rhs)(pf, pos)
 
+    // fast pass test
     // for async future.map(_ >>> ())
     def >>> = Succeeded
+
+    // fast fail test
+    // for async future.map(_ !>> ())
+    def !>>(implicit pos: source.Position) = Failed.apply()(pos)
   }
 
 }
