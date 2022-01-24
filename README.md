@@ -11,5 +11,5 @@ scala common lib
 [codacyImg]: https://api.codacy.com/project/badge/Grade/cc8bd14b425b4dafa2f69b3f894db063
 [codacyLink]: https://app.codacy.com/project/zhaihao/orison/dashboard
 
-[versionImg]: https://img.shields.io/badge/maven-v0.1.8-519dd9.svg
-[versionLink]: https://mvnrepository.com/artifact/me.ooon/orison_2.13/0.1.8
+[versionImg]: https://img.shields.io/badge/maven-v0.1.9-519dd9.svg
+[versionLink]: https://mvnrepository.com/artifact/me.ooon/orison_2.13/0.1.9

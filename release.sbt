@@ -1,6 +1,5 @@
 import sbt._
 import sbtrelease.ReleaseStateTransformations._
-
 import xerial.sbt.Sonatype._
 
 // sonatype settings
@@ -15,8 +14,9 @@ releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
 releaseCrossBuild           := true
 releaseIgnoreUntrackedFiles := true
-releaseTagComment           := s"BUILD: releasing ${(ThisBuild / version).value}"
-releaseCommitMessage        := s"BUILD: prepare version ${(ThisBuild / version).value}"
+releaseTagComment           := s"🔖 release ${(ThisBuild / version).value}"
+releaseCommitMessage        := s"🔖 release ${(ThisBuild / version).value}"
+releaseNextCommitMessage    := s"🚧 prepare ${(ThisBuild / version).value}"
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
@@ -27,6 +27,7 @@ releaseProcess := Seq[ReleaseStep](
   tagRelease,
   releaseStepCommandAndRemaining("+publishSigned"),
   upgradeVersionBadge,
+  commitReleaseVersion,
   setNextVersion,
   commitNextVersion,
   releaseStepCommand("sonatypeReleaseAll")
