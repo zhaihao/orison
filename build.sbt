@@ -23,6 +23,7 @@ Test / logBuffered := false
 libraryDependencies ++= Seq(log, java_mail, slick).flatten
 libraryDependencies ++= Seq(typesafe_config,
                             scalatest,
+                            scalatest_must,
                             squants,
                             play_json,
                             os_lib,
