@@ -25,7 +25,7 @@ object Dependencies extends AutoPlugin {
     lazy val os_lib          = "com.lihaoyi"       %% "os-lib"                 % "0.8.1"  % Provided
     lazy val fastparse       = "com.lihaoyi"       %% "fastparse"              % "2.3.3"  % Provided
     lazy val json4s          = "org.json4s"        %% "json4s-jackson"         % "4.0.4"  % Provided
-    lazy val typesafe_config = "com.typesafe"       % "config"                 % "1.4.1"  % Provided
+    lazy val typesafe_config = "com.typesafe"       % "config"                 % "1.4.2"  % Provided
     lazy val squants         = "org.typelevel"     %% "squants"                % "1.7.4"  % Provided
     lazy val argon2          = "de.mkammerer"       % "argon2-jvm"             % "2.11"   % Provided
     lazy val jbcrypt         = "org.mindrot"        % "jbcrypt"                % "0.4"    % Provided
