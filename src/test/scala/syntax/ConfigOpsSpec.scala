@@ -9,6 +9,8 @@ package syntax
 import com.typesafe.config.{Config, ConfigFactory}
 import test.BaseSpec
 
+import scala.concurrent.duration.{Duration, DurationInt}
+
 /** ConfigOpsSpec
   *
   * @author
@@ -64,6 +66,19 @@ class ConfigOpsSpec extends BaseSpec {
       |    "b" : 2
       |}
       |""".stripMargin
+  }
+
+  "duration" in {
+    val c = ConfigFactory.parseString("""
+                                        |a1 = 1d
+                                        |a2 = 2days
+                                        |a3 = 3day
+                                        |b = 1h
+                                        |c = 1m
+                                        |""".stripMargin)
+    c.opt[Duration]("a1") ==> Some(1.day)
+    c.opt[Duration]("a2") ==> Some(2.day)
+    c.opt[Duration]("a3") ==> Some(3.days)
   }
 
 }
