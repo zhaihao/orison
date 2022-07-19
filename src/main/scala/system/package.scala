@@ -19,25 +19,25 @@ import sun.management.ManagementFactoryHelper
   *   16:30
   */
 package object system {
-  private val osBean =
-    ManagementFactoryHelper.getOperatingSystemMXBean.asInstanceOf[OperatingSystemMXBean]
-
-  private val rtBean = ManagementFactoryHelper.getRuntimeMXBean
-
-  val osName:                  String = osBean.getName
-  val osArch:                  String = osBean.getArch
-  val osVersion:               String = osBean.getVersion
-  val availableProcessors:     Int    = osBean.getAvailableProcessors
-  val totalPhysicalMemorySize: Long   = osBean.getTotalPhysicalMemorySize
-  val pid:                     String = rtBean.getName.split("@").head
-
-  def ip:                         String = InetAddress.getLocalHost.getHostAddress
-  def hostname:                   String = InetAddress.getLocalHost.getHostName
-  def freePhysicalMemorySize:     Long   = osBean.getFreePhysicalMemorySize
-  def committedVirtualMemorySize: Long   = osBean.getCommittedVirtualMemorySize
-  def freeSwapSpaceSize:          Long   = osBean.getFreeSwapSpaceSize
-  def processCpuTime:             Long   = osBean.getProcessCpuTime
-  def processCpuLoad:             Double = osBean.getProcessCpuLoad
-  def systemCpuLoad:              Double = osBean.getSystemCpuLoad
-  def systemLoadAverage:          Double = osBean.getSystemLoadAverage
+//  private val osBean =
+//    ManagementFactoryHelper.getOperatingSystemMXBean.asInstanceOf[OperatingSystemMXBean]
+//
+//  private val rtBean = ManagementFactoryHelper.getRuntimeMXBean
+//
+//  val osName:                  String = osBean.getName
+//  val osArch:                  String = osBean.getArch
+//  val osVersion:               String = osBean.getVersion
+//  val availableProcessors:     Int    = osBean.getAvailableProcessors
+//  val totalPhysicalMemorySize: Long   = osBean.getTotalPhysicalMemorySize
+//  val pid:                     String = rtBean.getName.split("@").head
+//
+//  def ip:                         String = InetAddress.getLocalHost.getHostAddress
+//  def hostname:                   String = InetAddress.getLocalHost.getHostName
+//  def freePhysicalMemorySize:     Long   = osBean.getFreePhysicalMemorySize
+//  def committedVirtualMemorySize: Long   = osBean.getCommittedVirtualMemorySize
+//  def freeSwapSpaceSize:          Long   = osBean.getFreeSwapSpaceSize
+//  def processCpuTime:             Long   = osBean.getProcessCpuTime
+//  def processCpuLoad:             Double = osBean.getProcessCpuLoad
+//  def systemCpuLoad:              Double = osBean.getSystemCpuLoad
+//  def systemLoadAverage:          Double = osBean.getSystemLoadAverage
 }

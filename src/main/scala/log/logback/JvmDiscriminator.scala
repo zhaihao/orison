@@ -16,7 +16,8 @@ class JvmDiscriminator extends AbstractDiscriminator[ILoggingEvent] {
   var jvmName: String = _
 
   override def start() = {
-    val pid = _root_.system.pid.toInt
+//    val pid = _root_.system.pid.toInt
+    val pid = ProcessHandle.current.pid
     jvmName = JvmDiscriminator.jvmName(pid).getOrElse("application")
     started = true
   }
@@ -29,7 +30,7 @@ class JvmDiscriminator extends AbstractDiscriminator[ILoggingEvent] {
 object JvmDiscriminator {
   val regex = """.*org\.scalatest\.tools\.Runner -s .+(Jvm\d+).*""".r
 
-  def jvmName(pid: Int) = {
+  def jvmName(pid: Long) = {
     val vmID    = new VmIdentifier("//" + pid + "?mode=r")
     val mh      = MonitoredHost.getMonitoredHost("localhost")
     val vm      = mh.getMonitoredVm(vmID)

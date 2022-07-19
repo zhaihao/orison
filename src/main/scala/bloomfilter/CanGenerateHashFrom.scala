@@ -9,26 +9,23 @@ package bloomfilter
 import hashing.MurmurHash3Generic
 import unsafe._
 
+import java.lang.reflect.Field
+
 trait CanGenerateHashFrom[From] {
   def generateHash(from: From): Long
 }
 
 object CanGenerateHashFrom {
-
   implicit case object CanGenerateHashFromLong extends CanGenerateHashFrom[Long] {
-    override def generateHash(from: Long): Long =
-      MurmurHash3Generic.fMix64(from)
+    override def generateHash(from: Long): Long = MurmurHash3Generic.fmix64(from)
   }
 
   implicit case object CanGenerateHashFromByteArray extends CanGenerateHashFrom[Array[Byte]] {
-    override def generateHash(from: Array[Byte]): Long =
-      MurmurHash3Generic.murmurhash3_x64_64(from, 0, from.length, 0)
+    override def generateHash(from: Array[Byte]): Long = MurmurHash3Generic.murmurhash3_x64_64(from, 0, from.length, 0)
   }
 
-  implicit case object CanGenerateHashFromString extends CanGenerateHashFrom[String] {
-
-    private val valueOffset =
-      unsafe.objectFieldOffset(classOf[String].getDeclaredField("value"))
+  case object CanGenerateHashFromString extends CanGenerateHashFrom[String] {
+    private val valueOffset = unsafe.objectFieldOffset(stringValueField)
 
     override def generateHash(from: String): Long = {
       val value = unsafe.getObject(from, valueOffset).asInstanceOf[Array[Char]]
@@ -36,4 +33,18 @@ object CanGenerateHashFrom {
     }
   }
 
+  case object CanGenerateHashFromStringByteArray extends CanGenerateHashFrom[String] {
+    private val valueOffset = unsafe.objectFieldOffset(stringValueField)
+
+    override def generateHash(from: String): Long = {
+      val value = unsafe.getObject(from, valueOffset).asInstanceOf[Array[Byte]]
+      MurmurHash3Generic.murmurhash3_x64_64(value, 0, from.length, 0)
+    }
+  }
+
+  private val stringValueField: Field = classOf[String].getDeclaredField("value")
+  implicit val canGenerateHashFromString: CanGenerateHashFrom[String] = {
+    if (stringValueField.getType.getComponentType == java.lang.Byte.TYPE) CanGenerateHashFromStringByteArray
+    else CanGenerateHashFromString
+  }
 }

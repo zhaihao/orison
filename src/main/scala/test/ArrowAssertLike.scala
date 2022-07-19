@@ -28,11 +28,11 @@ trait ArrowAssertLike extends TripleEquals {
 
     // fast pass test
     // for async future.map(_ >>> ())
-    def >>> = Succeeded
+    def |+ = Succeeded
 
     // fast fail test
     // for async future.map(_ !>> ())
-    def !>>(implicit pos: source.Position) = Failed.apply()(pos)
+    def |-(implicit pos: source.Position) = Failed.apply()(pos)
   }
 
 }
