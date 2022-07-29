@@ -1,5 +1,7 @@
 import com.typesafe.scalalogging.Logger
 
+import scala.annotation.tailrec
+
 /** package
   *
   * @author
@@ -16,4 +18,35 @@ package object util {
     log.debug(label + " took " + (elapsed / 1e6) + " ms")
     result
   }
+
+  @tailrec
+  def retryErr[A](times: Int = 3, delay: Long = 100)(f: => A)(g: PartialFunction[Throwable, Any]): A = {
+    try {
+      f
+    } catch {
+      case e: Exception =>
+        g(e)
+        if (times == 1 ) throw e
+        else {
+          Thread.sleep(delay)
+          retryErr(times - 1, delay)(f)(g)
+        }
+    }
+  }
+
+  @tailrec
+  def retry[A](times: Int = 3, delay: Long = 100)(f: => A): A = {
+    try {
+      f
+    } catch {
+      case e: Exception =>
+        if (times == 1) throw e
+        else {
+          Thread.sleep(delay)
+          retry(times - 1, delay)(f)
+        }
+
+    }
+  }
+
 }
