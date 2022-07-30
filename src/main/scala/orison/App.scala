@@ -14,7 +14,6 @@ import config.HConfig
 import syntax.string._
 import console.Colors._
 import scala.collection.mutable.ListBuffer
-import scala.compat.Platform.currentTime
 import squants.experimental.formatter.DefaultFormatter
 import squants.experimental.formatter.syntax._
 import squants.experimental.unitgroups.si.expanded.time.ExpandedSiTimes

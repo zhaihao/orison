@@ -8,7 +8,7 @@
 package test
 
 import org.scalatest._
-import system._
+import sys._
 
 import scala.sys.process._
 

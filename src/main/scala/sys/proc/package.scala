@@ -5,7 +5,7 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-package system
+package sys
 import scala.sys.process.{Process, ProcessLogger}
 import scala.util.Properties
 

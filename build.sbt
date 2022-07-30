@@ -30,5 +30,6 @@ libraryDependencies ++= Seq(typesafe_config,
                             argon2,
                             json4s,
                             jbcrypt,
+                            oshi,
                             "org.scala-lang" % "scala-compiler" % scalaVersion.value
 )
