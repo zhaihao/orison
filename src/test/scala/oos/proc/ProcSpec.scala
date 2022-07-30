@@ -5,8 +5,8 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-package sys.proc
-import sys._
+package oos.proc
+import oos._
 import test.BaseSpec
 
 import scala.sys.process.ProcessLogger

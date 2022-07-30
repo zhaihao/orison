@@ -5,7 +5,7 @@
  * Please visit <http://ooon.me> or mail to zhaihao@ooon.me
  */
 
-package sys
+package oos
 
 import oshi.SystemInfo
 import squants.experimental.formatter.DefaultFormatter

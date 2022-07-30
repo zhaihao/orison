@@ -5,7 +5,7 @@
  * Please visit <http://ooon.me> or mail to zhaihao@ooon.me
  */
 
-package sys.info
+package oos.info
 
 import com.typesafe.scalalogging.StrictLogging
 import test.BaseSpec

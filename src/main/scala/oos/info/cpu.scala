@@ -5,7 +5,7 @@
  * Please visit <http://ooon.me> or mail to zhaihao@ooon.me
  */
 
-package sys.info
+package oos.info
 
 import oshi.util.Util
 
@@ -21,14 +21,14 @@ import scala.concurrent.duration.{Duration, DurationInt}
 object cpu {
 
   private[cpu] class Usage(
-      us: Double,
-      ni: Double,
-      sy: Double,
-      id: Double,
-      wa: Double,
-      hi: Double,
-      si: Double,
-      st: Double
+      val us: Double,
+      val ni: Double,
+      val sy: Double,
+      val id: Double,
+      val wa: Double,
+      val hi: Double,
+      val si: Double,
+      val st: Double
   ) {
     override def toString: String =
       f"%%Cpu: ${us * 100}%2.2f%% us, ${sy * 100}%2.2f%% sy, ${ni * 100}%2.2f%% ni, ${id * 100}%2.2f%% id, ${wa * 100}%2.2f%% wa, ${hi * 100}%2.2f%% hi, ${si * 100}%2.2f%% si, ${st * 100}%2.2f%% st"
@@ -37,8 +37,6 @@ object cpu {
   private[cpu] class Load(m1: Double, m2: Double, m3: Double) {
     override def toString: String = f"Load average: $m1%2.2f, $m2%2.2f, $m3%2.2f"
   }
-
-
 
   def number = processor.getPhysicalProcessorCount
 

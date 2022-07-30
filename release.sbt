@@ -4,10 +4,12 @@ import sbtrelease.ReleaseStateTransformations._
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / versionScheme     := Some("early-semver")
 
-githubOwner       := "zhaihao"
-githubRepository  := "orison"
-publishMavenStyle := true
-licenses          := Seq("MPL2" -> url("https://www.mozilla.org/en-US/MPL/2.0/"))
+publishConfiguration      := publishConfiguration.value.withOverwrite(true)
+publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
+githubOwner               := "zhaihao"
+githubRepository          := "orison"
+publishMavenStyle         := true
+licenses                  := Seq("MPL2" -> url("https://www.mozilla.org/en-US/MPL/2.0/"))
 
 releaseCrossBuild           := true
 releaseIgnoreUntrackedFiles := true
