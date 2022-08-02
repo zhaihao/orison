@@ -6,6 +6,7 @@ ThisBuild / versionScheme     := Some("early-semver")
 
 publishConfiguration      := publishConfiguration.value.withOverwrite(true)
 publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
+githubTokenSource         := TokenSource.Environment("PKG_TOKEN")
 githubOwner               := "zhaihao"
 githubRepository          := "orison"
 publishMavenStyle         := true
