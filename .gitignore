@@ -2,6 +2,11 @@
 .idea/*
 !.idea/dictionaries/
 !.idea/dictionaries/zhaihao.xml
+!.idea/copyright/
+!.idea/copyright/ooon.xml
+!.idea/copyright/profiles_settings.xml
+
+
 target
 *.sc
 .DS_Store

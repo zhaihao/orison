@@ -23,7 +23,7 @@ import scala.util.Try
   *   18:24
   */
 class FutureSpec extends BaseSpec {
-  import syntax.feature._
+  import syntax.future._
   "await" in {
     implicit val timeout = 3.seconds
     Future { 1 + 1 }.valued    ==> 2
