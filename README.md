@@ -2,7 +2,7 @@
 
 scala common lib
 
-[ciImg]: https://github.com/zhaihao/orison/actions/workflows/scala.yml/badge.svg
+[ciImg]: https://github.com/zhaihao/orison/actions/workflows/ci.yml/badge.svg
 [ciLink]: https://github.com/zhaihao/orison/actions
 
 [versionImg]: https://img.shields.io/github/v/tag/zhaihao/orison?label=Version
