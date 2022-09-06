@@ -10,14 +10,10 @@ pull_request_rules:
   - name: merge scala-steward's PRs
     conditions:
       - author=zhaihao
-      - -title~=^BUILD:\sUpdate\sscala-
-      - status-success=Travis CI - Pull Request
-      # or, using the legacy travis-ci.org service:
-      # - status-success=continuous-integration/travis-ci/pr
+      - check-success=TestOnMaster # github action 的check 是 job 的名字
     actions:
       merge:
         method: squash
-        strict: true
   - name: delete head branch after merge
     conditions:
       - merged

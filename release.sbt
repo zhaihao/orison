@@ -14,8 +14,8 @@ licenses                  := Seq("MPL2" -> url("https://www.mozilla.org/en-US/MP
 
 releaseCrossBuild           := true
 releaseIgnoreUntrackedFiles := true
-releaseCommitMessage        := s"🔖 release ${(ThisBuild / version).value}"
-releaseNextCommitMessage    := s"🚧 prepare ${(ThisBuild / version).value}"
+releaseCommitMessage        := s"release: ${(ThisBuild / version).value}"
+releaseNextCommitMessage    := s"prepare: ${(ThisBuild / version).value}"
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
