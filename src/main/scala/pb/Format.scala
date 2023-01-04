@@ -42,6 +42,7 @@ trait UnicodeBarFormat extends BarFormat {
 
 trait Scaling {
   def scale(num: Double): String
+  def scaleRate(num: Double) = f"$num%.3f"
 }
 
 trait OrdersOfMagnitudeScaling extends Scaling {
@@ -66,7 +67,7 @@ trait BinaryScaling extends OrdersOfMagnitudeScaling {
   override protected val divisor = 1024
 }
 
-trait NoFormatScaling extends Scaling{
+trait NoFormatScaling extends Scaling {
   override def scale(num: Double): String = {
     num.toInt.toString
   }
@@ -126,7 +127,7 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
   }
 
 //  override def scale(num: Double):      String = f"$num%.1f"
-  private def formatRate(rate: Double): String = s"${scale(rate)} $unit/s"
+  private def formatRate(rate: Double): String = s"${scaleRate(rate)} $unit/s"
 }
 
 trait Updater {
@@ -197,5 +198,5 @@ object Bar {
 
   def apply(barFormatter: BarFormatter): Bar = new Bar(UnknownTotal, barFormatter)
 
-  def apply(): Bar = new Bar(UnknownTotal, new BarFormatter() with NoFormatScaling )
+  def apply(): Bar = new Bar(UnknownTotal, new BarFormatter() with NoFormatScaling)
 }
