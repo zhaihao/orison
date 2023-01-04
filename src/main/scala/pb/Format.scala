@@ -92,8 +92,10 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
 
   def format(n: Int, elapsed: Long): String = rightBar(n, elapsed)
 
+  private val zoneId = ZoneId.of("UTC")
+
   private def formatInterval(int: Long): String = {
-    val inst = Instant.ofEpochMilli(int).atZone(ZoneId.systemDefault()).toLocalDateTime
+    val inst = Instant.ofEpochMilli(int).atZone(zoneId).toLocalDateTime
     if (TimeUnit.MILLISECONDS.toHours(int) >= 1) longFmt.format(inst) else shortFmt.format(inst)
   }
 
