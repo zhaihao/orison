@@ -26,7 +26,7 @@ package object util {
     } catch {
       case e: Exception =>
         g(e)
-        if (times == 1 ) throw e
+        if (times == 1) throw e
         else {
           Thread.sleep(delay)
           retryErr(times - 1, delay)(f)(g)
@@ -46,6 +46,14 @@ package object util {
           retry(times - 1, delay)(f)
         }
 
+    }
+  }
+
+  @tailrec
+  def repeat[A](times: Int)(logic: => A): Unit = {
+    times match {
+      case 0 =>
+      case _ => logic; repeat(times - 1)(logic)
     }
   }
 
