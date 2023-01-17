@@ -1,5 +1,6 @@
 package hash
 
+import com.typesafe.scalalogging.StrictLogging
 import test.BaseSpec
 
 import java.nio.ByteBuffer
@@ -13,7 +14,7 @@ import java.nio.channels.Channels
   * @since 2021/3/30
   *   4:15 下午
   */
-class HashingSpec extends BaseSpec {
+class HashingSpec extends BaseSpec with StrictLogging {
 
   "fast hash" in {
     // hash a long
@@ -49,5 +50,14 @@ class HashingSpec extends BaseSpec {
     "md5" in {
       "hello".md5.hex ==> "5d41402abc4b2a76b9719d911017c592"
     }
+  }
+
+  /**
+    * argon2 第一次初始化比较慢
+    */
+  "argon2" in {
+    val str = Argon2.hash("wow")
+    logger.info(str)
+    Argon2.verify(str, "wow") ==> true
   }
 }
