@@ -21,7 +21,6 @@ import javax.crypto.{Cipher, SecretKeyFactory}
 class AESImpl(
     version:            Int,
     transforms:         String,
-    saltLength:         Int,
     secretKeyAlgorithm: String,
     salt:               Option[String] = Some("foewoe7EishovooRaiz1eeng0aa9aid7")
 ) {
@@ -29,9 +28,8 @@ class AESImpl(
   private def getCipher(mode: Int, password: String) = {
     val iv         = new IvParameterSpec(new Array[Byte](16))
     val spec       = new PBEKeySpec(password.toCharArray, salt.get.getBytes, 65536, version)
-    val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+    val keyFactory = SecretKeyFactory.getInstance(secretKeyAlgorithm)
     val key        = new SecretKeySpec(keyFactory.generateSecret(spec).getEncoded, "AES")
-    println(key.getEncoded.length)
     val cipher = Cipher.getInstance(transforms)
     cipher.init(mode, key, iv)
     cipher
