@@ -9,6 +9,7 @@
     <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
     <conversionRule conversionWord="coloredLevel" converterClass="log.logback.ColoredLevel"/>
+    <conversionRule conversionWord="coloredLogger" converterClass="log.logback.ColoredLogger"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>false</append>
