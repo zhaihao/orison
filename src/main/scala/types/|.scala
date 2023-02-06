@@ -9,6 +9,7 @@ package types
 
 import scala.language.implicitConversions
 import scala.languageFeature.higherKinds
+
 /**
   * |
   *

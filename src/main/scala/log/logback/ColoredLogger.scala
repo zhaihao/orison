@@ -1,11 +1,6 @@
 package log.logback
 
-import ch.qos.logback.classic.pattern.{
-  Abbreviator,
-  ClassNameOnlyAbbreviator,
-  ClassicConverter,
-  TargetLengthBasedClassNameAbbreviator
-}
+import ch.qos.logback.classic.pattern.{Abbreviator, ClassNameOnlyAbbreviator, ClassicConverter, TargetLengthBasedClassNameAbbreviator}
 import ch.qos.logback.classic.spi.{CallerData, ILoggingEvent}
 import console.Colors
 

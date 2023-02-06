@@ -33,7 +33,7 @@ abstract class PreviewLike {
   def preview(path: String, foreground: Boolean): Unit = System.getProperty("os.name").toLowerCase match {
     case name if name.contains("os x")    => if (foreground) s"open $path" ! else s"open -g $path" !
     case name if name.contains("windows") => s"start /b /max $path" !
-    case _ => throw new Exception(s"Preview function do not support your os: ${System.getProperty("os.name")}")
+    case _                                => throw new Exception(s"Preview function do not support your os: ${System.getProperty("os.name")}")
   }
 
 }

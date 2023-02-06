@@ -18,9 +18,7 @@ import scala.reflect.ClassTag
   * @since 2021/3/30
   *   5:29 下午
   */
-class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](initialCapacity: Int)
-    extends Iterable[(K, V)]
-    with Serializable {
+class OpenHashMap[K: ClassTag, @specialized(Long, Int, Double) V: ClassTag](initialCapacity: Int) extends Iterable[(K, V)] with Serializable {
 
   def this() = this(64)
 

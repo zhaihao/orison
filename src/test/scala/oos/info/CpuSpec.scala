@@ -25,7 +25,7 @@ class CpuSpec extends BaseSpec with StrictLogging {
     logger.info(s"CPU核心数: ${cpu.number}")
   }
   "cpu 使用率" in {
-    cpu.usage(100.millis).take(5)foreach(u => logger.info(u.toString))
+    cpu.usage(100.millis).take(5) foreach (u => logger.info(u.toString))
   }
   "cpu load average" in {
     cpu.load(100.millis).take(5).foreach(l => logger.info(l.toString))

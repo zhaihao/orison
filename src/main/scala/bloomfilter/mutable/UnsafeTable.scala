@@ -63,8 +63,7 @@ trait UnsafeTable {
 object UnsafeTable {
 
   @SerialVersionUID(1L)
-  private class SerializedForm(bytesPerBucket: Int, numberOfBuckets: Long, @transient var unsafeTable: UnsafeTable)
-      extends Serializable {
+  private class SerializedForm(bytesPerBucket: Int, numberOfBuckets: Long, @transient var unsafeTable: UnsafeTable) extends Serializable {
     private def writeObject(oos: ObjectOutputStream): Unit = {
       oos.defaultWriteObject()
       unsafeTable.writeTo(oos)

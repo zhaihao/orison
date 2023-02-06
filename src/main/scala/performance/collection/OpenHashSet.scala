@@ -27,12 +27,9 @@ import scala.reflect.{ClassTag, classTag}
   * It uses quadratic probing with a power-of-2 hash table size, which is guaranteed to explore all spaces for each key
   * (see http://en.wikipedia.org/wiki/Quadratic_probing).
   */
-class OpenHashSet[@specialized(Long, Int, Double, Float) T: ClassTag](initialCapacity: Int, loadFactor: Double)
-    extends Serializable {
+class OpenHashSet[@specialized(Long, Int, Double, Float) T: ClassTag](initialCapacity: Int, loadFactor: Double) extends Serializable {
 
-  require(initialCapacity <= OpenHashSet.MAX_CAPACITY,
-          s"Can't make capacity bigger than ${OpenHashSet.MAX_CAPACITY} elements"
-  )
+  require(initialCapacity <= OpenHashSet.MAX_CAPACITY, s"Can't make capacity bigger than ${OpenHashSet.MAX_CAPACITY} elements")
   require(initialCapacity >= 0, "Invalid initial capacity")
   require(loadFactor < 1.0, "Load factor must be less than 1.0")
   require(loadFactor > 0.0, "Load factor must be greater than 0.0")

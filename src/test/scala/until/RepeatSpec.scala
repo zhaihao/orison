@@ -17,9 +17,9 @@ import test.BaseSpec
   * @version 1.0
   * @since 2023/1/17 15:36
   */
-class RepeatSpec extends BaseSpec with StrictLogging{
+class RepeatSpec extends BaseSpec with StrictLogging {
   "repeat" in {
-    util.repeat(3){
+    util.repeat(3) {
       logger.info("repeat test.")
     }
   }

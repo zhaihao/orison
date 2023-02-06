@@ -20,7 +20,7 @@ import scala.concurrent.duration.DurationInt
   * @version 1.0
   * @since 2022/7/30 02:02
   */
-class MemSpec extends BaseSpec with StrictLogging{
+class MemSpec extends BaseSpec with StrictLogging {
   "内存" in {
     logger.info(s"总内存：${mem.total}")
   }

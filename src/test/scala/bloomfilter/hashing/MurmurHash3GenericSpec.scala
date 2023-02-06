@@ -23,10 +23,6 @@ class MurmurHash3GenericSpec extends BaseSpec {
   }
 
   "128" in {
-    MurmurHash3Generic.murmurhash3_x64_128(values,
-                                           0,
-                                           values.length,
-                                           0
-    ) ==> (-2132731757477280140L, -9050492812920352835L)
+    MurmurHash3Generic.murmurhash3_x64_128(values, 0, values.length, 0) ==> (-2132731757477280140L, -9050492812920352835L)
   }
 }
