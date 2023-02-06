@@ -21,7 +21,7 @@ object Dependencies extends AutoPlugin {
   object autoImport {
     lazy val scalatest       = "org.scalatest"     %% "scalatest-freespec"     % "3.2.12" % Provided
     lazy val scalatest_must  = "org.scalatest"     %% "scalatest-mustmatchers" % "3.2.12" % Provided
-    lazy val play_json       = "com.typesafe.play" %% "play-json"              % "2.9.2"  % Provided
+    lazy val play_json       = "com.typesafe.play" %% "play-json"              % "2.9.4"  % Provided
     lazy val os_lib          = "com.lihaoyi"       %% "os-lib"                 % "0.8.1"  % Provided
     lazy val fastparse       = "com.lihaoyi"       %% "fastparse"              % "2.3.3"  % Provided
     lazy val json4s          = "org.json4s"        %% "json4s-jackson"         % "4.0.5"  % Provided
