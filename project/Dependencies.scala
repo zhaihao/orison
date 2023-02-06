@@ -38,9 +38,9 @@ object Dependencies extends AutoPlugin {
 
     lazy val slick = Seq(
       "com.typesafe.slick"  %% "slick"              % "3.3.3"  % Provided,
-      "com.github.tminglei" %% "slick-pg"           % "0.20.3" % Provided,
-      "com.github.tminglei" %% "slick-pg_play-json" % "0.20.3" % Provided,
-      "com.github.tminglei" %% "slick-pg_jts_lt"    % "0.20.3" % Provided
+      "com.github.tminglei" %% "slick-pg"           % "0.20.4" % Provided,
+      "com.github.tminglei" %% "slick-pg_play-json" % "0.20.4" % Provided,
+      "com.github.tminglei" %% "slick-pg_jts_lt"    % "0.20.4" % Provided
     )
 
     lazy val log = Seq(
