@@ -1,5 +1,5 @@
 import sbt.Keys.scalacOptions
-scalaVersion := "2.13.8"
+scalaVersion := "2.13.10"
 organization := "me.ooon"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
