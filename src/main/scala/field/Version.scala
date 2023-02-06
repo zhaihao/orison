@@ -16,11 +16,11 @@ object Version {
   }
 
   object Bump {
-    case object Major  extends Bump { def bump = _.bumpMajor }
-    case object Minor  extends Bump { def bump = _.bumpMinor }
+    case object Major  extends Bump { def bump = _.bumpMajor  }
+    case object Minor  extends Bump { def bump = _.bumpMinor  }
     case object Bugfix extends Bump { def bump = _.bumpBugfix }
-    case object Nano   extends Bump { def bump = _.bumpNano }
-    case object Next   extends Bump { def bump = _.bump }
+    case object Nano   extends Bump { def bump = _.bumpNano   }
+    case object Next   extends Bump { def bump = _.bump       }
 
     val default = Next
   }
@@ -83,9 +83,7 @@ case class Version(major: Int, subversions: Seq[Int], qualifier: Option[String])
   override def compare(that: Version) = {
     val size = subversions.size
     require(size == that.subversions.size, "to compare version must have same pattern")
-    require(qualifier.isEmpty || qualifier.get.toLowerCase() == "-SNAPSHOT",
-            "to compare version with qualifier only support snapshot"
-    )
+    require(qualifier.isEmpty || qualifier.get.toLowerCase() == "-SNAPSHOT", "to compare version with qualifier only support snapshot")
 
     if (major < that.major) -1
     else if (major > that.major) 1

@@ -30,7 +30,7 @@ class AESImpl(
     val spec       = new PBEKeySpec(password.toCharArray, salt.get.getBytes, 65536, version)
     val keyFactory = SecretKeyFactory.getInstance(secretKeyAlgorithm)
     val key        = new SecretKeySpec(keyFactory.generateSecret(spec).getEncoded, "AES")
-    val cipher = Cipher.getInstance(transforms)
+    val cipher     = Cipher.getInstance(transforms)
     cipher.init(mode, key, iv)
     cipher
   }

@@ -23,7 +23,7 @@ trait Syntax {
   object string  extends ToStringOps
   object config  extends ToConfigOps
   object numeric extends ToNumericOps
-  object future extends ToFutureOps
+  object future  extends ToFutureOps
 }
 
 // 批量 import

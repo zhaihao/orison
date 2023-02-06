@@ -10,6 +10,7 @@ package oos
 import oshi.SystemInfo
 import squants.experimental.formatter.DefaultFormatter
 import squants.experimental.unitgroups.information.IECInformation
+
 /**
   * package
   *
@@ -18,8 +19,8 @@ import squants.experimental.unitgroups.information.IECInformation
   * @since 2022/7/30 01:51
   */
 package object info {
-  private val si = new SystemInfo()
-  private[info] val processor = si.getHardware.getProcessor
-  private[info] val memory = si.getHardware.getMemory
+  private val si                                  = new SystemInfo()
+  private[info] val processor                     = si.getHardware.getProcessor
+  private[info] val memory                        = si.getHardware.getMemory
   implicit private[info] val informationFormatter = new DefaultFormatter(IECInformation)
 }

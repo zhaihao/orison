@@ -13,8 +13,8 @@ import bloomfilter.mutable
 import bloomfilter.mutable.UnsafeBitArray
 
 @SerialVersionUID(1L)
-class BloomFilter[T] private (val numberOfBits: Long, val numberOfHashes: Int, private val bits: UnsafeBitArray)(
-    implicit canGenerateHash:                   bloomfilter.CanGenerate128HashFrom[T]
+class BloomFilter[T] private (val numberOfBits: Long, val numberOfHashes: Int, private val bits: UnsafeBitArray)(implicit
+    canGenerateHash:                            bloomfilter.CanGenerate128HashFrom[T]
 ) extends Serializable {
 
   def this(numberOfBits: Long, numberOfHashes: Int)(implicit canGenerateHash: bloomfilter.CanGenerate128HashFrom[T]) = {

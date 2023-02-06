@@ -18,9 +18,9 @@ import test.BaseSpec
   * @version 1.0
   * @since 2023/1/4 22:52
   */
-object BarSpec extends StrictLogging{
+object BarSpec extends StrictLogging {
   def main(args: Array[String]): Unit = {
-    val its = 100
+    val its      = 100
     val progress = Bar(its)
     progress meter { updater =>
       (1 to its).foreach { i =>

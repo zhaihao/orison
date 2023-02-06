@@ -143,9 +143,7 @@ case class Email(
     val attachmentPart = new MimeBodyPart
     attachmentPart.setDataHandler(new DataHandler(datasource))
     attachmentPart.setFileName(name)
-    attachmentPart.setHeader("Content-Type",
-                             datasource.getContentType + "; filename=" + datasourceName + "; name=" + datasourceName
-    )
+    attachmentPart.setHeader("Content-Type", datasource.getContentType + "; filename=" + datasourceName + "; name=" + datasourceName)
     attachmentPart.setContentID("<" + datasourceName + ">")
     attachmentPart.setDisposition(disposition.value + "; size=0")
 
@@ -197,8 +195,7 @@ case class Attachment(name: String, datasource: DataSource, disposition: Disposi
   def inline = copy(disposition = Disposition.Inline)
 }
 
-case class ByteArrayDataSource(data: Array[Byte], mimeType: String)
-    extends javax.mail.util.ByteArrayDataSource(data, mimeType)
+case class ByteArrayDataSource(data: Array[Byte], mimeType: String) extends javax.mail.util.ByteArrayDataSource(data, mimeType)
 
 object Attachment extends ((String, DataSource, Disposition) => Attachment) {
 

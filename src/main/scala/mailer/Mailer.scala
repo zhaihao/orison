@@ -76,7 +76,7 @@ object Mailer {
         _ = transport.connect()
         // save the try instead of extracting the value to make sure we can close the transport
         possibleResult = Try(code(transport))
-        _ <- Try(transport.close()) recoverWith createTransportCloseException(possibleResult)
+        _      <- Try(transport.close()) recoverWith createTransportCloseException(possibleResult)
         result <- possibleResult
       } yield result
 

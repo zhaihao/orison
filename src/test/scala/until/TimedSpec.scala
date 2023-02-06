@@ -18,10 +18,10 @@ import util.timed
   * @version 1.0
   * @since 2023/1/17 15:32
   */
-class TimedSpec extends BaseSpec with StrictLogging{
+class TimedSpec extends BaseSpec with StrictLogging {
 
   "timed" in {
-    timed(logger,"timed"){
+    timed(logger, "timed") {
       Thread.sleep(10)
     }
   }
