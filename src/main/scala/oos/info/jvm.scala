@@ -24,7 +24,7 @@ object jvm {
   private[jvm] class Usage(val total: Long, val used: Long, val free: Long) {
     override def toString: String =
       f"Mem: ${total.bytes.inBestUnit.rounded(3)} total, ${free.bytes.inBestUnit.rounded(3)} free, ${used.bytes.inBestUnit
-        .rounded(3)} used(${used * 100.0 / total}%2.2f%%)"
+          .rounded(3)} used(${used * 100.0 / total}%2.2f%%)"
   }
 
   private val runtime = Runtime.getRuntime

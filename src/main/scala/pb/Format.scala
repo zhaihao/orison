@@ -41,7 +41,7 @@ trait UnicodeBarFormat extends BarFormat {
 }
 
 trait Scaling {
-  def scale(num: Double): String
+  def scale(num:     Double): String
   def scaleRate(num: Double) = f"$num%.3f"
 }
 

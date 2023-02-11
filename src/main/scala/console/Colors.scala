@@ -53,24 +53,24 @@ object Colors {
 //  def text(color: Int, str: String)       = if (isANSISupported) "\u001b[38;5;" + color + "m" + str + RESET else str
 //  def background(color: Int, str: String) = if (isANSISupported) "\u001b[48;5;" + color + "m" + str + RESET else str
 
-  def red(str: String):     String = RED + str + RESET
-  def blue(str: String):    String = BLUE + str + RESET
-  def cyan(str: String):    String = CYAN + str + RESET
-  def green(str: String):   String = GREEN + str + RESET
+  def red(str:     String): String = RED + str + RESET
+  def blue(str:    String): String = BLUE + str + RESET
+  def cyan(str:    String): String = CYAN + str + RESET
+  def green(str:   String): String = GREEN + str + RESET
   def magenta(str: String): String = MAGENTA + str + RESET
-  def white(str: String):   String = WHITE + str + RESET
-  def black(str: String):   String = BLACK + str + RESET
-  def yellow(str: String):  String = YELLOW + str + RESET
+  def white(str:   String): String = WHITE + str + RESET
+  def black(str:   String): String = BLACK + str + RESET
+  def yellow(str:  String): String = YELLOW + str + RESET
 
-  def RB_RED(str: String):    String = "\u001b[38;5;196m" + str + RESET
+  def RB_RED(str:    String): String = "\u001b[38;5;196m" + str + RESET
   def RB_ORANGE(str: String): String = "\u001b[38;5;202m" + str + RESET
   def RB_YELLOW(str: String): String = "\u001b[38;5;226m" + str + RESET
-  def RB_GREEN(str: String):  String = "\u001b[38;5;082m" + str + RESET
-  def RB_BLUE(str: String):   String = "\u001b[38;5;021m" + str + RESET
+  def RB_GREEN(str:  String): String = "\u001b[38;5;082m" + str + RESET
+  def RB_BLUE(str:   String): String = "\u001b[38;5;021m" + str + RESET
   def RB_INDIGO(str: String): String = "\u001b[38;5;093m" + str + RESET
   def RB_VIOLET(str: String): String = "\u001b[38;5;163m" + str + RESET
 
-  def text(color: Int, str: String)       = "\u001b[38;5;" + color + "m" + str + RESET
+  def text(color:       Int, str: String) = "\u001b[38;5;" + color + "m" + str + RESET
   def background(color: Int, str: String) = "\u001b[48;5;" + color + "m" + str + RESET
 
   def colorTable = {

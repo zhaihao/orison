@@ -10,7 +10,7 @@ import bloomfilter.CanGenerateHashFrom
 
 @SerialVersionUID(1L)
 class CuckooFilter[T](numberOfBuckets: Long, numberOfBitsPerItem: Int, private val table: UnsafeTable)(implicit
-    canGenerateHash:                   CanGenerateHashFrom[T]
+    canGenerateHash: CanGenerateHashFrom[T]
 ) extends Serializable {
 
   def this(numberOfBuckets: Long, numberOfBitsPerItem: Int)(implicit canGenerateHash: CanGenerateHashFrom[T]) = {

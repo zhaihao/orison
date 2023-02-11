@@ -129,7 +129,7 @@ private[syntax] object CForImpl {
   }
 
   def cforMacro[A](
-      c:  Context
+      c: Context
   )(init: c.Expr[A])(test: c.Expr[A => Boolean], next: c.Expr[A => A])(body: c.Expr[A => Unit]): c.Expr[Unit] = {
 
     import c.universe._
@@ -261,7 +261,7 @@ private[syntax] object CForImpl {
 
   def cforRange2Macro(
       c: Context
-  )(r1:  c.Expr[Range], r2: c.Expr[Range])(body: c.Expr[(Int, Int) => Unit]): c.Expr[Unit] = {
+  )(r1: c.Expr[Range], r2: c.Expr[Range])(body: c.Expr[(Int, Int) => Unit]): c.Expr[Unit] = {
 
     import c.universe._
     c.Expr[Unit](q"cforRange($r1)(i => cforRange($r2)(j => $body(i, j)))")
