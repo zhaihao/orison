@@ -27,7 +27,7 @@ object MurmurHash3Generic {
   }
 
   def murmurhash3_x64_128[From](key: From, offset: Int, len: Int, seed: Int)(implicit
-      cgdf:                          CanGetDataFrom[From]
+      cgdf: CanGetDataFrom[From]
   ): (Long, Long) = {
     var h1: Long = seed & 0x00000000ffffffffL
     var h2: Long = seed & 0x00000000ffffffffL
@@ -93,7 +93,7 @@ object MurmurHash3Generic {
   }
 
   def murmurhash3_x64_64[From](key: From, offset: Int, len: Int, seed: Int)(implicit
-      cgdf:                         CanGetDataFrom[From]
+      cgdf: CanGetDataFrom[From]
   ): Long = {
     var h1: Long = seed & 0x00000000ffffffffL
     var h2: Long = seed & 0x00000000ffffffffL

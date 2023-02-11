@@ -8,15 +8,15 @@ trait WithAlgo[A] {
 
   protected def withAlgo(algo: Algo): A
 
-  def md2                      = withAlgo(new Algo(() => new MessageDigest("MD2")))
-  def md5                      = withAlgo(new Algo(() => new MessageDigest("MD5")))
-  def sha1                     = withAlgo(new Algo(() => new MessageDigest("SHA-1")))
-  def sha224                   = withAlgo(new Algo(() => new MessageDigest("SHA-224")))
-  def sha256                   = withAlgo(new Algo(() => new MessageDigest("SHA-256")))
-  def sha384                   = withAlgo(new Algo(() => new MessageDigest("SHA-384")))
-  def sha512                   = withAlgo(new Algo(() => new MessageDigest("SHA-512")))
-  def crc32                    = withAlgo(new Algo(() => new CRC32Digest))
-  def bcrypt                   = withAlgo(new Algo(() => new BCryptDigest(10)))
+  def md2    = withAlgo(new Algo(() => new MessageDigest("MD2")))
+  def md5    = withAlgo(new Algo(() => new MessageDigest("MD5")))
+  def sha1   = withAlgo(new Algo(() => new MessageDigest("SHA-1")))
+  def sha224 = withAlgo(new Algo(() => new MessageDigest("SHA-224")))
+  def sha256 = withAlgo(new Algo(() => new MessageDigest("SHA-256")))
+  def sha384 = withAlgo(new Algo(() => new MessageDigest("SHA-384")))
+  def sha512 = withAlgo(new Algo(() => new MessageDigest("SHA-512")))
+  def crc32  = withAlgo(new Algo(() => new CRC32Digest))
+  def bcrypt = withAlgo(new Algo(() => new BCryptDigest(10)))
   def bcrypt(rounds: Int = 10) = withAlgo(new Algo(() => new BCryptDigest(rounds)))
 
   class HmacBuilder(val key: Array[Byte]) {
@@ -61,10 +61,10 @@ class Algo private[hash] (
   def tap(value: InputStream, codec: Codec): InputStreamTap =
     new InputStreamTap(digest, value)
 
-  def tap(value: InputStream):             InputStreamTap = tap(value, Codec.UTF8)
-  def tap(value: Reader, encoding: Codec): ReaderTap      = new ReaderTap(digest, value, encoding)
-  def tap(value: Reader):                  ReaderTap      = tap(value, Codec.UTF8)
-  def tap(value: Source, encoding: Codec): SourceTap      = new SourceTap(digest, value, encoding)
-  def tap(value: Source):                  SourceTap      = tap(value, Codec.UTF8)
+  def tap(value: InputStream): InputStreamTap = tap(value, Codec.UTF8)
+  def tap(value: Reader, encoding: Codec): ReaderTap = new ReaderTap(digest, value, encoding)
+  def tap(value: Reader): ReaderTap = tap(value, Codec.UTF8)
+  def tap(value: Source, encoding: Codec): SourceTap = new SourceTap(digest, value, encoding)
+  def tap(value: Source): SourceTap = tap(value, Codec.UTF8)
   def foldAble = new FoldAble(digest)
 }

@@ -13,7 +13,7 @@ import bloomfilter.CanGenerateHashFrom
 
 @SerialVersionUID(1L)
 class BloomFilter[T] private (val numberOfBits: Long, val numberOfHashes: Int, private val bits: UnsafeBitArray)(implicit
-    canGenerateHash:                            CanGenerateHashFrom[T]
+    canGenerateHash: CanGenerateHashFrom[T]
 ) extends Serializable {
 
   def this(numberOfBits: Long, numberOfHashes: Int)(implicit canGenerateHash: CanGenerateHashFrom[T]) = {
@@ -81,7 +81,7 @@ class BloomFilter[T] private (val numberOfBits: Long, val numberOfHashes: Int, p
 object BloomFilter {
 
   def apply[T](numberOfItems: Long, falsePositiveRate: Double)(implicit
-      canGenerateHash:        CanGenerateHashFrom[T]
+      canGenerateHash: CanGenerateHashFrom[T]
   ): BloomFilter[T] = {
 
     val nb = optimalNumberOfBits(numberOfItems, falsePositiveRate)
