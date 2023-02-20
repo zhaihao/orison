@@ -10,12 +10,6 @@ dependencyOverrides ++= overrides
 updateConfiguration := updateConfiguration.value.withMissingOk(true)
 
 cancelable.withRank(KeyRanks.Invisible) := true
-Compile / unmanagedJars ~= { uj =>
-  Seq(Attributed.blank(file(System.getProperty("java.home").dropRight(3) + "lib/tools.jar"))) ++ uj
-}
-assembly / assemblyExcludedJars := ((assembly / fullClasspath) map { cp =>
-  cp filter { _.data.getName == "tools.jar" }
-}).value
 
 moduleName         := "orison"
 name               := "orison"
