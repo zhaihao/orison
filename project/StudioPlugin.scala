@@ -23,19 +23,21 @@ object StudioPlugin extends AutoPlugin {
 
   object autoImport {
     val studioTarget = settingKey[File]("mac studio output dir")
+    val isStudio = java.net.InetAddress.getLocalHost.getHostName.contains("Studio")
   }
 
   import autoImport._
 
   override val projectSettings: Seq[Def.Setting[_]] = Seq(
     studioTarget := {
-      if (java.net.InetAddress.getLocalHost.getHostName.contains("Studio")) file(s"/Volumes/RamDisk/IDEA/${name.value}")
+      if (isStudio) file(s"/Volumes/RamDisk/IDEA/${name.value}")
       else baseDirectory.value / "target" // 无法使用 target.value 会造成循环依赖
     },
 
     // give a feed back
     onLoadMessage := {
-      s"""${YELLOW}Running on Studio, output will be set to $MAGENTA${studioTarget.value}$RESET.""".stripMargin
+      if(isStudio) s"""${YELLOW}Running on Studio, output will be set to $MAGENTA${studioTarget.value}$RESET.""".stripMargin
+      else ""
     }
   )
 }
