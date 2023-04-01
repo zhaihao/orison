@@ -23,7 +23,7 @@ object StudioPlugin extends AutoPlugin {
 
   object autoImport {
     val studioTarget = settingKey[File]("mac studio output dir")
-    val isStudio = java.net.InetAddress.getLocalHost.getHostName.contains("Studio")
+    val isStudio     = java.net.InetAddress.getLocalHost.getHostName.contains("Studio")
   }
 
   import autoImport._
@@ -36,7 +36,7 @@ object StudioPlugin extends AutoPlugin {
 
     // give a feed back
     onLoadMessage := {
-      if(isStudio) s"""${YELLOW}Running on Studio, output will be set to $MAGENTA${studioTarget.value}$RESET.""".stripMargin
+      if (isStudio) s"""${YELLOW}Running on Studio, output will be set to $MAGENTA${studioTarget.value}$RESET.""".stripMargin
       else ""
     }
   )

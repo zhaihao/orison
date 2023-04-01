@@ -15,15 +15,16 @@ moduleName         := "orison"
 name               := "orison"
 Test / logBuffered := false
 libraryDependencies ++= Seq(log, java_mail, slick).flatten
-libraryDependencies ++= Seq(typesafe_config,
-                            scalatest,
-                            scalatest_must,
-                            squants,
-                            play_json,
-                            os_lib,
-                            argon2,
-                            json4s,
-                            jbcrypt,
-                            oshi,
-                            "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided
+libraryDependencies ++= Seq(
+  typesafe_config,
+  scalatest,
+  scalatest_must,
+  squants,
+  play_json,
+  os_lib,
+  argon2,
+  json4s,
+  jbcrypt,
+  oshi,
+  "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided
 )
