@@ -6,6 +6,7 @@
  */
 
 package pb
+
 import java.io.PrintStream
 import java.time.format.DateTimeFormatter
 import java.time.{Instant, ZoneId}
@@ -132,24 +133,34 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
   private def formatRate(rate: Double): String = s"${scaleRate(rate)} $unit/s"
 }
 
-trait Updater {
-  def update(): Unit
-}
 
 class Bar private (total: Int, barFormatter: BarFormatter) {
-  private lazy val console = new PrintStream(System.err, true, "UTF-8")
+
+  private lazy val console = new PrintStream(System.out, false, "UTF-8")
   private val renderInterval: Long = 100
 
-  private var startTime: Long = _
+  private def erase = console.print("\u001b[2K")
+
+  private val startTime: Long = 0
   private var n       = 0
   private var lastLen = 0
   private var lastRenderTime: Long = 0
 
   private def now(): Long = TimeUnit.NANOSECONDS.toMillis(System.nanoTime)
 
-  val inc = 1
-  private def update(): Unit = {
-    n += inc
+  private val step = 1
+
+  def update(f: => Any): Unit = {
+    erase
+    f
+    val curTime = now()
+    val elapsed: Long = curTime - startTime
+    render(elapsed)
+    lastRenderTime = curTime
+  }
+
+  def inc(): Unit = {
+    n += step
     val curTime = now()
     if (curTime - lastRenderTime > renderInterval || n == total) {
       val elapsed: Long = curTime - startTime
@@ -165,26 +176,10 @@ class Bar private (total: Int, barFormatter: BarFormatter) {
       barFormatter.format(n, total, elapsed)
     }
     val padding: String = " " * Math.max(lastLen - barLine.length, 0)
-
-    console.print(s"\r$barLine$padding")
+    console.flush()
+    console.print(s"$barLine$padding\r")
 
     lastLen = barLine.length
-  }
-
-  def meter[A](block: Updater => A): Unit = {
-    start()
-    block(update _)
-    stop()
-  }
-
-  private def start(): Unit = {
-    startTime = now()
-    n = 0
-    lastLen = 0
-  }
-
-  private def stop(): Unit = {
-    console.println(" Done.")
   }
 }
 

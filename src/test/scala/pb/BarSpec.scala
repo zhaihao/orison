@@ -8,7 +8,6 @@
 package pb
 
 import com.typesafe.scalalogging.StrictLogging
-import test.BaseSpec
 
 /**
   * BarSpec
@@ -20,13 +19,13 @@ import test.BaseSpec
   */
 object BarSpec extends StrictLogging {
   def main(args: Array[String]): Unit = {
-    val its      = 100
-    val progress = Bar(its)
-    progress meter { updater =>
-      (1 to its).foreach { i =>
-        Thread.sleep(100)
-        updater.update()
-      }
+    val its = 20
+    val bar = Bar(its)
+    (1 to its).foreach { i =>
+      bar.update { logger.info(i.toString) }
+      Thread.sleep(1000)
+      bar.update { logger.debug("====") }
+      bar.inc()
     }
   }
 }

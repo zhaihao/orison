@@ -30,7 +30,7 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%-70(%date{HH:mm:ss.SSS} %coloredLevel %logger{1}\(%line\)) %message %n%xException{10}</pattern>
+            <pattern>%date{HH:mm:ss.SSS} %coloredLevel %logger{1}\(%line\) %message %n%xException{10}</pattern>
         </encoder>
     </appender>
 
@@ -46,7 +46,6 @@
     <root level="DEBUG">
         <!--<appender-ref ref="ASYNC_STDOUT"/>-->
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="FILE"/>
     </root>
 
 </configuration>
