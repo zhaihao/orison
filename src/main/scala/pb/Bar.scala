@@ -8,8 +8,6 @@
 package pb
 
 import java.io.PrintStream
-import java.time.format.DateTimeFormatter
-import java.time.{Instant, ZoneId}
 import java.util.concurrent.TimeUnit
 import scala.collection.immutable.LazyList.cons
 
@@ -64,6 +62,7 @@ trait OrdersOfMagnitudeScaling extends Scaling {
     cons(num, scale(num / divisor, divisor))
 }
 
+//noinspection ScalaUnusedSymbol
 trait BinaryScaling extends OrdersOfMagnitudeScaling {
   override protected val divisor = 1024
 }
@@ -75,8 +74,6 @@ trait NoFormatScaling extends Scaling {
 }
 
 abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scaling with AsciiBarFormat {
-  private val longFmt  = DateTimeFormatter.ofPattern("HH:mm:ss")
-  private val shortFmt = DateTimeFormatter.ofPattern("mm:ss")
 
   def format(n: Int, total: Int, elapsed: Long): String = {
     require(n <= total && total > 0, s"Current n is $n, total is $total")
@@ -93,11 +90,16 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
 
   def format(n: Int, elapsed: Long): String = rightBar(n, elapsed)
 
-  private val zoneId = ZoneId.of("UTC")
-
   private def formatInterval(int: Long): String = {
-    val inst = Instant.ofEpochMilli(int).atZone(zoneId).toLocalDateTime
-    if (TimeUnit.MILLISECONDS.toHours(int) >= 1) longFmt.format(inst) else shortFmt.format(inst)
+    val day = int / 86400.0
+    if (day >= 1) f"$day%.1f day"
+    else {
+      val h = int / 3600 % 24
+      val m = int / 60   % 60
+      val s = int        % 60
+      f"$h%02d:$m%02d:$s%02d"
+    }
+
   }
 
   private def leftBar(n: Int, total: Int): String = {
@@ -115,10 +117,12 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
   }
 
   private def rightBar(n: Int, total: Int, elapsed: Long): String = {
+
     val elapsedSecs: Double = 1d * elapsed / 1000
-    val rate:        Double = n.toDouble / elapsedSecs
-    val elapsedFmt   = formatInterval(elapsed)
-    val remainingFmt = formatInterval((1000 * (total - n) / rate).toLong)
+    val rate:        Double = n / elapsedSecs
+    val elapsedFmt = formatInterval(elapsed / 1000)
+
+    val remainingFmt = if (n == 0) "--:--:--" else formatInterval(((total - n) / rate).toLong)
 
     s"${scale(n)}/${scale(total)} [$elapsedFmt < $remainingFmt, ${formatRate(rate)}]"
   }
@@ -133,15 +137,13 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
   private def formatRate(rate: Double): String = s"${scaleRate(rate)} $unit/s"
 }
 
-
 class Bar private (total: Int, barFormatter: BarFormatter) {
-
   private lazy val console = new PrintStream(System.out, false, "UTF-8")
   private val renderInterval: Long = 100
 
   private def erase = console.print("\u001b[2K")
 
-  private val startTime: Long = 0
+  private val startTime: Long = TimeUnit.NANOSECONDS.toMillis(System.nanoTime)
   private var n       = 0
   private var lastLen = 0
   private var lastRenderTime: Long = 0
