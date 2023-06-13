@@ -25,5 +25,5 @@ final class FutureOps[T] private[syntax] (private val f: Future[T]) extends AnyV
 }
 
 trait ToFutureOps {
-  @inline implicit def toFeatureOps[T](f: Future[T]) = new FutureOps(f)
+  @inline implicit def toFeatureOps[T](f: Future[T]): FutureOps[T] = new FutureOps(f)
 }

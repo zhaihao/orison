@@ -151,5 +151,5 @@ final class StringOps private[syntax] (private val str: String) extends AnyVal {
 }
 
 trait ToStringOps {
-  @inline implicit def toStringOps(str: String) = new StringOps(str)
+  @inline implicit def toStringOps(str: String): StringOps = new StringOps(str)
 }

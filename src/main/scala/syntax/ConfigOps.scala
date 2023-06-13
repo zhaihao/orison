@@ -80,5 +80,5 @@ trait ToConfigOps {
   implicit val listBooleanGetter:    Getter[List[Boolean]]    = (c, s) => c.getBooleanList(s).asScala.toList.map(_.booleanValue())
   implicit val listLongGetter:       Getter[List[Long]]       = (c, s) => c.getLongList(s).asScala.toList.map(_.longValue())
 
-  @inline implicit def toConfigOps(config: Config) = new ConfigOps(config)
+  @inline implicit def toConfigOps(config: Config): ConfigOps = new ConfigOps(config)
 }

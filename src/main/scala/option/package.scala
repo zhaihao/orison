@@ -15,5 +15,5 @@ import scala.language.implicitConversions
   *   14:49
   */
 package object option {
-  implicit def anyToOption[T](t: T) = Option(t)
+  implicit def anyToOption[T](t: T): Option[T] = Option(t)
 }

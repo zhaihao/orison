@@ -20,7 +20,7 @@ import play.api.libs.json._
   */
 object Formatter {
 
-  implicit val timestampFormat = new Format[Timestamp] {
+  implicit val timestampFormat: Format[Timestamp] = new Format[Timestamp] {
 
     // 2017-06-21 18:03:19.0
     override def writes(t: Timestamp): JsValue = JsString(t.toString)
@@ -39,7 +39,7 @@ object Formatter {
     }
   }
 
-  implicit val mapFormat = new OFormat[Map[String, Any]] {
+  implicit val mapFormat: OFormat[Map[String, Any]] = new OFormat[Map[String, Any]] {
     override def reads(json: JsValue) = {
       try {
         JsSuccess(

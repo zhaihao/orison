@@ -16,5 +16,5 @@ final class NumericOps[T: Numeric] private[syntax] (private val value: T) {
 }
 
 trait ToNumericOps {
-  @inline implicit def toNumericOps[T: Numeric](value: T) = new NumericOps[T](value)
+  @inline implicit def toNumericOps[T: Numeric](value: T): NumericOps[T] = new NumericOps[T](value)
 }

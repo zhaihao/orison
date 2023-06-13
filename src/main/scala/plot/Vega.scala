@@ -20,7 +20,7 @@ import plot.dsl._
 
 object Vega {
 
-  implicit val VegaWrites = new Writes[Vega] {
+  implicit val VegaWrites: Writes[Vega] = new Writes[Vega] {
     override def writes(o: Vega): JsValue = {
       Json.parse(o.viz).as[JsObject] + ("data" -> o.data.as[JsObject])
     }
