@@ -8,7 +8,6 @@
 package pb
 
 import java.io.PrintStream
-import java.util.concurrent.TimeUnit
 import scala.collection.immutable.LazyList.cons
 
 /**
@@ -139,23 +138,20 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
 
 class Bar private (total: Int, barFormatter: BarFormatter) {
   private lazy val console = new PrintStream(System.out, false, "UTF-8")
-  private val renderInterval: Long = 100
+//  private val renderInterval: Long = 1000
 
   private def erase = console.print("\u001b[2K")
 
-  private val startTime: Long = TimeUnit.NANOSECONDS.toMillis(System.nanoTime)
-  private var n       = 0
+  private val startTime: Long = System.currentTimeMillis()
+  private var n = 0
+  private val step = 1
   private var lastLen = 0
   private var lastRenderTime: Long = 0
-
-  private def now(): Long = TimeUnit.NANOSECONDS.toMillis(System.nanoTime)
-
-  private val step = 1
 
   def update(f: => Any): Unit = {
     erase
     f
-    val curTime = now()
+    val curTime = System.currentTimeMillis()
     val elapsed: Long = curTime - startTime
     render(elapsed)
     lastRenderTime = curTime
@@ -163,15 +159,13 @@ class Bar private (total: Int, barFormatter: BarFormatter) {
 
   def inc(): Unit = {
     n += step
-    val curTime = now()
-    if (curTime - lastRenderTime > renderInterval || n == total) {
-      val elapsed: Long = curTime - startTime
-      render(elapsed)
-      lastRenderTime = curTime
-    }
+    val curTime = System.currentTimeMillis()
+    val elapsed: Long = curTime - startTime
+    render(elapsed, n == total)
+    lastRenderTime = curTime
   }
 
-  private def render(elapsed: Long): Unit = {
+  private def render(elapsed: Long, finish: Boolean = false): Unit = {
     val barLine: String = if (total == Bar.UnknownTotal) {
       barFormatter.format(n, elapsed)
     } else {
@@ -179,7 +173,8 @@ class Bar private (total: Int, barFormatter: BarFormatter) {
     }
     val padding: String = " " * Math.max(lastLen - barLine.length, 0)
     console.flush()
-    console.print(s"$barLine$padding\r")
+    if (finish) console.print(s"$barLine$padding\n")
+    else console.print(s"$barLine$padding\r")
 
     lastLen = barLine.length
   }

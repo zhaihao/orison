@@ -5,7 +5,7 @@
  * Please visit http://ooon.me or mail to zhaihao@ooon.me
  */
 
-import sbt._
+import sbt.*
 
 /** Dependencies
   *

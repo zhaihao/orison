@@ -19,12 +19,13 @@ import com.typesafe.scalalogging.StrictLogging
   */
 object BarSpec extends StrictLogging {
   def main(args: Array[String]): Unit = {
-    val its = 100
+    val its = 50
     val bar = Bar(its)
     (1 to its).foreach { i =>
       bar.update { logger.info(i.toString) }
-      Thread.sleep(10000)
+      Thread.sleep(100)
       bar.inc()
     }
+    logger.info("-----")
   }
 }
