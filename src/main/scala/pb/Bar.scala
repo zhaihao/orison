@@ -7,6 +7,9 @@
 
 package pb
 
+import console.Colors
+import syntax.string._
+
 import java.io.PrintStream
 import scala.collection.immutable.LazyList.cons
 
@@ -36,6 +39,14 @@ trait UnicodeBarFormat extends BarFormat {
   override def bar:           String = "\u2588"
   override def empty:         String = " "
   override def rightBoundary: String = "|"
+}
+
+trait RichBarFormat extends BarFormat {
+  val f = "━"
+  override def leftBoundary:  String = ""
+  override def bar:           String = Colors.text(118, f)
+  override def empty:         String = Colors.text(239, f)
+  override def rightBoundary: String = ""
 }
 
 trait Scaling {
@@ -82,7 +93,7 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
     val rightBarStr = rightBar(n, total, elapsed)
 
     val nBars = Math.max(1, ncols - leftBarStr.length - rightBarStr.length - 2)
-    val bar   = if (nBars > 6) " " + progressBar(n, total, nBars) + " " else "|"
+    val bar   = if (nBars > 0) " " + progressBar(n, total, nBars) + " " else "|"
 
     s"$leftBarStr$bar$rightBarStr"
   }
@@ -103,7 +114,7 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
 
   private def leftBar(n: Int, total: Int): String = {
     val v = 100d * n / total
-    f"$v%5.1f%%"
+    Colors.text(211, f"$v%5.1f%%")
   }
 
   private def progressBar(n: Int, total: Int, nBars: Int): String = {
@@ -122,8 +133,10 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
     val elapsedFmt = formatInterval(elapsed / 1000)
 
     val remainingFmt = if (n == 0) "--:--:--" else formatInterval(((total - n) / rate).toLong)
-
-    s"${scale(n)}/${scale(total)} [$elapsedFmt < $remainingFmt, ${formatRate(rate)}]"
+    val totalFmt     = scale(total)
+    val numFmt       = s"${scale(n).padStart(totalFmt.length, ' ')}/$totalFmt"
+    val rateFmt      = formatRate(rate)
+    s"${Colors.text(69, numFmt)} [${Colors.text(80, elapsedFmt)} < ${Colors.text(3, remainingFmt)}, ${Colors.text(141, rateFmt)}]"
   }
 
   private def rightBar(n: Int, elapsed: Long): String = {
@@ -138,7 +151,6 @@ abstract class BarFormatter(unit: String = "it", ncols: Int = 10) extends Scalin
 
 class Bar private (total: Int, barFormatter: BarFormatter) {
   private lazy val console = new PrintStream(System.out, false, "UTF-8")
-//  private val renderInterval: Long = 1000
 
   private def erase = console.print("\u001b[2K")
 
@@ -148,6 +160,10 @@ class Bar private (total: Int, barFormatter: BarFormatter) {
   private var lastLen = 0
   private var lastRenderTime: Long = 0
 
+  /**
+    * 如果日志输出过快，会导致进度条闪烁
+    * @param f 一般用于日志输出
+    */
   def update(f: => Any): Unit = {
     erase
     f
@@ -185,10 +201,10 @@ object Bar {
 
   def apply(total: Int, barFormatter: BarFormatter): Bar = new Bar(total, barFormatter)
 
-  def apply(total: Int): Bar = new Bar(total, new BarFormatter(ncols = 100) with NoFormatScaling with UnicodeBarFormat)
+  def apply(total: Int): Bar = new Bar(total, new BarFormatter(ncols = 150) with NoFormatScaling with RichBarFormat)
 
   def apply(total: Int, unit: String): Bar =
-    new Bar(total, new BarFormatter(ncols = 100, unit = unit) with NoFormatScaling with UnicodeBarFormat)
+    new Bar(total, new BarFormatter(ncols = 150, unit = unit) with NoFormatScaling with UnicodeBarFormat)
 
   def apply(barFormatter: BarFormatter): Bar = new Bar(UnknownTotal, barFormatter)
 
