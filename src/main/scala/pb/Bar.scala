@@ -201,10 +201,10 @@ object Bar {
 
   def apply(total: Int, barFormatter: BarFormatter): Bar = new Bar(total, barFormatter)
 
-  def apply(total: Int): Bar = new Bar(total, new BarFormatter(ncols = 150) with NoFormatScaling with RichBarFormat)
+  def apply(total: Int): Bar = new Bar(total, new BarFormatter(ncols = 200) with NoFormatScaling with RichBarFormat)
 
   def apply(total: Int, unit: String): Bar =
-    new Bar(total, new BarFormatter(ncols = 150, unit = unit) with NoFormatScaling with UnicodeBarFormat)
+    new Bar(total, new BarFormatter(ncols = 200, unit = unit) with NoFormatScaling with UnicodeBarFormat)
 
   def apply(barFormatter: BarFormatter): Bar = new Bar(UnknownTotal, barFormatter)
 
