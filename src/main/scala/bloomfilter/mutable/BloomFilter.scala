@@ -29,7 +29,7 @@ class BloomFilter[T] private (val numberOfBits: Long, val numberOfHashes: Int, p
     while (i < numberOfHashes) {
       val computedHash = hash1 + i * hash2
       bits.set((computedHash & Long.MaxValue) % numberOfBits)
-      i                                      += 1
+      i += 1
     }
   }
 

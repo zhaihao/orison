@@ -186,7 +186,7 @@ object ProgressBar {
   private val UnknownTotal: Int = -1
 
   def apply(total:        Int, barFormatter: BarFormatter): ProgressBar = new ProgressBar(total, barFormatter)
-  def apply(total:        Int): ProgressBar = new ProgressBar(total, new BarFormatter())
-  def apply(barFormatter: BarFormatter): ProgressBar = new ProgressBar(UnknownTotal, barFormatter)
-  def apply(): ProgressBar = new ProgressBar(UnknownTotal, new BarFormatter())
+  def apply(total:        Int):                             ProgressBar = new ProgressBar(total, new BarFormatter())
+  def apply(barFormatter: BarFormatter):                    ProgressBar = new ProgressBar(UnknownTotal, barFormatter)
+  def apply():                                              ProgressBar = new ProgressBar(UnknownTotal, new BarFormatter())
 }

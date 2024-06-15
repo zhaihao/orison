@@ -61,5 +61,5 @@ object Ini {
 
 class Ini(private val underlying: MMap[String, MMap[String, String]]) {
   def get(key: String, section: String) = underlying(section)(key)
-  def get(key: String) = underlying(Ini.ROOT)(key)
+  def get(key: String)                  = underlying(Ini.ROOT)(key)
 }
