@@ -226,9 +226,16 @@ object SizeEstimator extends StrictLogging {
     var size = 0L
     for (_ <- 0 until ARRAY_SAMPLE_SIZE) {
       var index = 0
-      do {
+
+//      do {
+//        index = rand.nextInt(length)
+//      } while (drawn.contains(index))
+
+      while {
         index = rand.nextInt(length)
-      } while (drawn.contains(index))
+        drawn.contains(index)
+      } do ()
+
       drawn.add(index)
       val obj = ScalaRunTime.array_apply(array, index).asInstanceOf[AnyRef]
       if (obj != null) {

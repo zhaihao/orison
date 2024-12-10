@@ -72,16 +72,26 @@ final class StreamingXxHash64(seed: Long) extends StreamingHash[Long] {
         bufferSize = 0
       }
 
-      if (unprocessed >= 32) {
-        do {
-          v1 = XxHash64.round(v1, unsafe.getLong(input, off))
-          v2 = XxHash64.round(v2, unsafe.getLong(input, off + 8L))
-          v3 = XxHash64.round(v3, unsafe.getLong(input, off + 16L))
-          v4 = XxHash64.round(v4, unsafe.getLong(input, off + 24L))
+//      if (unprocessed >= 32) {
+//        do {
+//          v1 = XxHash64.round(v1, unsafe.getLong(input, off))
+//          v2 = XxHash64.round(v2, unsafe.getLong(input, off + 8L))
+//          v3 = XxHash64.round(v3, unsafe.getLong(input, off + 16L))
+//          v4 = XxHash64.round(v4, unsafe.getLong(input, off + 24L))
+//
+//          off         += 32
+//          unprocessed -= 32
+//        } while (unprocessed >= 32)
+//      }
 
-          off         += 32
-          unprocessed -= 32
-        } while (unprocessed >= 32)
+      while (unprocessed >= 32) {
+        v1 = XxHash64.round(v1, unsafe.getLong(input, off))
+        v2 = XxHash64.round(v2, unsafe.getLong(input, off + 8L))
+        v3 = XxHash64.round(v3, unsafe.getLong(input, off + 16L))
+        v4 = XxHash64.round(v4, unsafe.getLong(input, off + 24L))
+
+        off         += 32
+        unprocessed -= 32
       }
 
       if (unprocessed > 0) {

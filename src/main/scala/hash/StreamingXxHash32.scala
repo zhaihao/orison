@@ -68,16 +68,26 @@ final class StreamingXxHash32(seed: Int) extends StreamingHash[Int] {
         bufferSize = 0
       }
 
-      if (unprocessed >= 16) {
-        do {
-          v1 = XxHash32.round(v1, unsafe.getInt(input, off))
-          v2 = XxHash32.round(v2, unsafe.getInt(input, off + 4L))
-          v3 = XxHash32.round(v3, unsafe.getInt(input, off + 8L))
-          v4 = XxHash32.round(v4, unsafe.getInt(input, off + 12L))
+//      if (unprocessed >= 16) {
+//        do {
+//          v1 = XxHash32.round(v1, unsafe.getInt(input, off))
+//          v2 = XxHash32.round(v2, unsafe.getInt(input, off + 4L))
+//          v3 = XxHash32.round(v3, unsafe.getInt(input, off + 8L))
+//          v4 = XxHash32.round(v4, unsafe.getInt(input, off + 12L))
+//
+//          off         += 16
+//          unprocessed -= 16
+//        } while (unprocessed >= 16)
+//      }
 
-          off         += 16
-          unprocessed -= 16
-        } while (unprocessed >= 16)
+      while (unprocessed >= 16) {
+        v1 = XxHash32.round(v1, unsafe.getInt(input, off))
+        v2 = XxHash32.round(v2, unsafe.getInt(input, off + 4L))
+        v3 = XxHash32.round(v3, unsafe.getInt(input, off + 8L))
+        v4 = XxHash32.round(v4, unsafe.getInt(input, off + 12L))
+
+        off         += 16
+        unprocessed -= 16
       }
 
       if (unprocessed > 0) {

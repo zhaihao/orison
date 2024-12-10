@@ -8,8 +8,8 @@
 package oos
 
 import oshi.SystemInfo
-import squants.experimental.formatter.DefaultFormatter
-import squants.experimental.unitgroups.information.IECInformation
+import unit.formatter.DefaultFormatter
+import unit.groups.information.IECInformation
 import squants.information.Information
 
 /**

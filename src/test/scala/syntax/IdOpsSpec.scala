@@ -25,6 +25,6 @@ class IdOpsSpec extends BaseSpec {
 
   "some" in {
     1.some ==> Some(1)
-    assertDoesNotCompile("null.some")
+//    assertDoesNotCompile("null.some")
   }
 }

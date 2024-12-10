@@ -62,12 +62,18 @@ final class StreamingMurmurHash3_32(seed: Int) extends StreamingHash[Int] {
         bufferSize = 0
       }
 
-      if (unprocessed >= 4) {
-        do {
-          hash = MurmurHash3_32.mix(hash, unsafe.getInt(input, off))
-          off         += 4
-          unprocessed -= 4
-        } while (unprocessed >= 4)
+//      if (unprocessed >= 4) {
+//        do {
+//          hash = MurmurHash3_32.mix(hash, unsafe.getInt(input, off))
+//          off         += 4
+//          unprocessed -= 4
+//        } while (unprocessed >= 4)
+//      }
+
+      while (unprocessed >= 4) {
+        hash = MurmurHash3_32.mix(hash, unsafe.getInt(input, off))
+        off         += 4
+        unprocessed -= 4
       }
 
       if (unprocessed > 0) {

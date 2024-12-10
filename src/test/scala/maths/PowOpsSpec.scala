@@ -1,5 +1,5 @@
 package maths
-
+import maths.power._
 import test.BaseSpec
 
 /** PowOpsSpec

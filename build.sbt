@@ -1,5 +1,5 @@
 import sbt.Keys.scalacOptions
-scalaVersion := "2.13.15"
+scalaVersion := "3.3.4"
 organization := "me.ooon"
 target       := studioTarget.value
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings")
@@ -14,7 +14,7 @@ cancelable.withRank(KeyRanks.Invisible) := true
 moduleName         := "orison"
 name               := "orison"
 Test / logBuffered := false
-libraryDependencies ++= Seq(log, java_mail, slick).flatten
+libraryDependencies ++= Seq(LOG, JAVA_MAIL, SLICK).flatten
 libraryDependencies ++= Seq(
   typesafe_config,
   scalatest,
@@ -25,6 +25,5 @@ libraryDependencies ++= Seq(
   argon2,
   json4s,
   jbcrypt,
-  oshi,
-  "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided
+  oshi
 )

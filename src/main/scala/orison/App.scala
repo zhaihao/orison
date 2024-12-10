@@ -14,9 +14,9 @@ import config.HConfig
 import syntax.string._
 import console.Colors._
 import scala.collection.mutable.ListBuffer
-import squants.experimental.formatter.DefaultFormatter
-import squants.experimental.formatter.syntax._
-import squants.experimental.unitgroups.si.expanded.time.ExpandedSiTimes
+import unit.formatter.DefaultFormatter
+import unit.formatter.syntax._
+import unit.groups.si.expanded.time.ExpandedSiTimes
 import squants.time.TimeConversions._
 
 /** App

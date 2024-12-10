@@ -126,6 +126,7 @@ class BarFormatter(unit: String = "it", nCols: Int = 10) extends Scaling with As
   private def formatRate(rate: Double): String = s"${scale(rate)} $unit/s"
 }
 
+@FunctionalInterface
 trait Updater {
   def update(incr: Int): Unit
 }

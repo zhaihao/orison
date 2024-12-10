@@ -59,15 +59,26 @@ object XxHash32 extends FastHash[Int] {
       var v3 = seed
       var v4 = seed - Prime1
 
-      do {
+//      do {
+//        v1 = round(v1, unsafe.getInt(input, off))
+//        v2 = round(v2, unsafe.getInt(input, off + 4L))
+//        v3 = round(v3, unsafe.getInt(input, off + 8L))
+//        v4 = round(v4, unsafe.getInt(input, off + 12L))
+//
+//        off         += 16
+//        unprocessed -= 16
+//      } while (unprocessed >= 16)
+
+      while {
         v1 = round(v1, unsafe.getInt(input, off))
         v2 = round(v2, unsafe.getInt(input, off + 4L))
         v3 = round(v3, unsafe.getInt(input, off + 8L))
         v4 = round(v4, unsafe.getInt(input, off + 12L))
-
         off         += 16
         unprocessed -= 16
-      } while (unprocessed >= 16)
+
+        unprocessed >= 16
+      } do ()
 
       hash = rotl32(v1, 1) + rotl32(v2, 7) + rotl32(v3, 12) + rotl32(v4, 18)
 

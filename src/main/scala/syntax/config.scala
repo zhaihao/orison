@@ -1,44 +1,40 @@
 /*
- * Copyright (c) 2019.
+ * Copyright (c) 2020-2024.
  * OOON.ME ALL RIGHTS RESERVED.
  * Licensed under the Mozilla Public License, version 2.0
- * Please visit http://ooon.me or mail to zhaihao@ooon.me
+ * Please visit <http://ooon.me> or mail to zhaihao@ooon.me
  */
 
 package syntax
 
-import com.typesafe.config._
-import syntax.ConfigOps.{Bytes, Getter}
+import com.typesafe.config.{Config, ConfigList, ConfigMemorySize, ConfigObject, ConfigRenderOptions}
 
-import scala.jdk.CollectionConverters._
 import scala.concurrent.duration.{Duration, FiniteDuration}
-import scala.language.implicitConversions
+import scala.jdk.CollectionConverters.*
 
-/** ConfigOps
+/**
+  * config
   *
-  * @author
-  *   zhaihao
+  * @author zhaihao
   * @version 1.0
-  * 2018-01-18 20:20
+  * @since 2024-12-10 11:38
   */
-final class ConfigOps private[syntax] (private val config: Config) extends AnyVal {
+object config {
+  extension (config: Config) {
+    def getOrElse[T: Getter](path: String, default: => T): T =
+      opt[T](path) getOrElse default
 
-  def getOrElse[T: Getter](path: String, default: => T): T =
-    opt[T](path) getOrElse default
+    def opt[T: Getter](path: String)(implicit getter: Getter[T]): Option[T] = {
+      if (config.hasPathOrNull(path)) {
+        Some(getter(config, path))
+      } else None
+    }
 
-  def opt[T: Getter](path: String)(implicit getter: Getter[T]): Option[T] = {
-    if (config.hasPathOrNull(path)) {
-      Some(getter(config, path))
-    } else None
+    def pretty: String = config.root().render(renderOpts)
+
+    def json: String = config.root().render(renderJson)
   }
 
-  def pretty: String = config.root().render(ConfigOps.renderOpts)
-
-  def json: String = config.root().render(ConfigOps.renderJson)
-
-}
-
-object ConfigOps {
   type Getter[T] = (Config, String) => T
 
   case class Bytes(value: Long)
@@ -56,10 +52,6 @@ object ConfigOps {
     .setComments(false)
     .setJson(true)
     .setFormatted(true)
-
-}
-
-trait ToConfigOps {
 
   implicit val stringGetter:         Getter[String]           = _ getString _
   implicit val booleanGetter:        Getter[Boolean]          = _ getBoolean _
@@ -79,6 +71,4 @@ trait ToConfigOps {
   implicit val listDoubleGetter:     Getter[List[Double]]     = (c, s) => c.getDoubleList(s).asScala.toList.map(_.doubleValue())
   implicit val listBooleanGetter:    Getter[List[Boolean]]    = (c, s) => c.getBooleanList(s).asScala.toList.map(_.booleanValue())
   implicit val listLongGetter:       Getter[List[Long]]       = (c, s) => c.getLongList(s).asScala.toList.map(_.longValue())
-
-  @inline implicit def toConfigOps(config: Config): ConfigOps = new ConfigOps(config)
 }

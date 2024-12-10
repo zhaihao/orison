@@ -22,7 +22,8 @@ trait ArrowAssertLike extends TripleEquals {
 
   implicit class ArrowAssertHold(lhs: Any) {
 
-    def ==>[V](rhs: V)(implicit pf: Prettifier, pos: source.Position) = assertResult(rhs)(lhs)(pf, pos)
+//    def ==>[V](rhs: V)(implicit pf: Prettifier, pos: source.Position) = assertResult(rhs)(lhs)(pf, pos)
+    def ==>[V](rhs: V)(implicit pf: Prettifier, pos: source.Position) = assert(rhs == lhs)(pf, pos)
 
     def !=>[V](rhs: V)(implicit pf: Prettifier, pos: source.Position) = assert(lhs != rhs)(pf, pos)
 

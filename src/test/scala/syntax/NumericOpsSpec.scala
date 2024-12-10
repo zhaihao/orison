@@ -12,8 +12,8 @@ import test.BaseSpec
   */
 class NumericOpsSpec extends BaseSpec {
 
-  import syntax.numeric._
+  import maths.power._
   "pow" in {
-    2 *^ 3 ==> 8
+    (2 ^* 3) ==> 8
   }
 }

@@ -30,7 +30,7 @@ object Version {
 
   def apply(s: String): Option[Version] = {
     allCatch opt {
-      val VersionR(maj, subs, qual) = s
+      val VersionR(maj, subs, qual) = s: @unchecked
       // parse the subVersions (if any) to a Seq[Int]
       val subSeq: Seq[Int] = Option(subs) map { str =>
         // split on . and remove empty strings

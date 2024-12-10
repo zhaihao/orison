@@ -9,7 +9,6 @@ package types
 
 import org.scalatest.matchers.must.Matchers
 import test.BaseSpec
-import types.|._
 
 import java.io.File
 

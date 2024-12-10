@@ -7,7 +7,7 @@
 package oos.info
 
 import oshi.util.Util
-import squants.experimental.formatter.syntax._
+import unit.formatter.syntax._
 import squants.information.InformationConversions._
 
 import scala.concurrent.duration.{Duration, DurationInt}

@@ -1,7 +1,6 @@
 import sun.misc.{Unsafe => JUnsafe}
 
-import scala.reflect.runtime.currentMirror
-import scala.tools.reflect.ToolBox
+import scala.quoted.*
 import java.nio.ByteOrder
 import scala.language.{existentials, postfixOps}
 import scala.util.Try
@@ -37,12 +36,6 @@ package object unsafe {
   } recover { case th: Throwable =>
     throw new ExceptionInInitializerError(th)
   } get
-
-  def eval[A](expr: String) = {
-    val toolbox = currentMirror.mkToolBox()
-    val tree    = toolbox.parse(expr)
-    toolbox.eval(tree).asInstanceOf[A]
-  }
 
   private[this] final val isLittleEndian = ByteOrder.nativeOrder == ByteOrder.LITTLE_ENDIAN
 

@@ -86,18 +86,18 @@ class UnsafeSpec extends BaseSpec {
     }
   }
 
-  "eval" - {
-    "math expr" in {
-      eval[Int]("1 + 1") ==> 2
-    }
-
-    "other type expr" in {
-      eval[Apple]("""
-                    |import unsafe.Apple
-                    |Apple(1,"apple")
-        """.stripMargin) ==> Apple(1, "apple")
-    }
-  }
+//  "eval" - {
+//    "math expr" in {
+//      Eval[Int]("1 + 1") ==> 2
+//    }
+//
+//    "other type expr" in {
+//      eval[Apple]("""
+//                    |import unsafe.Apple
+//                    |Apple(1,"apple")
+//        """.stripMargin) ==> Apple(1, "apple")
+//    }
+//  }
 }
 
 class User {
