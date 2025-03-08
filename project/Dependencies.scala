@@ -27,7 +27,7 @@ object Dependencies extends AutoPlugin {
     lazy val json4s          = "org.json4s"        %% "json4s-jackson"         % "4.0.7"  % Provided
     lazy val typesafe_config = "com.typesafe"       % "config"                 % "1.4.3"  % Provided
     lazy val squants         = "org.typelevel"     %% "squants"                % "1.8.3"  % Provided
-    lazy val argon2          = "de.mkammerer"       % "argon2-jvm"             % "2.11"   % Provided
+    lazy val argon2          = "de.mkammerer"       % "argon2-jvm"             % "2.12"   % Provided
     lazy val jbcrypt         = "org.mindrot"        % "jbcrypt"                % "0.4"    % Provided
     lazy val oshi            = "com.github.oshi"    % "oshi-core-java11"       % "6.6.5"  % Provided
     lazy val eval            = "com.eed3si9n.eval" %% "eval"                   % "0.3.0"  % Provided
