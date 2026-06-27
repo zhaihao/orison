@@ -46,7 +46,7 @@ object Dependencies extends AutoPlugin {
 
     lazy val LOG = Seq(
       "com.typesafe.scala-logging" %% "scala-logging"   % "3.9.5"  % Provided,
-      "ch.qos.logback"              % "logback-classic" % "1.5.12" % Provided
+      "ch.qos.logback"              % "logback-classic" % "1.5.37" % Provided
     )
 
     val excludes = Seq()
